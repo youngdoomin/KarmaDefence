@@ -13,7 +13,7 @@ public class BlinkEffect : MonoBehaviour
     {
         StartCoroutine(Blink());
     }
-
+    //
 
     IEnumerator Blink()
     {
