@@ -56,6 +56,7 @@ public class Unit : MonoBehaviour
         GameObject[] allEn = Other;
 
         FindObj();
+
         /*
         if(GameManager.instance.killed == true)
         {
@@ -74,8 +75,8 @@ public class Unit : MonoBehaviour
                 //transform.LookAt(closestEn.transform);
             }
         }
-        if (Class == Type.Shooter && ShootDis > closestDist && !Shooting) { StartCoroutine(Shoot()); } //&& FightDis < closestDist) 
-        else if (FightDis > closestDist && !Fighting) { StartCoroutine(Fight(closestEn)); }
+        if (Class == Type.Shooter && ShootDis + closestEn.transform.localScale.x > closestDist && !Shooting) { StartCoroutine(Shoot()); } //&& FightDis < closestDist) 
+        else if (FightDis + closestEn.transform.localScale.x > closestDist && !Fighting) { StartCoroutine(Fight(closestEn)); }
         else if (!Shooting && !Fighting)
         { rb.velocity = transform.forward * Speed; }
     }

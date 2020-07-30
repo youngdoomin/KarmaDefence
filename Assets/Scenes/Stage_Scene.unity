@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 466194839}
   - component: {fileID: 466194838}
   - component: {fileID: 466194842}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: EnemyHq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,14 +575,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f811d33a8b9b34e84c7c9decd7488b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSpawn: 1
+  IsSpawn: 0
   SpawnDelay: 6
   SpawnPos: {fileID: 1087163172}
   Units:
   - {fileID: 8117295668437786126, guid: b7990bc713f59f74d9ccf02b5a085e3a, type: 3}
   - {fileID: 8117295668437786126, guid: 0bd79ced78a59184ca764ccfa0c49621, type: 3}
-  - {fileID: 8117295668437786126, guid: 1e031efef45b2314aa2d84d0c44d4b04, type: 3}
-  dragon: {fileID: 0}
+  - {fileID: 8117295668437786126, guid: 746fb16867154ef4ab2af9868ad43d8b, type: 3}
 --- !u!1 &507464638
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76bda360fea69f840aa44bd20456fa89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossPos: {fileID: 2084616682}
+  boss: {fileID: 8117295668437786126, guid: 1e031efef45b2314aa2d84d0c44d4b04, type: 3}
   killed: 0
   CurrentMoney: 0
 --- !u!4 &507464640
@@ -626,7 +627,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &563228207
 GameObject:
@@ -858,7 +859,7 @@ RectTransform:
   - {fileID: 249546287}
   - {fileID: 1804627939}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -952,7 +953,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 642656926}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RainTr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1266,7 +1267,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -1690,7 +1691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1087163172}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2117,7 +2118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1474724480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ExpTr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2403,7 +2404,6 @@ MonoBehaviour:
   - {fileID: 8495076336296136352, guid: aeba0a4fd8774e74eb78ed211c1f846e, type: 3}
   - {fileID: 8495076336296136352, guid: 5f0350a938b7ef2408ce02b1d322f85d, type: 3}
   - {fileID: 8495076336296136352, guid: 5177a810026f81b4fa785187723df216, type: 3}
-  dragon: {fileID: 0}
 --- !u!1 &1657604250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,31 +2415,16 @@ GameObject:
   - component: {fileID: 1657604254}
   - component: {fileID: 1657604253}
   - component: {fileID: 1657604252}
-  - component: {fileID: 1657604251}
   - component: {fileID: 1657604255}
   - component: {fileID: 1657604256}
   - component: {fileID: 1657604257}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &1657604251
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657604250}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1657604252
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2959,7 +2944,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1993333718
 GameObject:
@@ -3203,6 +3188,36 @@ Transform:
   m_Father: {fileID: 4692491109310275642}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &2084616681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2084616682}
+  m_Layer: 12
+  m_Name: BossSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2084616682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084616681}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 20.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!23 &1236974887920899028
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3263,7 +3278,7 @@ GameObject:
   - component: {fileID: 1236974887920899028}
   - component: {fileID: 1236974887920899031}
   - component: {fileID: 1236974887920899051}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: EnemyHq_HitBox
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3312,75 +3327,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 3
---- !u!1001 &2066765402037789161
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8117295668437786126, guid: 1e031efef45b2314aa2d84d0c44d4b04,
-        type: 3}
-      propertyPath: m_Name
-      value: Dragon
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1e031efef45b2314aa2d84d0c44d4b04, type: 3}
 --- !u!222 &3604621734529765412
 CanvasRenderer:
   m_ObjectHideFlags: 0

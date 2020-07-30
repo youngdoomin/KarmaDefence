@@ -16,9 +16,20 @@ namespace UnitMgr{
 
             if (Hp <= 0)
             {
-                if(this.gameObject.layer == 8)
+                if(this.gameObject.layer == 12)
                 {
-                    Debug.Log("Hq destroyed");
+                    if (this.gameObject.tag == "Enemy")
+                    {
+                        GameManager.instance.SpawnBoss();
+                    }
+                    else
+                    {
+                        GameManager.instance.Lose();
+                    }
+                }
+                else if(this.gameObject.layer == 14)
+                {
+                    GameManager.instance.Win();
                 }
                 GameManager.instance.killed = true;
                 //this.gameObject.transform.position = new Vector3(60, transform.position.y, transform.position.z);

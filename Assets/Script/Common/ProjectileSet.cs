@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class ProjectileSet : MonoBehaviour
 {
+    public bool isMove;
     public float speed;
     public int damage;
+
+
+    
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward * speed);
+        
+        if(isMove == true)
+        {
+            GetComponent<Rigidbody>().AddForce(transform.forward * speed);
+
+        }
+        else
+        {
+            Destroy(this.gameObject, 1);
+        }
+        
+        //GetComponent<Rigidbody>().AddForce(transform.forward * speed);
         /*
         if (this.gameObject.tag == "Friendly")
         {
@@ -24,17 +39,19 @@ public class ProjectileSet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
 
-    }
 
     protected void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == this.gameObject.tag)
         {
             coll.gameObject.SendMessage("Damaged", damage);
-            Destroy(gameObject);
+
+            if (isMove == true)
+            {
+                Destroy(this.gameObject);
+
+            }
 
         }
     

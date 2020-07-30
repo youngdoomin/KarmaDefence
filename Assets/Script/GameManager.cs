@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    public Transform bossPos;
+    public GameObject boss;
+    [HideInInspector]
     public bool killed;
     [HideInInspector]
     public int CurrentMoney;
@@ -26,13 +28,19 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void SpawnBoss()
+    {
+        Debug.Log("Spawn");
+        Instantiate(boss, bossPos);
+    }
+
     public void Win()
     {
-
+        Debug.Log("Win");
     }
 
     public void Lose()
     {
-
+        Debug.Log("Lose");
     }
 }

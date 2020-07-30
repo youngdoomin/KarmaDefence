@@ -7,7 +7,6 @@ public class UnitSpawn : MonoBehaviour
     public float SpawnDelay;
     public Transform SpawnPos;
     public GameObject[] Units;
-    public GameObject dragon;
     // Start is called before the first frame update
 
     void Start()
@@ -35,15 +34,4 @@ public class UnitSpawn : MonoBehaviour
 
     }
 
-    private void OnDestroy()
-    {
-        if (this.gameObject.tag == "Enemy")
-        {
-            Instantiate(dragon, SpawnPos);
-        }
-        else
-        {
-            GameManager.instance.Lose();
-        }
-    }
 }
