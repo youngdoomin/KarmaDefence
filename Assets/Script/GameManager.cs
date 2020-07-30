@@ -25,4 +25,14 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
+    public void Win()
+    {
+
+    }
+
+    public void Lose()
+    {
+
+    }
 }
