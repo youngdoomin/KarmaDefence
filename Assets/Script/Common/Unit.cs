@@ -67,7 +67,7 @@ public class Unit : MonoBehaviour
         foreach (GameObject potentTarget in allEn) // 가장 가까운 적 공격
         {
             float distTarget = (potentTarget.transform.position - this.transform.position).sqrMagnitude;
-            if (distTarget < closestDist
+            if (distTarget < closestDist //&& potentTarget.layer != 9
             && ((this.gameObject.tag == "Friendly" && potentTarget.transform.position.x > this.transform.position.x) || (this.gameObject.tag == "Enemy" && potentTarget.transform.position.x < this.transform.position.x))) // 적이 뒤로 넘어가면 공격 안함
             {
                 closestDist = distTarget;
@@ -98,7 +98,8 @@ public class Unit : MonoBehaviour
         Fighting = true;
 
         yield return new WaitForSeconds(FightDelay);
-        Enemy.SendMessage("Damaged", MeleeDam);
+        if(Enemy != null) { Enemy.SendMessage("Damaged", MeleeDam); }
+        
         Fighting = false;
     }
 

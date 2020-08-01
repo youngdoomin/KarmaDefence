@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     public bool killed;
     [HideInInspector]
     public int CurrentMoney;
-
+    public GameObject winObj;
+    public GameObject loseObj;
     void Awake()
     {
         instance = this;
@@ -34,13 +35,20 @@ public class GameManager : MonoBehaviour
         Instantiate(boss, bossPos);
     }
 
-    public void Win()
+    public void WinScreen()
     {
-        Debug.Log("Win");
+        winObj.SetActive(true);
+        TimeStop();
     }
 
-    public void Lose()
+    public void LoseScreen()
     {
-        Debug.Log("Lose");
+        loseObj.SetActive(true);
+        TimeStop();
+    }
+
+    void TimeStop()
+    {
+        Time.timeScale = 0;
     }
 }

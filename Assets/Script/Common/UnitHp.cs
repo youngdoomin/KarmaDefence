@@ -24,12 +24,12 @@ namespace UnitMgr{
                     }
                     else
                     {
-                        GameManager.instance.Lose();
+                        GameManager.instance.LoseScreen();
                     }
                 }
                 else if(this.gameObject.layer == 14)
                 {
-                    GameManager.instance.Win();
+                    GameManager.instance.WinScreen();
                 }
                 GameManager.instance.killed = true;
                 //this.gameObject.transform.position = new Vector3(60, transform.position.y, transform.position.z);

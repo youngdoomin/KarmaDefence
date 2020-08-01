@@ -61,10 +61,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace71eb5295dade45855b80fb3859b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMove: 0
   speed: 1000
   damage: 2
-  Opponent: 
-  ExpRange: 15
+  ExpRange: 5
 --- !u!1 &6308664597992928446
 GameObject:
   m_ObjectHideFlags: 0

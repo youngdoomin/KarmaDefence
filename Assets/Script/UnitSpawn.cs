@@ -4,7 +4,7 @@ using UnityEngine;
 public class UnitSpawn : MonoBehaviour
 {
     public bool IsSpawn;
-    public float SpawnDelay;
+    public float[] SpawnDelay;
     public Transform SpawnPos;
     public GameObject[] Units;
     // Start is called before the first frame update
@@ -23,8 +23,10 @@ public class UnitSpawn : MonoBehaviour
 
     IEnumerator AutoSpawner()
     {
-        var Spawn = Instantiate(Units[Random.Range(0,Units.Length)], SpawnPos);
-        yield return new WaitForSeconds(SpawnDelay);
+        var random = Random.Range(0, Units.Length);
+        var Spawn = Instantiate(Units[random], SpawnPos);
+        yield return new WaitForSeconds(SpawnDelay[random]);
+        Debug.Log(SpawnDelay[random]);
         StartCoroutine(AutoSpawner());
     }
 

@@ -17,7 +17,7 @@ public class ProjectileExp : ProjectileSet
 
     }
 
-    new protected void OnTriggerEnter(Collider coll)
+    protected void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == this.gameObject.tag)
         {
@@ -28,11 +28,16 @@ public class ProjectileExp : ProjectileSet
                 if (col.gameObject.tag == this.gameObject.tag)
                 {
                     col.gameObject.SendMessage("Damaged", damage);
-                    this.gameObject.BroadcastMessage("Explo", ExpRange);
+                    //this.gameObject.BroadcastMessage("Explo", ExpRange);
                     //Gizmos.DrawSphere(col.gameObject.transform.position, ExpRange);
                     Destroy(gameObject);
                 }
             }
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, ExpRange);
     }
 }
