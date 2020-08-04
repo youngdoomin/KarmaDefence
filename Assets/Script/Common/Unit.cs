@@ -51,34 +51,39 @@ public class Unit : MonoBehaviour
 
     void Update()
     {
-        float closestDist = Mathf.Infinity;
-        GameObject closestEn = null;
-        GameObject[] allEn = Other;
-
-        FindObj();
-
-        /*
-        if(GameManager.instance.killed == true)
+        if (Time.timeScale != 0)
         {
-            GameManager.instance.killed = false;
-        }
-            */
+            float closestDist = Mathf.Infinity;
+            GameObject closestEn = null;
+            GameObject[] allEn = Other;
 
-        foreach (GameObject potentTarget in allEn) // 가장 가까운 적 공격
-        {
-            float distTarget = (potentTarget.transform.position - this.transform.position).sqrMagnitude;
-            if (distTarget < closestDist //&& potentTarget.layer != 9
-            && ((this.gameObject.tag == "Friendly" && potentTarget.transform.position.x > this.transform.position.x) || (this.gameObject.tag == "Enemy" && potentTarget.transform.position.x < this.transform.position.x))) // 적이 뒤로 넘어가면 공격 안함
+            FindObj();
+
+            /*
+            if(GameManager.instance.killed == true)
             {
-                closestDist = distTarget;
-                closestEn = potentTarget;
-                //transform.LookAt(closestEn.transform);
+                GameManager.instance.killed = false;
             }
+                */
+
+            foreach (GameObject potentTarget in allEn) // 가장 가까운 적 공격
+            {
+                float distTarget = (potentTarget.transform.position - this.transform.position).sqrMagnitude;
+                if (distTarget < closestDist && potentTarget.layer != 9
+                && ((this.gameObject.tag == "Friendly" && potentTarget.transform.position.x > this.transform.position.x) || (this.gameObject.tag == "Enemy" && potentTarget.transform.position.x < this.transform.position.x))) // 적이 뒤로 넘어가면 공격 안함
+                {
+                    closestDist = distTarget;
+                    closestEn = potentTarget;
+                    //transform.LookAt(closestEn.transform);
+                }
+            }
+            if (Class == Type.Shooter && ShootDis + closestEn.transform.localScale.x > closestDist && !Shooting) { StartCoroutine(Shoot()); } //&& FightDis < closestDist) 
+            else if (FightDis + closestEn.transform.localScale.x > closestDist && !Fighting) { StartCoroutine(Fight(closestEn)); }
+            else if (!Shooting && !Fighting)
+            { rb.velocity = transform.forward * Speed; }
+
         }
-        if (Class == Type.Shooter && ShootDis + closestEn.transform.localScale.x > closestDist && !Shooting) { StartCoroutine(Shoot()); } //&& FightDis < closestDist) 
-        else if (FightDis + closestEn.transform.localScale.x > closestDist && !Fighting) { StartCoroutine(Fight(closestEn)); }
-        else if (!Shooting && !Fighting)
-        { rb.velocity = transform.forward * Speed; }
+        
     }
 
     IEnumerator Shoot()

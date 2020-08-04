@@ -32,7 +32,10 @@ public class OnClick : MonoBehaviour
 
     public void GoNext() // 다음 씬으로 이동
     {
-        i++;
+        if(i < SceneManager.sceneCountInBuildSettings)
+        {
+            i++;
+        }
         LoadScene(i);
     }
 
