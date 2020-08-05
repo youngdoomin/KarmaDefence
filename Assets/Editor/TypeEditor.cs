@@ -7,33 +7,29 @@ public class TypeEditor : Editor
 
     public SerializedProperty
         Class_Prop,
+        Damage_Prop,
+        AttackRange_Prop,
         Speed_Prop,
+        AttackSpeed_Prop,
+        AttackDelay_Prop,
 
-        ShootDis_Prop,
-        ShootDelay_Prop,
         Projectile_Prop,
-        ShootPos_Prop,
+        ShootPos_Prop;
 
-        MeleeDam_Prop,
-        FightDis_Prop,
-        FightDelay_Prop;
         //controllable_Prop;
 
     void OnEnable()
     {
         // Setup the SerializedProperties
         Class_Prop = serializedObject.FindProperty("Class");
+        Damage_Prop = serializedObject.FindProperty("Damage");
+        AttackRange_Prop = serializedObject.FindProperty("AttackRange");
         Speed_Prop = serializedObject.FindProperty("Speed");
+        AttackSpeed_Prop = serializedObject.FindProperty("AttackSpeed");
+        AttackDelay_Prop = serializedObject.FindProperty("AttackDelay");
 
-        ShootDis_Prop = serializedObject.FindProperty("ShootDis");
-        ShootDelay_Prop = serializedObject.FindProperty("ShootDelay");
         Projectile_Prop = serializedObject.FindProperty("Projectile");
         ShootPos_Prop = serializedObject.FindProperty("ShootPos");
-
-
-        MeleeDam_Prop = serializedObject.FindProperty("MeleeDam");
-        FightDis_Prop = serializedObject.FindProperty("FightDis");
-        FightDelay_Prop = serializedObject.FindProperty("FightDelay");
         //controllable_Prop = serializedObject.FindProperty("controllable");
     }
 
@@ -49,8 +45,10 @@ public class TypeEditor : Editor
         {
             case Unit.Type.Shooter:
                 //EditorGUILayout.PropertyField(controllable_Prop, new GUIContent("controllable"));
-                EditorGUILayout.Slider(ShootDis_Prop, 0, 100, new GUIContent("ShootDis"));
-                EditorGUILayout.Slider(ShootDelay_Prop, 0, 100, new GUIContent("ShootDelay"));
+                EditorGUILayout.IntSlider(Damage_Prop, 0, 100, new GUIContent("Damage"));
+                EditorGUILayout.Slider(AttackRange_Prop, 0, 100, new GUIContent("AttackRange"));
+                EditorGUILayout.Slider(AttackSpeed_Prop, 0, 100, new GUIContent("AttackSpeed"));
+                EditorGUILayout.Slider(AttackDelay_Prop, 0, 100, new GUIContent("AttackDelay"));
                 EditorGUILayout.ObjectField(Projectile_Prop);
                 EditorGUILayout.ObjectField(ShootPos_Prop);
                 EditorGUILayout.Slider(Speed_Prop, 0, 100, new GUIContent("Speed"));
@@ -58,18 +56,12 @@ public class TypeEditor : Editor
 
             case Unit.Type.Fighter:
                 //EditorGUILayout.PropertyField(controllable_Prop, new GUIContent("controllable"));
-                EditorGUILayout.IntSlider(MeleeDam_Prop, 0, 100, new GUIContent("MeleeDam"));
-                EditorGUILayout.Slider(FightDis_Prop, 0, 100, new GUIContent("FightDis"));
-                EditorGUILayout.Slider(FightDelay_Prop, 0, 100, new GUIContent("FightDelay"));
+                EditorGUILayout.IntSlider(Damage_Prop, 0, 100, new GUIContent("Damage"));
+                EditorGUILayout.Slider(AttackRange_Prop, 0, 100, new GUIContent("AttackRange"));
+                EditorGUILayout.Slider(AttackSpeed_Prop, 0, 100, new GUIContent("AttackSpeed"));
+                EditorGUILayout.Slider(AttackDelay_Prop, 0, 100, new GUIContent("AttackDelay"));
                 EditorGUILayout.Slider(Speed_Prop, 0, 100, new GUIContent("Speed"));
                 break;
-
-                /*
-            case Unit.Type.C:
-                EditorGUILayout.PropertyField(controllable_Prop, new GUIContent("controllable"));
-                EditorGUILayout.IntSlider(valForC_Prop, 0, 100, new GUIContent("valForC"));
-                break;
-                */
         }
 
 

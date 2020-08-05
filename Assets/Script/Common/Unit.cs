@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    public int Damage;
+    public float AttackRange;  // 공격 사거리
     public float Speed;
-    public float ShootDis;  // 원거리 공격 사거리
-    public float ShootDelay;    // 원거리 공격 딜레이
+    public float AttackSpeed;
+    public float AttackDelay;    // 원거리 공격 딜레이
+    
     public GameObject Projectile;   // 원거리 투사체
     public Transform ShootPos;  // 발사 위치
-
-    public int MeleeDam;
-    public float FightDis;  // 근접 공격 거리
-    public float FightDelay;    // 근접 공격 사거리
 
     private bool Fighting;  // 근접 공격 상태
     private bool Shooting;  // 원거리 공격 상태
@@ -32,8 +31,6 @@ public class Unit : MonoBehaviour
     void Start()
     {
         FindObj();
-        if (ShootDis < FightDis)
-            Debug.Log(this.gameObject.name + "거리 수치에 오류 발생");
         rb = GetComponent<Rigidbody>();
 
 
@@ -77,8 +74,8 @@ public class Unit : MonoBehaviour
                     //transform.LookAt(closestEn.transform);
                 }
             }
-            if (Class == Type.Shooter && ShootDis + closestEn.transform.localScale.x > closestDist && !Shooting) { StartCoroutine(Shoot()); } //&& FightDis < closestDist) 
-            else if (FightDis + closestEn.transform.localScale.x > closestDist && !Fighting) { StartCoroutine(Fight(closestEn)); }
+            if (Class == Type.Shooter && AttackRange + closestEn.transform.localScale.x > closestDist && !Shooting) { StartCoroutine(Shoot()); } //&& FightDis < closestDist) 
+            else if (Class == Type.Fighter && AttackRange + closestEn.transform.localScale.x > closestDist && !Fighting) { StartCoroutine(Fight(closestEn)); }
             else if (!Shooting && !Fighting)
             { rb.velocity = transform.forward * Speed; }
 
@@ -89,23 +86,25 @@ public class Unit : MonoBehaviour
     IEnumerator Shoot()
     {
         rb.velocity = Vector3.zero;
+        Shooting = true;
+        yield return new WaitForSeconds(AttackSpeed);
         GameObject projectile = Instantiate(Projectile, ShootPos.position, ShootPos.rotation);
         projectile.tag = OtherTag;
-        Shooting = true;
-        yield return new WaitForSeconds(ShootDelay);
+        projectile.name = Damage.ToString();
+        yield return new WaitForSeconds(AttackDelay);
         Shooting = false;
     }
 
     IEnumerator Fight(GameObject Enemy)
     {
         rb.velocity = Vector3.zero;
-        Debug.Log("Fighting");
         Fighting = true;
-
-        yield return new WaitForSeconds(FightDelay);
-        if(Enemy != null) { Enemy.SendMessage("Damaged", MeleeDam); }
-        
+        yield return new WaitForSeconds(AttackSpeed);
+        if (Enemy != null) { Enemy.SendMessage("Damaged", Damage); }
+        yield return new WaitForSeconds(AttackDelay);
         Fighting = false;
     }
+
+
 
 }

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8495076336296136353}
   - component: {fileID: 8495076336296136365}
   - component: {fileID: 8495076336296136366}
-  - component: {fileID: 5724418039255673338}
+  - component: {fileID: 7441544743038858421}
   m_Layer: 13
-  m_Name: friendlyFighter
+  m_Name: ArcherAngel
   m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,16 +109,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0a511f38b9a934f8238cf82cd854b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
-  ShootDis: 15
-  ShootDelay: 2
-  Projectile: {fileID: 3034869627125675292, guid: b6e1bae27d44b014d866477d956bfc6e,
+  Damage: 2
+  AttackRange: 30
+  Speed: 2
+  AttackSpeed: 3
+  AttackDelay: 0
+  Projectile: {fileID: 3034869627125675292, guid: f5515d4b85256bd4ab449850ed678a42,
     type: 3}
   ShootPos: {fileID: 8495076336539912045}
-  MeleeDam: 2
-  FightDis: 3
-  FightDelay: 1
-  Class: 1
+  Class: 0
 --- !u!114 &8495076336296136366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 5
---- !u!54 &5724418039255673338
+--- !u!54 &7441544743038858421
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

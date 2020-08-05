@@ -139,15 +139,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0a511f38b9a934f8238cf82cd854b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 2
+  AttackRange: 5
   Speed: 1
-  ShootDis: 4.6
-  ShootDelay: 1
+  AttackSpeed: 0
+  AttackDelay: 2
   Projectile: {fileID: 3034869627125675292, guid: b6e1bae27d44b014d866477d956bfc6e,
     type: 3}
   ShootPos: {fileID: 8117295667743041498}
-  MeleeDam: 4
-  FightDis: 3
-  FightDelay: 1
   Class: 0
 --- !u!114 &8117295668437786163
 MonoBehaviour:

@@ -38,7 +38,7 @@ public class ProjectileDefault : ProjectileSet
     {
         if (coll.gameObject.tag == this.gameObject.tag)
         {
-            coll.gameObject.SendMessage("Damaged", damage);
+            coll.gameObject.SendMessage("Damaged", int.Parse(this.gameObject.name));
 
             if (isMove == true)
             {

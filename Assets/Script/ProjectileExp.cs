@@ -27,7 +27,7 @@ public class ProjectileExp : ProjectileSet
             {
                 if (col.gameObject.tag == this.gameObject.tag)
                 {
-                    col.gameObject.SendMessage("Damaged", damage);
+                    col.gameObject.SendMessage("Damaged", int.Parse(this.gameObject.name));
                     //this.gameObject.BroadcastMessage("Explo", ExpRange);
                     //Gizmos.DrawSphere(col.gameObject.transform.position, ExpRange);
                     Destroy(gameObject);

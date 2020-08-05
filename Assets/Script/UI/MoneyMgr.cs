@@ -6,8 +6,12 @@ using UnityEngine.UI;
 public class MoneyMgr : MonoBehaviour
 {
     public Text MoneyText;
+    public Text UpgradeMoney;
 
-    public int MoneyCap;
+    public int[] upgradeVal;
+    public int[] MoneyCap;
+    private int SnowLevel;
+
     public float IncDelay;
     public int IncAmount;
 
@@ -15,13 +19,14 @@ public class MoneyMgr : MonoBehaviour
     void Start()
     {
         //register new event to onclick with the variables that control your args
-        MoneyText.text = "0 / " + MoneyCap;
+        MoneyText.text = "0 / " + MoneyCap[SnowLevel];
+        UpgradeMoney.text = "UP : " + upgradeVal[SnowLevel];
         StartCoroutine(MoneyInc());
     }
 
     void Update()
     {
-        MoneyText.text = GameManager.instance.CurrentMoney + "/" + MoneyCap;
+        MoneyText.text = GameManager.instance.CurrentMoney + "/" + MoneyCap[SnowLevel];
     }
 
 
@@ -29,12 +34,22 @@ public class MoneyMgr : MonoBehaviour
 
     protected IEnumerator MoneyInc()
     {
-        if(GameManager.instance.CurrentMoney + IncAmount <= MoneyCap)
+        if(GameManager.instance.CurrentMoney + IncAmount <= MoneyCap[SnowLevel])
         {
             GameManager.instance.CurrentMoney += IncAmount;
         }
-        else { GameManager.instance.CurrentMoney = MoneyCap; }
+        else { GameManager.instance.CurrentMoney = MoneyCap[SnowLevel]; }
         yield return new WaitForSeconds(IncDelay);
         StartCoroutine(MoneyInc());
+    }
+
+    public void UpgradeSnow()
+    {
+        if(GameManager.instance.CurrentMoney >= upgradeVal[SnowLevel])
+        {
+            GameManager.instance.CurrentMoney -= upgradeVal[SnowLevel];
+            SnowLevel++;
+            UpgradeMoney.text = "UP : " + upgradeVal[SnowLevel];
+        }
     }
 }

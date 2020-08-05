@@ -6,7 +6,6 @@ public class ProjectileSet : MonoBehaviour
 {
     public bool isMove;
     public float speed;
-    public int damage;
 
 
     
