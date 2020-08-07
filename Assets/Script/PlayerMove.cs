@@ -30,17 +30,23 @@ public class PlayerMove : MonoBehaviour
             rb.velocity = new Vector3(mH * MoveSpeed, 0, 0);
 
         Vector3 pos = rb.position;
+        Vector3 local = transform.localScale;
         pos.x = Mathf.Clamp(pos.x, -PlayerClamp, PlayerClamp);
         rb.position = pos;
 
-        if (Input.GetAxis("Horizontal") < 0)
+        if (mH < 0)
         {
+            
+            local.x = -1;
             rainTr.localPosition = new Vector3(-rainX, rainY, -transform.position.z);
         }
-        else
+        else if(mH > 0)
         {
+            local.x = 1;
             rainTr.localPosition = new Vector3(rainX, rainY, -transform.position.z);
         }
+        transform.localScale = local;
+
 
     }
 }

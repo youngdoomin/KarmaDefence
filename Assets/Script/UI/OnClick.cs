@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class OnClick : MonoBehaviour
 {
-    public int[] upgradeVal;
-    public int[] maxSnow;
-    private int SnowLevel;
     public int fast;
     public static int i = 0;
     // Start is called before the first frame update
