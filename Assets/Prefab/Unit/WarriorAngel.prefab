@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 2
-  AttackRange: 2
+  AttackRange: 5
   Speed: 3
   AttackSpeed: 1
   AttackDelay: 2
