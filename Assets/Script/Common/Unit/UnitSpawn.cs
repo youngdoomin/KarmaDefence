@@ -33,7 +33,7 @@ public class UnitSpawn : MonoBehaviour
     public void Spawner(GameObject i)
     {
         var Spawn = Instantiate(i, SpawnPos);
-
+        GameManager.instance.spawnCt++;
     }
 
 }

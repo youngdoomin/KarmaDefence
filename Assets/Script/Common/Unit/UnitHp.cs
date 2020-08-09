@@ -16,7 +16,11 @@ namespace UnitMgr{
 
             if (Hp <= 0)
             {
-                if(this.gameObject.layer == 12)
+                if (this.gameObject.tag == "Enemy" && this.gameObject.layer == 10)
+                {
+                    GameManager.instance.killCt++;
+                }
+                else if(this.gameObject.layer == 12)
                 {
                     if (this.gameObject.tag == "Enemy")
                     {

@@ -7,7 +7,6 @@ public class PlayerMove : MonoBehaviour
     public float MoveSpeed;
     public float PlayerClamp;
     public Transform rainTr;
-    private float move;
     private float rainX = 10;
     private float rainY = 20;
     Rigidbody rb;

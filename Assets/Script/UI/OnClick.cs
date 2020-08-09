@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class OnClick : MonoBehaviour
 {
+    public GameObject[] popUp;
     public int fast;
     public static int i = 0;
     // Start is called before the first frame update
@@ -24,9 +25,20 @@ public class OnClick : MonoBehaviour
         Application.Quit();
     }
 
+    public void LoadSpecificScene(string scene) // 특정 씬 호출
+    {
+        /*
+        i = int.Parse(this.gameObject.transform.GetChild(0).name);
+        GameManager.instance.thisStage = i;
+        Debug.Log(i);
+        */
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+    }
+
     public void LoadScene(int s)
     {
         i = s;
+        GameManager.instance.thisStage = i;
         SceneManager.LoadScene(s, LoadSceneMode.Single);
     }
 
@@ -53,5 +65,10 @@ public class OnClick : MonoBehaviour
     public void Faster()
     {
         Time.timeScale = fast;
+    }
+
+    public void OpenPopUp(int i)
+    {
+        popUp[i].SetActive(true);
     }
 }
