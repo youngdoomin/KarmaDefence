@@ -26,8 +26,8 @@ public class BuySomething : MonoBehaviour
         {
 
             GameManager.instance.CurrentMoney -= Amt;
-            var spawn = GameObject.Find(FindObj);
-            spawn.SendMessage(Message, obj);
+            var spawn = GameObject.Find(FindObj); // 인스펙터에서 입력한 것과 같은 이름 가진 오브젝트로 대상 지정
+            spawn.SendMessage(Message, obj); // 인스펙터에서 입력한 메세지 전송
         }
     }
 }

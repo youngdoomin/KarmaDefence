@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 public class OnClick : MonoBehaviour
 {
     public GameObject[] popUp;
-    public int fast;
-    public static int i = 0;
+    private int i = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +17,11 @@ public class OnClick : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void DeleteData()
+    {
+        PlayerPrefs.DeleteAll();
     }
 
     public void Quit() // 게임 종료
@@ -64,7 +68,7 @@ public class OnClick : MonoBehaviour
 
     public void Faster()
     {
-        Time.timeScale = fast;
+        Time.timeScale = GameManager.instance.fast;
     }
 
     public void OpenPopUp(int i)

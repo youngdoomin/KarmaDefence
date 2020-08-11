@@ -379,7 +379,6 @@ GameObject:
   - component: {fileID: 199425151}
   - component: {fileID: 199425153}
   - component: {fileID: 199425152}
-  - component: {fileID: 199425155}
   - component: {fileID: 199425154}
   m_Layer: 5
   m_Name: Text
@@ -449,18 +448,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 199425150}
   m_CullTransparentMesh: 0
 --- !u!114 &199425154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199425150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c110216fd5b055f438961191832812d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &199425155
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1094,10 +1081,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76bda360fea69f840aa44bd20456fa89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Quests:
+  - Type: 0
+    QuestValue: 1
+  - Type: 1
+    QuestValue: 10
+  - Type: 2
+    QuestValue: 20
+  fast: 10
   bossPos: {fileID: 2084616682}
   boss: {fileID: 8117295668437786126, guid: 1e031efef45b2314aa2d84d0c44d4b04, type: 3}
   killed: 0
   CurrentMoney: 0
+  starCt: 0
   winObj: {fileID: 1883795576}
   loseObj: {fileID: 1212324292}
   starObj:
@@ -1115,8 +1111,6 @@ MonoBehaviour:
   saveHPCt: 0
   saveUnitCt: 0
   thisStage: 0
-  Quests: 000000000100000002000000
-  QuestValue: 000000000a00000014000000
 --- !u!4 &507464640
 Transform:
   m_ObjectHideFlags: 0
@@ -1385,7 +1379,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUp: []
-  fast: 5
 --- !u!1 &636662511
 GameObject:
   m_ObjectHideFlags: 0
