@@ -10,7 +10,7 @@ public class ProjectileDefault : ProjectileSet
         if (isMove == true)
         {
             GetComponent<Rigidbody>().AddForce(transform.forward * speed);
-
+            Destroy(this.gameObject, 10);
         }
         else
         {

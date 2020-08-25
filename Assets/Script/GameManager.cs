@@ -2,38 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Quest;
+
 
 public class GameManager : MonoBehaviour
 {
-
-    [System.Serializable]
-    public struct QuestInfo
-    {
-
-        //public questType Type;
-        //[System.Serializable]
-        public enum questType
-        {
-            Clear, // 스테이지 클리어
-            Spawn, // 유닛 소환
-            Kill, // 적 처치
-            Reinforce, // 강화
-            SaveHP, // 석상 or 대천사 체력
-            SaveUnit // 유닛 살려두기
-        }
-
-        public questType Type;
-
-        public int QuestValue;
-
-    }
+    
 
     public static GameManager instance;
 
-    [SerializeField]
+    [HideInInspector]
     //List<QuestInfo> Quests = new List<QuestInfo>();
-    QuestInfo[] Quests;
-
+    public QuestInfo[] Quests;
+    private List<bool> IsComplete = new List<bool> { false, false, false };
+    [SerializeField]
+    public QuestUI[] ui;
     public int fast;
     public Transform bossPos;
     public GameObject boss;
@@ -43,13 +26,12 @@ public class GameManager : MonoBehaviour
     public int CurrentMoney;
     [HideInInspector]
     public int starCt;
+    public Sprite starSprite;
 
     public GameObject winObj;
     public GameObject loseObj;
 
-    public Image[] starObj;
-    public Sprite starSprite;
-    public Text[] text_Quest;
+
     private List<int> star = new List<int>{0, 0, 0};
     private List<string> strings = new List<string> { "one", "two", "three" }; 
     private bool cleared;
@@ -79,7 +61,7 @@ public class GameManager : MonoBehaviour
             star[i] = PlayerPrefs.GetInt(strings[i]);
             if(star[i] == 1)
             {
-                starObj[i].sprite = starSprite;
+                ui[i].starObj.sprite = starSprite;
 
             }
         }
@@ -128,17 +110,17 @@ public class GameManager : MonoBehaviour
         {
             if (Quests[i].Type == QuestInfo.questType.Clear)
             {
-                text_Quest[i].text = "스테이지 " + Quests[i].QuestValue + " 클리어 하기";
+                ui[i].text_Quest.text = "스테이지 " + Quests[i].QuestValue + " 클리어 하기";
                 if(cleared == true) { CheckStar(i); }
             }
             else if(Quests[i].Type == QuestInfo.questType.Spawn)
             {
-                text_Quest[i].text = "천사 유닛 " + Quests[i].QuestValue + " 명 이상 소환하기";
+                ui[i].text_Quest.text = "천사 유닛 " + Quests[i].QuestValue + " 명 이상 소환하기";
                 if (spawnCt > Quests[i].QuestValue) { CheckStar(i); }
             }
             else if (Quests[i].Type == QuestInfo.questType.Kill)
             {
-                text_Quest[i].text = "악마 유닛 " + Quests[i].QuestValue + " 마리 처치하기";
+                ui[i].text_Quest.text = "악마 유닛 " + Quests[i].QuestValue + " 마리 처치하기";
                 if (killCt > Quests[i].QuestValue) { CheckStar(i); }
             }
             else if (Quests[i].Type == QuestInfo.questType.Reinforce)
@@ -154,6 +136,7 @@ public class GameManager : MonoBehaviour
                 if (saveUnitCt > Quests[i].QuestValue) { CheckStar(i); }
             }
         }
+        
     }
 
     void CheckStar(int i)
@@ -165,7 +148,8 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("saveInt", star[i]);
             PlayerPrefs.SetInt("saveStarCt", starCt);
             PlayerPrefs.SetInt(strings[i], starCt);
-            starObj[i].sprite = starSprite;
+            IsComplete[i] = true;
+            ui[i].starObj.sprite = starSprite;
 
         }
     }

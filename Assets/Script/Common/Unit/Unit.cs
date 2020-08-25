@@ -78,7 +78,7 @@ public class Unit : MonoBehaviour
                     //transform.LookAt(closestEn.transform);
                 }
             }
-            if (Class == Type.Shooter && AttackRange + closestEn.transform.localScale.x > closestDist && !Shooting) { StartCoroutine(Shoot()); } //&& FightDis < closestDist) 
+            if (Class == Type.Shooter && AttackRange + closestEn.transform.localScale.x > closestDist && !Shooting) { StartCoroutine(Shoot(closestEn.transform)); } //&& FightDis < closestDist) 
             else if (Class == Type.Fighter && AttackRange + closestEn.transform.localScale.x > closestDist && !Fighting) { StartCoroutine(Fight(closestEn)); }
             else if (!Shooting && !Fighting)
             { 
@@ -90,7 +90,7 @@ public class Unit : MonoBehaviour
         
     }
 
-    IEnumerator Shoot()
+    IEnumerator Shoot(Transform Enemy)
     {
         animator.SetBool(hashWalk, false);
         animator.SetBool(hashAttack, true);
@@ -99,10 +99,15 @@ public class Unit : MonoBehaviour
         rb.velocity = Vector3.zero;
         Shooting = true;
         yield return new WaitForSeconds(AttackSpeed);
-        GameObject projectile = Instantiate(Projectile, ShootPos.position, ShootPos.rotation);
-        projectile.tag = OtherTag;
-        projectile.name = Damage.ToString();
-        animator.SetBool(hashAttack, false);
+        if(Enemy.gameObject != null)
+        {
+            ShootPos.LookAt(Enemy);
+            GameObject projectile = Instantiate(Projectile, ShootPos.position, ShootPos.rotation);
+            projectile.tag = OtherTag;
+            projectile.name = Damage.ToString();
+            animator.SetBool(hashAttack, false);
+
+        }
         yield return new WaitForSeconds(AttackDelay);
         Shooting = false;
     }

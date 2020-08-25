@@ -153,10 +153,10 @@ RectTransform:
   m_Father: {fileID: 2090257394}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 225, y: -75}
-  m_SizeDelta: {x: 450, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &83949496
 CanvasRenderer:
@@ -532,10 +532,10 @@ RectTransform:
   m_Father: {fileID: 2090257394}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 225, y: -125}
-  m_SizeDelta: {x: 450, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &249546286
 GameObject:
@@ -1014,6 +1014,7 @@ MonoBehaviour:
   - {fileID: 8117295668437786126, guid: b7990bc713f59f74d9ccf02b5a085e3a, type: 3}
   - {fileID: 8117295668437786126, guid: 0bd79ced78a59184ca764ccfa0c49621, type: 3}
   - {fileID: 8117295668437786126, guid: 746fb16867154ef4ab2af9868ad43d8b, type: 3}
+  zAxis: 2
 --- !u!1 &477569543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,23 +1089,22 @@ MonoBehaviour:
     QuestValue: 10
   - Type: 2
     QuestValue: 20
+  ui:
+  - starObj: {fileID: 2091268686}
+    text_Quest: {fileID: 1705395789}
+  - starObj: {fileID: 924947876}
+    text_Quest: {fileID: 83949497}
+  - starObj: {fileID: 1254805696}
+    text_Quest: {fileID: 239084469}
   fast: 10
   bossPos: {fileID: 2084616682}
   boss: {fileID: 8117295668437786126, guid: 1e031efef45b2314aa2d84d0c44d4b04, type: 3}
   killed: 0
   CurrentMoney: 0
   starCt: 0
+  starSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   winObj: {fileID: 1883795576}
   loseObj: {fileID: 1212324292}
-  starObj:
-  - {fileID: 2091268686}
-  - {fileID: 924947876}
-  - {fileID: 1254805696}
-  starSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  text_Quest:
-  - {fileID: 1705395789}
-  - {fileID: 83949497}
-  - {fileID: 239084469}
   spawnCt: 0
   killCt: 0
   reinforceCt: 0
@@ -2343,7 +2343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -9.42}
+  m_LocalPosition: {x: 0, y: 4.9, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Xclamp: 20
-  Offset: {x: 0, y: 0, z: -10}
+  Offset: {x: 0, y: 5, z: -16}
   PlayerTr: {fileID: 1657604254}
 --- !u!1 &981456250
 GameObject:
@@ -3899,6 +3899,7 @@ MonoBehaviour:
   - {fileID: 8495076336296136352, guid: aeba0a4fd8774e74eb78ed211c1f846e, type: 3}
   - {fileID: 8495076336296136352, guid: 5f0350a938b7ef2408ce02b1d322f85d, type: 3}
   - {fileID: 8495076336296136352, guid: 5177a810026f81b4fa785187723df216, type: 3}
+  zAxis: 2
 --- !u!1 &1657604250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3958,7 +3959,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 9f743256160817344ac578b1d2a58da9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4358,10 +4359,10 @@ RectTransform:
   m_Father: {fileID: 2090257394}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 225, y: -25}
-  m_SizeDelta: {x: 450, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1705395788
 CanvasRenderer:
@@ -4766,7 +4767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1883795577
 RectTransform:
   m_ObjectHideFlags: 0

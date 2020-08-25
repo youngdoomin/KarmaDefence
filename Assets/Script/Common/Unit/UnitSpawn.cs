@@ -7,6 +7,7 @@ public class UnitSpawn : MonoBehaviour
     public float[] SpawnDelay;
     public Transform SpawnPos;
     public GameObject[] Units;
+    public float zAxis;
     // Start is called before the first frame update
 
     void Start()
@@ -32,7 +33,8 @@ public class UnitSpawn : MonoBehaviour
 
     public void Spawner(GameObject i)
     {
-        var Spawn = Instantiate(i, SpawnPos);
+        Vector3 Pos = new Vector3(SpawnPos.position.x, SpawnPos.position.y, Random.Range(-zAxis, zAxis));
+        var Spawn = Instantiate(i, Pos, Quaternion.identity);
         GameManager.instance.spawnCt++;
     }
 

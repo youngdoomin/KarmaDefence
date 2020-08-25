@@ -9,6 +9,7 @@ public class ProjectileExp : ProjectileSet
     void Start()
     {
         GetComponent<Rigidbody>().AddForce(transform.forward * speed);
+        Destroy(this.gameObject, 10);
     }
 
     // Update is called once per frame
