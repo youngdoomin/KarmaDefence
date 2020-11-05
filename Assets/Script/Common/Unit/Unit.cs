@@ -38,6 +38,7 @@ public class Unit : MonoBehaviour
         FindObj();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        transform.GetChild(1).gameObject.SetActive(false);
     }
 
     void FindObj()
@@ -69,7 +70,7 @@ public class Unit : MonoBehaviour
 
             foreach (GameObject potentTarget in allEn) // 가장 가까운 적 공격
             {
-                float distTarget = (potentTarget.transform.position - this.transform.position).sqrMagnitude;
+                float distTarget = potentTarget.transform.position.x - this.transform.position.x;
                 if (distTarget < closestDist && potentTarget.layer != 9
                 && ((this.gameObject.tag == "Friendly" && potentTarget.transform.position.x > this.transform.position.x) || (this.gameObject.tag == "Enemy" && potentTarget.transform.position.x < this.transform.position.x))) // 적이 뒤로 넘어가면 공격 안함
                 {
@@ -98,6 +99,7 @@ public class Unit : MonoBehaviour
         animator.SetFloat(hashSpeed, speed_animation / AttackSpeed);
         rb.velocity = Vector3.zero;
         Shooting = true;
+        transform.GetChild(1).gameObject.SetActive(true);
         yield return new WaitForSeconds(AttackSpeed);
         if(Enemy.gameObject != null)
         {
@@ -110,6 +112,7 @@ public class Unit : MonoBehaviour
         }
         yield return new WaitForSeconds(AttackDelay);
         Shooting = false;
+        transform.GetChild(1).gameObject.SetActive(false);
     }
 
     IEnumerator Fight(GameObject Enemy)

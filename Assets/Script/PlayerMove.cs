@@ -8,11 +8,12 @@ public class PlayerMove : MonoBehaviour
     public float PlayerClamp;
     public Transform rainTr;
     private float rainX = 10;
-    private float rainY = 20;
+    private float rainY = 0;
     Rigidbody rb;
      void Start () {
          rb = GetComponent<Rigidbody>();
-     }
+         rainTr.localPosition = new Vector3(rainX, rainY, -transform.position.z);
+    }
 
     // Update is called once per frame
     void Update()

@@ -44,6 +44,7 @@ namespace UnitMgr{
 
         IEnumerator Protect(float t)
         {
+            Debug.Log(t);
             Invincible = true;
             yield return new WaitForSeconds(t);
             Destroy(transform.GetChild(1).gameObject);

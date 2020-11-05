@@ -29,7 +29,7 @@ public class SkillMgr : MonoBehaviour
         GameObject[] friendly = GameObject.FindGameObjectsWithTag("Friendly");
         foreach (GameObject fUnit in friendly)
         {
-            if (fUnit.layer != 12)
+            if (fUnit.layer != 12 && fUnit.transform.childCount <= 1)
             {
                 var spawn = Instantiate(Shield, transform.position, Quaternion.identity);
                 spawn.transform.parent = fUnit.transform;
@@ -41,7 +41,7 @@ public class SkillMgr : MonoBehaviour
 
     public void LightRain(GameObject Rain)
     {
-        Instantiate(Rain, RainPos.position, Quaternion.identity);
+        Instantiate(Rain, RainPos.localPosition, Quaternion.identity);
     }
     public void LightExp(GameObject Explosion)
     {
