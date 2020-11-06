@@ -9,6 +9,8 @@ TagManager:
   - Explosion
   - Dead
   - Ground
+  - Bullet
+  - Laser
   layers:
   - Default
   - TransparentFX
@@ -25,7 +27,7 @@ TagManager:
   - HQ
   - Friend
   - Boss
-  - 
+  - Shield
   - 
   - 
   - 
