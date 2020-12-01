@@ -14,7 +14,8 @@ public class ShowQuest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        quests = GameManager.instance.Quests;
+        ui = GameManager.instance.ui;
     }
 
     // Update is called once per frame
@@ -23,8 +24,10 @@ public class ShowQuest : MonoBehaviour
         
     }
 
+    /*
     public void EnableQuest()
     {
         quests = GameManager.instance.Quests;
     }
+    */
 }
