@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UnitMgr{
-
     public class UnitHp : MonoBehaviour
     {
         public int Hp;
@@ -16,9 +14,10 @@ namespace UnitMgr{
 
             if (Hp <= 0)
             {
-                if (this.gameObject.tag == "Enemy" && this.gameObject.layer == 10)
+                if (this.gameObject.layer == 10)
                 {
-                    GameManager.instance.killCt++;
+                    UnitDeath();
+                    
                 }
                 else if(this.gameObject.layer == 12)
                 {
@@ -42,6 +41,10 @@ namespace UnitMgr{
             }
         }
 
+        protected virtual void UnitDeath()
+        {
+            //GameManager.instance.killCt++;
+        }
         IEnumerator Protect(float t)
         {
             Debug.Log(t);
@@ -50,5 +53,4 @@ namespace UnitMgr{
             Destroy(transform.GetChild(1).gameObject);
             Invincible = false;
         }
-    }
 }

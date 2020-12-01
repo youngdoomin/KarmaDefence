@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool killed;
     [HideInInspector]
-    public int CurrentMoney;
+    public int CurrentMoney, Gold;
     [HideInInspector]
     public int starCt;
     public Sprite starSprite;

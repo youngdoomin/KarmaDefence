@@ -309,7 +309,7 @@ RectTransform:
   - {fileID: 1846037773}
   - {fileID: 964448828}
   m_Father: {fileID: 762702322}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1046,6 +1046,7 @@ GameObject:
   - component: {fileID: 408444555}
   - component: {fileID: 408444557}
   - component: {fileID: 408444556}
+  - component: {fileID: 408444558}
   m_Layer: 5
   m_Name: Gold
   m_TagString: Untagged
@@ -1068,11 +1069,11 @@ RectTransform:
   m_Father: {fileID: 581456966}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -254, y: 248}
-  m_SizeDelta: {x: 45, y: 45}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 160, y: -4}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &408444556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,6 +1111,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408444554}
   m_CullTransparentMesh: 0
+--- !u!114 &408444558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408444554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8588ae8697a8ad43ac0283bb5f439d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GoldText: {fileID: 1715823330}
 --- !u!1 &434395528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,7 +1366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f811d33a8b9b34e84c7c9decd7488b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSpawn: 0
+  IsSpawn: 1
   SpawnDelay:
   - 1
   - 3
@@ -1449,6 +1463,7 @@ MonoBehaviour:
   boss: {fileID: 8117295668437786126, guid: 1e031efef45b2314aa2d84d0c44d4b04, type: 3}
   killed: 0
   CurrentMoney: 0
+  Gold: 0
   starCt: 0
   starSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   winObj: {fileID: 1883795576}
@@ -1718,7 +1733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: {fileID: 563228209}
   Amt: 6
-  coolTime: 0
+  coolTime: 1
   UnitObj: {fileID: 8191058831206445995, guid: 8b5c15b7bfec9e549956fb51e0eb7ab0, type: 3}
   FindObj: Player
   Message: LightExp
@@ -2412,8 +2427,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.2, y: 1.9, z: 1}
   m_Children:
-  - {fileID: 1631938085}
   - {fileID: 137112173}
+  - {fileID: 1631938085}
   m_Father: {fileID: 1064730047}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2516,7 +2531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: {fileID: 762702323}
   Amt: 5
-  coolTime: 0
+  coolTime: 1
   UnitObj: {fileID: 8495076336296136352, guid: 5f0350a938b7ef2408ce02b1d322f85d, type: 3}
   FindObj: MyHq
   Message: Spawner
@@ -2700,7 +2715,7 @@ RectTransform:
   - {fileID: 1836332837}
   - {fileID: 196777805}
   m_Father: {fileID: 1993333719}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3808,8 +3823,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.2, y: 1.9, z: 1}
   m_Children:
-  - {fileID: 2030381120}
   - {fileID: 1090877014}
+  - {fileID: 2030381120}
   m_Father: {fileID: 1657826165}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3912,7 +3927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: {fileID: 1070409423}
   Amt: 2
-  coolTime: 0
+  coolTime: 1
   UnitObj: {fileID: 1595508910262425106, guid: b85b69ef4e01616489a9ad508ee520ab, type: 3}
   FindObj: Player
   Message: Mercy
@@ -3978,7 +3993,7 @@ RectTransform:
   - {fileID: 521096915}
   - {fileID: 1756803973}
   m_Father: {fileID: 1070409420}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4318,7 +4333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: {fileID: 1168111566}
   Amt: 4
-  coolTime: 0
+  coolTime: 1
   UnitObj: {fileID: 5937737309244096007, guid: ff513a1ea57ccb846b15001c2826088c, type: 3}
   FindObj: Player
   Message: LightRain
@@ -4893,7 +4908,7 @@ RectTransform:
   m_Children:
   - {fileID: 160406817}
   m_Father: {fileID: 1993333719}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -5322,6 +5337,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dragon
       objectReference: {fileID: 0}
+    - target: {fileID: 8117295668437786126, guid: 1e031efef45b2314aa2d84d0c44d4b04,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5653,7 +5673,7 @@ RectTransform:
   m_Children:
   - {fileID: 199425151}
   m_Father: {fileID: 762702322}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -7515,8 +7535,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.2, y: 1.9, z: 1}
   m_Children:
-  - {fileID: 1352015940}
   - {fileID: 812016672}
+  - {fileID: 1352015940}
   m_Father: {fileID: 1064730047}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7619,7 +7639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: {fileID: 1993333720}
   Amt: 3
-  coolTime: 0
+  coolTime: 1
   UnitObj: {fileID: 8495076336296136352, guid: 5177a810026f81b4fa785187723df216, type: 3}
   FindObj: MyHq
   Message: Spawner
@@ -7806,7 +7826,7 @@ RectTransform:
   m_Children:
   - {fileID: 1299835637}
   m_Father: {fileID: 1070409420}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}

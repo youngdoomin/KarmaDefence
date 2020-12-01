@@ -24,6 +24,12 @@ public class ProjectileExp : ProjectileSet
         {
             //this.gameObject.BroadcastMessage("SizeCon");
             Collider[] explo = Physics.OverlapSphere(gameObject.transform.position, ExpRange);
+            for (int i = 0; i < transform.childCount - 1; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+            transform.GetChild(transform.childCount).gameObject.SetActive(true);
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
             foreach (var col in explo)
             {
                 if (col.gameObject.tag == this.gameObject.tag)
@@ -31,14 +37,17 @@ public class ProjectileExp : ProjectileSet
                     col.gameObject.SendMessage("Damaged", int.Parse(this.gameObject.name));
                     //this.gameObject.BroadcastMessage("Explo", ExpRange);
                     //Gizmos.DrawSphere(col.gameObject.transform.position, ExpRange);
-                    Destroy(gameObject);
+                    
+                    Destroy(gameObject, 1f);
                 }
             }
         }
     }
+    /*
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position, ExpRange);
     }
+    */
 }

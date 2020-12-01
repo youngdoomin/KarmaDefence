@@ -10,11 +10,11 @@ public class ProjectileDefault : ProjectileSet
         if (isMove == true)
         {
             GetComponent<Rigidbody>().AddForce(transform.forward * speed);
-            Destroy(this.gameObject, 10);
+            //Destroy(this.gameObject, 10);
         }
         else
         {
-            Destroy(this.gameObject, 1);
+            //Destroy(this.gameObject, 1);
         }
 
         //GetComponent<Rigidbody>().AddForce(transform.forward * speed);
@@ -39,10 +39,18 @@ public class ProjectileDefault : ProjectileSet
         if (coll.gameObject.tag == this.gameObject.tag)
         {
             coll.gameObject.SendMessage("Damaged", int.Parse(this.gameObject.name));
+            for (int i = 0; i < transform.childCount - 1; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
 
             if (isMove == true)
             {
-                Destroy(this.gameObject);
+                transform.parent = coll.transform;
+                transform.localPosition = Vector3.zero;
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
+                transform.GetChild(transform.childCount).gameObject.SetActive(true);
+                Destroy(this.gameObject, 1);
 
             }
 
