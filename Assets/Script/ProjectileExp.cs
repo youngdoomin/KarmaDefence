@@ -24,11 +24,8 @@ public class ProjectileExp : ProjectileSet
         {
             //this.gameObject.BroadcastMessage("SizeCon");
             Collider[] explo = Physics.OverlapSphere(gameObject.transform.position, ExpRange);
-            for (int i = 0; i < transform.childCount - 1; i++)
-            {
-                transform.GetChild(i).gameObject.SetActive(false);
-            }
-            transform.GetChild(transform.childCount).gameObject.SetActive(true);
+            transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
+            transform.GetChild(transform.childCount - 2).gameObject.SetActive(false);
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             foreach (var col in explo)
             {

@@ -9,7 +9,9 @@ public class Unit : MonoBehaviour
     public float Speed;
     public float AttackSpeed;
     public float AttackDelay;    // 원거리 공격 딜레이
-    
+
+    public GameObject Effect;
+
     public GameObject Projectile;   // 원거리 투사체
     public Transform ShootPos;  // 발사 위치
 
@@ -63,17 +65,21 @@ public class Unit : MonoBehaviour
 
             FindObj();
 
-            /*
-            if(GameManager.instance.killed == true)
-            {
-                GameManager.instance.killed = false;
-            }
-                */
-
             foreach (GameObject potentTarget in allEn) // 가장 가까운 적 공격
             {
-                //float distTarget = potentTarget.transform.position.x - this.transform.position.x;
-                float distTarget = (potentTarget.transform.position - this.transform.position).sqrMagnitude;
+                float distTarget;// = Mathf.Abs(potentTarget.transform.position.x - transform.position.x);
+                //float distTarget = (potentTarget.transform.position - this.transform.position).sqrMagnitude;
+                
+                try
+                {
+                    distTarget = Mathf.Abs(potentTarget.transform.position.x - transform.position.x);
+                }
+                catch (MissingReferenceException)
+                {
+                    //FindObj();
+                    return;
+                }
+                
                 if (distTarget < closestDist && potentTarget.layer != 9
                 && ((this.gameObject.tag == "Friendly" && potentTarget.transform.position.x > this.transform.position.x) || (this.gameObject.tag == "Enemy" && potentTarget.transform.position.x < this.transform.position.x))) // 적이 뒤로 넘어가면 공격 안함
                 {
@@ -82,19 +88,24 @@ public class Unit : MonoBehaviour
                     //transform.LookAt(closestEn.transform);
                 }
             }
-            if (Class == Type.Shooter && AttackRange + closestEn.transform.localScale.x > closestDist && !Shooting) { StartCoroutine(Shoot(closestEn.transform)); } //&& FightDis < closestDist) 
+            if (Class == Type.Shooter && AttackRange + closestEn.transform.localScale.x > closestDist && !Shooting) { StartCoroutine(Shoot(closestEn)); } //&& FightDis < closestDist) 
             else if (Class == Type.Fighter && AttackRange + closestEn.transform.localScale.x > closestDist && !Fighting) { StartCoroutine(Fight(closestEn)); }
             else if (!Shooting && !Fighting)
-            { 
-                rb.velocity = transform.right * Speed;
-                animator.SetBool(hashWalk, true);
+            {
+                Move();
             }
 
         }
         
     }
 
-    IEnumerator Shoot(Transform Enemy)
+    void Move()
+    {
+        rb.velocity = transform.right * Speed;
+        animator.SetBool(hashWalk, true);
+    }
+
+    IEnumerator Shoot(GameObject Enemy)
     {
         animator.SetBool(hashWalk, false);
         animator.SetBool(hashAttack, true);
@@ -103,12 +114,10 @@ public class Unit : MonoBehaviour
         rb.velocity = Vector3.zero;
         Shooting = true;
 
-        if (transform.childCount > 1)
-            transform.GetChild(1).gameObject.SetActive(true);
         yield return new WaitForSeconds(AttackSpeed);
         if(Enemy.gameObject != null)
         {
-            ShootPos.LookAt(Enemy);
+            ShootPos.LookAt(Enemy.transform);
             GameObject projectile = Instantiate(Projectile, ShootPos.position, ShootPos.rotation);
             projectile.tag = OtherTag;
             projectile.name = Damage.ToString();
@@ -117,9 +126,6 @@ public class Unit : MonoBehaviour
         }
         yield return new WaitForSeconds(AttackDelay);
         Shooting = false;
-
-        if (transform.childCount > 1)
-            transform.GetChild(1).gameObject.SetActive(false);
     }
 
     IEnumerator Fight(GameObject Enemy)
@@ -131,12 +137,23 @@ public class Unit : MonoBehaviour
         rb.velocity = Vector3.zero;
         Fighting = true;
         yield return new WaitForSeconds(AttackSpeed);
-        if (Enemy != null) { Enemy.SendMessage("Damaged", Damage); }
+        if (Enemy != null) 
+        { 
+            Enemy.SendMessage("Damaged", Damage);
+            ShowEffect(Enemy);
+        }
         animator.SetBool(hashAttack, false);
         yield return new WaitForSeconds(AttackDelay);
         Fighting = false;
     }
 
+    void ShowEffect(GameObject Enemy)
+    {
+         GameObject effect = Instantiate(Effect);
+         effect.transform.localScale = new Vector3(2, 2, 2);
+         effect.transform.position = Enemy.transform.position;
+         Destroy(effect, 1);
+    }
 
 
 }

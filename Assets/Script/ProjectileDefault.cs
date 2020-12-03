@@ -49,7 +49,7 @@ public class ProjectileDefault : ProjectileSet
                 transform.parent = coll.transform;
                 transform.localPosition = Vector3.zero;
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
-                transform.GetChild(transform.childCount).gameObject.SetActive(true);
+                transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
                 Destroy(this.gameObject, 1);
 
             }

@@ -97,7 +97,9 @@ MonoBehaviour:
   Speed: 1
   AttackSpeed: 2
   AttackDelay: 1
-  Projectile: {fileID: 3034869627125675292, guid: ec097a14a2ba400488b020d8a83daa17,
+  Effect:
+  - {fileID: 0}
+  Projectile: {fileID: 3034869627125675292, guid: e1261d4beee51da47aaec96643eaa041,
     type: 3}
   ShootPos: {fileID: 8117295667743041498}
   Class: 0
@@ -155,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -20
   m_Sprite: {fileID: 21300000, guid: 4ebc2473b0b8edd4b9ce69eec479156f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

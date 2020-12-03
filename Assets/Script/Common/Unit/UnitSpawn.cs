@@ -24,8 +24,9 @@ public class UnitSpawn : MonoBehaviour
 
     IEnumerator AutoSpawner()
     {
+        Vector3 Pos = new Vector3(SpawnPos.position.x, SpawnPos.position.y, Random.Range(-zAxis, zAxis));
         var random = Random.Range(0, Units.Length);
-        var Spawn = Instantiate(Units[random], SpawnPos);
+        Instantiate(Units[random], Pos, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
         yield return new WaitForSeconds(SpawnDelay[random]);
         Debug.Log(SpawnDelay[random]);
         StartCoroutine(AutoSpawner());
@@ -34,7 +35,7 @@ public class UnitSpawn : MonoBehaviour
     public void Spawner(GameObject i)
     {
         Vector3 Pos = new Vector3(SpawnPos.position.x, SpawnPos.position.y, Random.Range(-zAxis, zAxis));
-        var Spawn = Instantiate(i, Pos, Quaternion.identity);
+        Instantiate(i, Pos, Quaternion.identity);
         GameManager.instance.spawnCt++;
     }
 
