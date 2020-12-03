@@ -2,21 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class OnClick : MonoBehaviour
 {
     public GameObject[] popUp;
     private int i = 0;
-    // Start is called before the first frame update
+    bool isTrue_speed;
+    public GameObject GridLayout;
+    bool isTrue_reinforce;
+
     void Start()
     {
-    
+        GridLayout.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void TryReinforce()
+    {
+        var name = EventSystem.current.currentSelectedGameObject.name;
+        Text childTxt = GameObject.Find(name).transform.GetChild(0).transform.GetComponent<Text>();
+        isTrue_reinforce = !isTrue_reinforce;
+        if (isTrue_reinforce)
+        {
+            childTxt.text = "취소";
+        }
+        else { childTxt.text = "강화"; }
+        GridLayout.SetActive(isTrue_reinforce);
     }
 
     public void DeleteData()
@@ -48,7 +65,7 @@ public class OnClick : MonoBehaviour
 
     public void GoNext() // 다음 씬으로 이동
     {
-        if(i < SceneManager.sceneCountInBuildSettings)
+        if (i < SceneManager.sceneCountInBuildSettings)
         {
             i++;
         }
@@ -68,7 +85,9 @@ public class OnClick : MonoBehaviour
 
     public void Faster()
     {
-        Time.timeScale = GameManager.instance.fast;
+        isTrue_speed = !isTrue_speed;
+        if (isTrue_speed) { Time.timeScale = GameManager.instance.fast; }
+        else { Time.timeScale = 1; }
     }
 
     public void OpenPopUp(int i)

@@ -19061,10 +19061,10 @@ GameObject:
   - component: {fileID: 8117295668437786162}
   - component: {fileID: 8117295668437786127}
   - component: {fileID: 8117295668437786160}
-  - component: {fileID: 8117295668437786163}
   - component: {fileID: 7885818714885721405}
   - component: {fileID: 1919307421255178561}
   - component: {fileID: 8074368228492647446}
+  - component: {fileID: 1716422876508951607}
   m_Layer: 14
   m_Name: Dragon
   m_TagString: Enemy
@@ -19123,19 +19123,6 @@ MonoBehaviour:
     type: 3}
   ShootPos: {fileID: 8117295667743041498}
   Class: 0
---- !u!114 &8117295668437786163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8117295668437786126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d22dac975a504141bfafb8a297b55b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hp: 50
 --- !u!54 &7885818714885721405
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19221,6 +19208,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1716422876508951607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8117295668437786126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52ba8db3c11dbe540ab763110177a57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 50
+  winObj: {fileID: 141748302413502800, guid: 5dae4ff781b2b5b478d8ba0f76710ecf, type: 3}
 --- !u!1 &8719682824866259258
 GameObject:
   m_ObjectHideFlags: 0

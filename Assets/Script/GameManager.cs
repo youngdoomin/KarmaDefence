@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public QuestUI[] ui;
     public int fast;
-    public Transform bossPos;
-    public GameObject boss;
     [HideInInspector]
     public bool killed;
     [HideInInspector]
@@ -29,7 +27,7 @@ public class GameManager : MonoBehaviour
     public Sprite starSprite;
 
     public GameObject winObj;
-    public GameObject loseObj;
+
 
 
     private List<int> star = new List<int>{0, 0, 0};
@@ -78,31 +76,8 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void SpawnBoss()
-    {
-        Debug.Log("Spawn");
-        Instantiate(boss, bossPos);
-    }
 
-    public void WinScreen()
-    {
-        winObj.SetActive(true);
-        TimeStop();
-        Result();
-    }
-
-    public void LoseScreen()
-    {
-        loseObj.SetActive(true);
-        TimeStop();
-    }
-
-    void TimeStop()
-    {
-        Time.timeScale = 0;
-    }
-
-    void Result()
+    public void Result()
     {
         cleared = true;
 

@@ -50,6 +50,8 @@ public class ShieldCollision : MonoBehaviour
                     hitTime = 500;
                     mat.SetFloat("_HitTime", hitTime);
                 }
+                if(collision.gameObject.layer == 9)
+                    Destroy(collision.gameObject);
             }
         }
     }

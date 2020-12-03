@@ -22,7 +22,8 @@ public class BuySomething : MonoBehaviour
         slider = transform.GetChild(0).GetComponent<Slider>();
         //register new event to onclick with the variables that control your args
         b.onClick.AddListener(() => BuySome(Amt, UnitObj));
-        this.gameObject.BroadcastMessage("Price", Amt);
+        Text txt = transform.Find("Text").GetComponent<Text>();
+        txt.text = txt.text = Amt.ToString();
     }
 
     private void Update()

@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dragon : UnitHp
+public class HQHP : UnitHp
 {
-    public GameObject winObj;
-
+    public GameObject loseObj;
     protected override void Disable()
     {
-        winObj.SetActive(true);
+        loseObj.SetActive(true);
         Time.timeScale = 0;
-        GameManager.instance.Result();
         Destroy(gameObject);
     }
 }
