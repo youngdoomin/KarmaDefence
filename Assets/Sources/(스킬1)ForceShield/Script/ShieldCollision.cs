@@ -13,7 +13,7 @@ public class ShieldCollision : MonoBehaviour
     {
         if (GetComponent<Renderer>())
         {
-            mat = GetComponent<Renderer>().sharedMaterial;
+            mat = GetComponent<Renderer>().material;
         }
 
     }
@@ -32,16 +32,17 @@ public class ShieldCollision : MonoBehaviour
             mat.SetFloat("_HitTime", hitTime);
         }
 
+//        transform.position = transform.GetChild(0).position - transform.GetChild(0).localPosition;
     }
 
     void OnCollisionEnter(Collision collision)
     {
         for (int i = 0; i < _collisionTag.Length; i++)
         {
-
+            Debug.Log("hit1");
             if (_collisionTag.Length > 0 || collision.transform.CompareTag(_collisionTag[i]))
             {
-                //Debug.Log("hit");
+                Debug.Log("hit2");
                 ContactPoint[] _contacts = collision.contacts;
                 for (int i2 = 0; i2 < _contacts.Length; i2++)
                 {

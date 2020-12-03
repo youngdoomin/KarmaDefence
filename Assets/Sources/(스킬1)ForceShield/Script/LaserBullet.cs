@@ -20,11 +20,17 @@ public class LaserBullet : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        GetComponent<Rigidbody>().AddForce(transform.forward * 10);
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
         float myTime = Time.fixedUnscaledDeltaTime * _speed;
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, myTime);
+        //transform.position = Vector3.MoveTowards(transform.position, targetPos, myTime);
     }
 
     private void OnCollisionEnter(Collision collision)

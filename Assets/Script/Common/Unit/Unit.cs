@@ -20,13 +20,16 @@ public class Unit : MonoBehaviour
 
     private GameObject[] Other; // 아군, 적 감지
     private string OtherTag;
-    Rigidbody rb;
+    //Rigidbody rb;
 
     Animator animator;
     private readonly int hashAttack = Animator.StringToHash("Attack");
     private readonly int hashWalk = Animator.StringToHash("Walk");
     private readonly int hashSpeed = Animator.StringToHash("Speed");
     private float speed_animation = 1f;
+
+    bool isTrue;
+
     [System.Serializable]
     public enum Type
     {
@@ -38,7 +41,7 @@ public class Unit : MonoBehaviour
     void Start()
     {
         FindObj();
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
         if(transform.childCount > 1)
@@ -85,7 +88,6 @@ public class Unit : MonoBehaviour
                 {
                     closestDist = distTarget;
                     closestEn = potentTarget;
-                    //transform.LookAt(closestEn.transform);
                 }
             }
             if (Class == Type.Shooter && AttackRange + closestEn.transform.localScale.x > closestDist && !Shooting) { StartCoroutine(Shoot(closestEn)); } //&& FightDis < closestDist) 
@@ -101,7 +103,11 @@ public class Unit : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = transform.right * Speed;
+        //rb.velocity = transform.right * Speed;
+        if(transform.rotation.y == 0)
+            transform.Translate(transform.right * 5 * Time.deltaTime);
+        else
+            transform.Translate(transform.right * -5 * Time.deltaTime);
         animator.SetBool(hashWalk, true);
     }
 
@@ -110,14 +116,17 @@ public class Unit : MonoBehaviour
         animator.SetBool(hashWalk, false);
         animator.SetBool(hashAttack, true);
 
+        EffectToggle();
+
         animator.SetFloat(hashSpeed, speed_animation / AttackSpeed);
-        rb.velocity = Vector3.zero;
+        //rb.velocity = Vector3.zero;
         Shooting = true;
 
         yield return new WaitForSeconds(AttackSpeed);
         if(Enemy.gameObject != null)
         {
             ShootPos.LookAt(Enemy.transform);
+
             GameObject projectile = Instantiate(Projectile, ShootPos.position, ShootPos.rotation);
             projectile.tag = OtherTag;
             projectile.name = Damage.ToString();
@@ -126,6 +135,8 @@ public class Unit : MonoBehaviour
         }
         yield return new WaitForSeconds(AttackDelay);
         Shooting = false;
+
+        EffectToggle();
     }
 
     IEnumerator Fight(GameObject Enemy)
@@ -134,7 +145,7 @@ public class Unit : MonoBehaviour
         animator.SetBool(hashAttack, true);
 
         animator.SetFloat(hashSpeed, speed_animation / AttackSpeed);
-        rb.velocity = Vector3.zero;
+        //rb.velocity = Vector3.zero;
         Fighting = true;
         yield return new WaitForSeconds(AttackSpeed);
         if (Enemy != null) 
@@ -155,5 +166,14 @@ public class Unit : MonoBehaviour
          Destroy(effect, 1);
     }
 
+    void EffectToggle()
+    {
+        if(transform.childCount > 1)
+        {
+            isTrue = !isTrue;
+            transform.GetChild(1).gameObject.SetActive(isTrue);
+
+        }
+    }
 
 }

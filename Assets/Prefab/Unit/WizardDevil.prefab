@@ -75,7 +75,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8117295668437786126}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -97,8 +97,7 @@ MonoBehaviour:
   Speed: 1
   AttackSpeed: 2
   AttackDelay: 1
-  Effect:
-  - {fileID: 0}
+  Effect: {fileID: 0}
   Projectile: {fileID: 3034869627125675292, guid: e1261d4beee51da47aaec96643eaa041,
     type: 3}
   ShootPos: {fileID: 8117295667743041498}
