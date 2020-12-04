@@ -19099,7 +19099,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 5, y: 6, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8117295668437786160
 MonoBehaviour:
@@ -19221,6 +19221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 50
+  hpBarPrefab: {fileID: 0}
+  hpBarOffset: {x: 0, y: 2.2, z: 0}
   winObj: {fileID: 141748302413502800, guid: 5dae4ff781b2b5b478d8ba0f76710ecf, type: 3}
 --- !u!1 &8719682824866259258
 GameObject:

@@ -53,10 +53,27 @@ public class SkillMgr : MonoBehaviour
     {
         var xScale = 0;
         var ExpSkill = Instantiate(Explosion, ExpPos.position, Quaternion.identity);
-        
-         while(xScale < ExpAxisX)
+        int i;
+        if(RainPos.localPosition.x > 0) { i = 1; }
+        else 
+        { 
+            i = -1;
+            ExpSkill.transform.GetChild(1).rotation = Quaternion.Euler(0, 180, 0);
+            //Quaternion.Inverse(ExpSkill.transform.GetChild(1).localRotation);
+
+        }
+
+        ExpSkill.transform.GetChild(0).localPosition = new Vector3(0.5f * i, 0, 0);
+        //var particle = ExpSkill.transform.GetChild(1);
+        //particle.rotation = Quaternion.Euler(0, particle.localRotation.y * i, 0);
+        //Debug.Log(particle.localRotation);
+        //ExpSkill.transform.SetParent(ExpPos);
+        //ExpSkill.transform.localPosition = new Vector3(Mathf.Abs(0.5f) * i, 0, 0);
+
+
+        while (ExpSkill.transform.localScale.x < ExpAxisX)
          {
-             ExpSkill.transform.localScale = new Vector3(xScale, 1, 5);
+             ExpSkill.transform.localScale += new Vector3(xScale, 0, 0);
              xScale++;
              yield return new WaitForSeconds(SecAxisX);
          }
