@@ -71,6 +71,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 5
+  hpBarPrefab: {fileID: 2592966944224695532, guid: c94a84d48093b08429407051b72d791d,
+    type: 3}
+  hpBarOffset: {x: 0, y: 2.2, z: 0}
 --- !u!95 &6770442567378113698
 Animator:
   serializedVersion: 3

@@ -200,4 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 20
-  incGold: 5
+  hpBarPrefab: {fileID: 350518011063597351, guid: 66ebd127edcb5bb45a1d31937afd9952,
+    type: 3}
+  hpBarOffset: {x: 0, y: 2.2, z: 0}
+  incGold: 10

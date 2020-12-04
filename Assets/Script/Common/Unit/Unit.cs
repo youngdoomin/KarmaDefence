@@ -149,8 +149,8 @@ public class Unit : MonoBehaviour
         Fighting = true;
         yield return new WaitForSeconds(AttackSpeed);
         if (Enemy != null) 
-        { 
-            Enemy.SendMessage("Damaged", Damage);
+        {
+            Enemy.GetComponent<UnitHp>().Damaged(Damage);
             ShowEffect(Enemy);
         }
         animator.SetBool(hashAttack, false);

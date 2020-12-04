@@ -30,8 +30,8 @@ public class ProjectileExp : ProjectileSet
             {
                 if (col.gameObject.tag == this.gameObject.tag)
                 {
-                    col.gameObject.SendMessage("Damaged", int.Parse(this.gameObject.name));
-                    
+                    coll.GetComponent<UnitHp>().Damaged(int.Parse(this.gameObject.name));
+
                     Destroy(gameObject, 1f);
                 }
             }

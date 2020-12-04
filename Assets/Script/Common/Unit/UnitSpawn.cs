@@ -7,6 +7,7 @@ public class UnitSpawn : MonoBehaviour
     public float[] SpawnDelay;
     public Transform SpawnPos;
     public GameObject[] Units;
+    public GameObject Hp_bar;
     public float zAxis;
     public int chooseUnit;
     // Start is called before the first frame update

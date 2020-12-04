@@ -7,9 +7,10 @@ public class PlayerStat : CharacterStats
     // Start is called before the first frame update
     void Start()
     {
-        EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
+        //EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
     }
 
+    /*
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
         if(newItem != null)
@@ -26,6 +27,6 @@ public class PlayerStat : CharacterStats
 
         }
 
-
     }
+    */
 }
