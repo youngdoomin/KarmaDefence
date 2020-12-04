@@ -11,38 +11,39 @@ public class EnemyDam_Multiple : MonoBehaviour
     private int hitCt;
     private bool waiting;
 
+    BoxCollider coll;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        coll = GetComponent<BoxCollider>();
+        StartCoroutine(AttackDelay());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
-            if(other.gameObject.tag == "Enemy")
-            {
-                other.gameObject.SendMessage("Damaged", DamageAmt);
-                StartCoroutine(AttackDelay());
-            }
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.GetComponent<UnitHp>().Damaged(DamageAmt);
+        }
     }
+
     IEnumerator AttackDelay()
     {
-        if(hitCt < hitMax && !waiting)
+
+        Debug.Log("coll");
+        waiting = !waiting;
+        coll.enabled = waiting;
+        if (waiting)
         {
             hitCt++;
             yield return new WaitForSeconds(WaitTime);
-            waiting = true;
-            yield return new WaitForSeconds(WaitTime);
-            waiting = false;
         }
-        else
+
+        if (hitCt >= hitMax)
         {
             Destroy(gameObject, WaitDestroy);
         }
+        else { StartCoroutine(AttackDelay()); }
     }
 }

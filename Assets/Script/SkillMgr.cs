@@ -41,7 +41,8 @@ public class SkillMgr : MonoBehaviour
 
     public void LightRain(GameObject Rain)
     {
-        Instantiate(Rain, RainPos.localPosition, Quaternion.identity);
+        var player = new Vector3(this.gameObject.transform.position.x, 0, 0);
+        Instantiate(Rain, player + RainPos.localPosition, Quaternion.identity);
     }
     public void LightExp(GameObject Explosion)
     {
@@ -52,14 +53,15 @@ public class SkillMgr : MonoBehaviour
     {
         var xScale = 0;
         var ExpSkill = Instantiate(Explosion, ExpPos.position, Quaternion.identity);
-        while(xScale < ExpAxisX)
-        {
-            ExpSkill.transform.localScale = new Vector3(xScale, 1, 1);
-            xScale++;
-            yield return new WaitForSeconds(SecAxisX);
-        }
+        
+         while(xScale < ExpAxisX)
+         {
+             ExpSkill.transform.localScale = new Vector3(xScale, 1, 5);
+             xScale++;
+             yield return new WaitForSeconds(SecAxisX);
+         }
+         
         yield return new WaitForSeconds(0.1f);
         Destroy(ExpSkill);
-
     }
 }

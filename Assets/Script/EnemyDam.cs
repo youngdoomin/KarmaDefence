@@ -10,22 +10,22 @@ public class EnemyDam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
-            if(other.gameObject.tag == "Enemy")
-            {
-                other.gameObject.SendMessage("Damaged", DamageAmt);
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.GetComponent<UnitHp>().Damaged(DamageAmt);
 
-            }
-            if(IsDestroy == true)
+        }
+        if (IsDestroy == true)
             Destroy(gameObject, WaitDestroy);
     }
 }
