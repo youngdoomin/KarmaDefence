@@ -8,7 +8,6 @@ public class Unit : MonoBehaviour
     public float AttackRange;  // 공격 사거리
     public float Speed;
     public float AttackSpeed;
-    public float AttackDelay;    // 원거리 공격 딜레이
 
     public GameObject Effect;
 
@@ -134,7 +133,7 @@ public class Unit : MonoBehaviour
             animator.SetBool(hashAttack, false);
 
         }
-        yield return new WaitForSeconds(AttackDelay);
+        yield return new WaitForSeconds(AttackSpeed);
         Shooting = false;
 
         EffectToggle();
@@ -155,7 +154,7 @@ public class Unit : MonoBehaviour
             ShowEffect(Enemy);
         }
         animator.SetBool(hashAttack, false);
-        yield return new WaitForSeconds(AttackDelay);
+        yield return new WaitForSeconds(AttackSpeed);
         Fighting = false;
     }
 
@@ -182,7 +181,7 @@ public class Unit : MonoBehaviour
         Debug.Log("Upgrade");
         Damage += Damage * per / 100;
         Debug.Log(Damage);
-        AttackRange += AttackRange * per / 100;
+        AttackSpeed -= AttackSpeed * per / 100;
         Speed += Speed * per / 100;
     }
     /*

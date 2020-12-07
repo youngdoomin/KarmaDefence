@@ -1115,6 +1115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300baae78cedc4e47b59bf9dbc195952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upPer: 0
+  type: 1
+  upObj: {fileID: 1595508910262425106, guid: b85b69ef4e01616489a9ad508ee520ab, type: 3}
   price: 0a000000140000001e000000
 --- !u!1 &379070351
 GameObject:
@@ -3799,6 +3802,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300baae78cedc4e47b59bf9dbc195952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upPer: 0
+  type: 0
+  upObj: {fileID: 8191058831206445995, guid: 8b5c15b7bfec9e549956fb51e0eb7ab0, type: 3}
   price: 0a000000140000001e000000
 --- !u!1 &963194225
 GameObject:
@@ -5543,6 +5549,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300baae78cedc4e47b59bf9dbc195952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upPer: 0
+  type: 0
+  upObj: {fileID: 5937737309244096007, guid: ff513a1ea57ccb846b15001c2826088c, type: 3}
   price: 0a000000140000001e000000
 --- !u!1 &1299331225
 GameObject:
@@ -6181,6 +6190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300baae78cedc4e47b59bf9dbc195952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upPer: 20
+  type: 0
+  upObj: {fileID: 8495076336296136352, guid: 5f0350a938b7ef2408ce02b1d322f85d, type: 3}
   price: 0a000000140000001e000000
 --- !u!1 &1474724479
 GameObject:
@@ -6294,18 +6306,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 355224045}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 355224047}
-        m_MethodName: Upgrade
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1548422838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6355,6 +6356,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300baae78cedc4e47b59bf9dbc195952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upPer: 20
+  type: 0
+  upObj: {fileID: 8495076336296136352, guid: 5177a810026f81b4fa785187723df216, type: 3}
   price: 0a000000140000001e000000
 --- !u!1 &1593053814
 GameObject:
@@ -8449,18 +8453,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1843529719}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1843529719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8510,6 +8503,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300baae78cedc4e47b59bf9dbc195952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upPer: 100
+  type: 0
+  upObj: {fileID: 8495076336296136352, guid: aeba0a4fd8774e74eb78ed211c1f846e, type: 3}
   price: 0a000000140000001e000000
 --- !u!1 &1845086970
 GameObject:

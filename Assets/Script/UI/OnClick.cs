@@ -94,4 +94,16 @@ public class OnClick : MonoBehaviour
     {
         popUp[i].SetActive(true);
     }
+
+    public void ClosePopUP()
+    {
+        Debug.Log(this.gameObject);
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if(transform.GetChild(i).tag == "PopUp")
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+    }
 }

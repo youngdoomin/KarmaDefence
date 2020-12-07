@@ -11,6 +11,7 @@ TagManager:
   - Ground
   - Bullet
   - Laser
+  - PopUp
   layers:
   - Default
   - TransparentFX
