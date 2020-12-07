@@ -22,4 +22,38 @@ public class GoldMgr : MonoBehaviour
 
         GoldText.text = GameManager.instance.Gold + "/" + goldCap;
     }
+
+    /*
+    public class ClassA : MonoBehaviour
+    {
+        public delegate void ChangeEvent(int numberOfApples); //I do declare!
+        public static event ChangeEvent changeEvent;  // create an event variable 
+        public int appleCount = 0;
+        // trigger some change and call the event for all subscribers
+        public void MoreApples()
+        {
+            appleCount++;
+            if (changeEvent != null) // checking if anyone is on the other line.
+                changeEvent(appleCount);
+        }
+
+    }
+
+
+    // Then you subscribe to the even from any class. and if the event is triggered (changed) then your other class will be notified.
+
+    public class ClassB : MonoBehaviour
+    {
+        void OnEnable()
+        {
+            ClassA.changeEvent += ApplesChanged; // subscribing to the event. 
+        }
+
+        void ApplesChanged(int newAppleCount)
+        {
+            Debug.Log("newAppleCount now = " + newAppleCount);  // This will trigger anytime you call MoreApples() on ClassA
+        }
+    }
+    */
 }
+

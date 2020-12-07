@@ -40,17 +40,18 @@ public class Unit : MonoBehaviour
     public Type Class;
     void Start()
     {
+        
         FindObj();
         //rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
-        if(transform.childCount > 1)
-        transform.GetChild(1).gameObject.SetActive(false);
+        if (transform.childCount > 1)
+            transform.GetChild(1).gameObject.SetActive(false);
     }
 
     void FindObj()
     {
-        
+
         if (this.gameObject.tag == "Friendly" && this.gameObject.layer == 13)   // 상대방 구분
         { OtherTag = "Enemy"; }
         else
@@ -71,8 +72,8 @@ public class Unit : MonoBehaviour
             foreach (GameObject potentTarget in allEn) // 가장 가까운 적 공격
             {
                 float distTarget;// = Mathf.Abs(potentTarget.transform.position.x - transform.position.x);
-                //float distTarget = (potentTarget.transform.position - this.transform.position).sqrMagnitude;
-                
+                                 //float distTarget = (potentTarget.transform.position - this.transform.position).sqrMagnitude;
+
                 try
                 {
                     distTarget = Mathf.Abs(potentTarget.transform.position.x - transform.position.x);
@@ -82,7 +83,7 @@ public class Unit : MonoBehaviour
                     //FindObj();
                     return;
                 }
-                
+
                 if (distTarget < closestDist && potentTarget.layer != 9
                 && ((this.gameObject.tag == "Friendly" && potentTarget.transform.position.x > this.transform.position.x) || (this.gameObject.tag == "Enemy" && potentTarget.transform.position.x < this.transform.position.x))) // 적이 뒤로 넘어가면 공격 안함
                 {
@@ -98,13 +99,13 @@ public class Unit : MonoBehaviour
             }
 
         }
-        
+
     }
 
     void Move()
     {
         //rb.velocity = transform.right * Speed;
-        if(transform.rotation.y == 0)
+        if (transform.rotation.y == 0)
             transform.Translate(transform.right * 5 * Time.deltaTime);
         else
             transform.Translate(transform.right * -5 * Time.deltaTime);
@@ -123,7 +124,7 @@ public class Unit : MonoBehaviour
         Shooting = true;
 
         yield return new WaitForSeconds(AttackSpeed);
-        if(Enemy.gameObject != null)
+        if (Enemy.gameObject != null)
         {
             ShootPos.LookAt(Enemy.transform);
 
@@ -148,7 +149,7 @@ public class Unit : MonoBehaviour
         //rb.velocity = Vector3.zero;
         Fighting = true;
         yield return new WaitForSeconds(AttackSpeed);
-        if (Enemy != null) 
+        if (Enemy != null)
         {
             Enemy.GetComponent<UnitHp>().Damaged(Damage);
             ShowEffect(Enemy);
@@ -160,15 +161,15 @@ public class Unit : MonoBehaviour
 
     void ShowEffect(GameObject Enemy)
     {
-         GameObject effect = Instantiate(Effect);
-         effect.transform.localScale = new Vector3(2, 2, 2);
-         effect.transform.position = Enemy.transform.position;
-         Destroy(effect, 1);
+        GameObject effect = Instantiate(Effect);
+        effect.transform.localScale = new Vector3(2, 2, 2);
+        effect.transform.position = Enemy.transform.position;
+        Destroy(effect, 1);
     }
 
     void EffectToggle()
     {
-        if(transform.childCount > 1)
+        if (transform.childCount > 1)
         {
             isTrue = !isTrue;
             transform.GetChild(1).gameObject.SetActive(isTrue);
@@ -176,4 +177,18 @@ public class Unit : MonoBehaviour
         }
     }
 
+    public void Upgrade(int per)
+    {
+        Debug.Log("Upgrade");
+        Damage += Damage * per / 100;
+        Debug.Log(Damage);
+        AttackRange += AttackRange * per / 100;
+        Speed += Speed * per / 100;
+    }
+    /*
+    void Reset()
+    {
+
+    }
+    */
 }

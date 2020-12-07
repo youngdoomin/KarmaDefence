@@ -28,4 +28,9 @@ public class EnemyDam : MonoBehaviour
         if (IsDestroy == true)
             Destroy(gameObject, WaitDestroy);
     }
+
+    public void Upgrade(int per)
+    {
+        DamageAmt += DamageAmt * per / 100;
+    }
 }
