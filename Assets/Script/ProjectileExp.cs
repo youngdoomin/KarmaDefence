@@ -5,9 +5,11 @@ using UnityEngine;
 public class ProjectileExp : ProjectileSet
 {
     public float ExpRange;  // 광역 데미지 범위
+    private Vector3 boxSize;
     // Start is called before the first frame update
     void Start()
     {
+        boxSize = new Vector3(ExpRange, ExpRange, 1000);
         GetComponent<Rigidbody>().AddForce(transform.forward * speed);
         Destroy(this.gameObject, 10);
     }
@@ -22,7 +24,7 @@ public class ProjectileExp : ProjectileSet
     {
         if (coll.gameObject.tag == this.gameObject.tag)
         {
-            Collider[] explo = Physics.OverlapSphere(gameObject.transform.position, ExpRange);
+            Collider[] explo = Physics.OverlapBox(transform.position, boxSize, transform.rotation);
             transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
             transform.GetChild(transform.childCount - 2).gameObject.SetActive(false);
             GetComponent<Rigidbody>().velocity = Vector3.zero;

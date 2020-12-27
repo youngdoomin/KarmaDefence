@@ -11,7 +11,6 @@ public class TypeEditor : Editor
         AttackRange_Prop,
         Speed_Prop,
         AttackSpeed_Prop,
-        AttackDelay_Prop,
         Effect_Prop,
 
         Projectile_Prop,
@@ -27,7 +26,6 @@ public class TypeEditor : Editor
         AttackRange_Prop = serializedObject.FindProperty("AttackRange");
         Speed_Prop = serializedObject.FindProperty("Speed");
         AttackSpeed_Prop = serializedObject.FindProperty("AttackSpeed");
-        AttackDelay_Prop = serializedObject.FindProperty("AttackDelay");
         Effect_Prop = serializedObject.FindProperty("Effect");
 
         Projectile_Prop = serializedObject.FindProperty("Projectile");
@@ -58,7 +56,6 @@ public class TypeEditor : Editor
         EditorGUILayout.IntSlider(Damage_Prop, 0, 100, new GUIContent("Damage"));
         EditorGUILayout.Slider(AttackRange_Prop, 0, 100, new GUIContent("AttackRange"));
         EditorGUILayout.Slider(AttackSpeed_Prop, 0, 100, new GUIContent("AttackSpeed"));
-        EditorGUILayout.Slider(AttackDelay_Prop, 0, 100, new GUIContent("AttackDelay"));
         EditorGUILayout.Slider(Speed_Prop, 0, 100, new GUIContent("Speed"));
 
         serializedObject.ApplyModifiedProperties();

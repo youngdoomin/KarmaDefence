@@ -46,4 +46,9 @@ public class EnemyDam_Multiple : MonoBehaviour
         }
         else { StartCoroutine(AttackDelay()); }
     }
+
+    public void Upgrade(int per)
+    {
+        DamageAmt += DamageAmt * per / 100;
+    }
 }

@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMove: 1
   speed: 1000
-  ExpRange: 5
+  ExpRange: 7
 --- !u!1 &6308664597992928446
 GameObject:
   m_ObjectHideFlags: 0

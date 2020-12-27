@@ -34,7 +34,7 @@ public class SkillMgr : MonoBehaviour
                 var spawn = Instantiate(Shield, transform.position, Quaternion.identity);
                 spawn.transform.parent = fUnit.transform;
                 spawn.transform.localPosition = reset;
-                fUnit.GetComponent<UnitHp>().Protect(Time_shield); // SendMessage("Protect", Time_shield);
+                spawn.transform.parent.GetComponent<UnitHp>().StartCoroutine("Protect", Time_shield); 
             }
         }
     }

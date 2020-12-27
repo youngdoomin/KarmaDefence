@@ -8,11 +8,20 @@ public class BuySomething : MonoBehaviour
     public Button b;
     Slider slider;
 
+    public enum Type
+    {
+        Skill,
+        Unit
+    }
+
+    public Type Sale;
+
     //control the value to pass to event as you need
     public int Amt;
     public float coolTime;
     public GameObject UnitObj;
-    public string FindObj;
+    string unitObj = "MyHq";
+    string skillObj = "Player";
     public string Message;
     bool isWait;
     float secCheck;
@@ -46,8 +55,32 @@ public class BuySomething : MonoBehaviour
         {
             isWait = true;
             GameManager.instance.CurrentMoney -= Amt;
-            var spawn = GameObject.Find(FindObj); // 인스펙터에서 입력한 것과 같은 이름 가진 오브젝트로 대상 지정
-            spawn.SendMessage(Message, obj); // 인스펙터에서 입력한 메세지 전송
+            if(Sale == Type.Unit)
+            {
+                var spawn = GameObject.Find(unitObj);
+                spawn.GetComponent<UnitSpawn>().Spawner(obj);
+            }
+            else
+            {
+                var spawn = GameObject.Find(skillObj);
+                switch (Message)
+                {
+                    case "Mercy":
+                        spawn.GetComponent<SkillMgr>().Mercy(obj);
+                        break;
+                    case "LightRain":
+                        spawn.GetComponent<SkillMgr>().LightRain(obj);
+                        break;
+                    case "LightExp":
+                        spawn.GetComponent<SkillMgr>().LightExp(obj);
+                        break;
+                    default:
+                        Debug.Log("There is no skill");
+                        break;
+                }
+
+            }
+            //spawn.SendMessage(Message, obj); // 인스펙터에서 입력한 메세지 전송
 
         }
     }

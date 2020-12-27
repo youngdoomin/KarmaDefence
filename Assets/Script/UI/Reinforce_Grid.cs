@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class Reinforce_Grid : MonoBehaviour
 {
+    float amt;
     public int upPer;
     public enum Type
     {
         Unit,
-        Skill
+        Skill1,
+        Skill2,
+        Skill3
     }
 
     public Type type;
@@ -34,24 +37,20 @@ public class Reinforce_Grid : MonoBehaviour
 
     public void Upgrade()
     {
-        
-
         if (price[currTier] <= GameManager.instance.Gold)
         {
             GameManager.instance.Gold -= price[currTier];
             if (type == Type.Unit)
                 upObj.GetComponent<Unit>().Upgrade(upPer);
-            /*
+            else if(type == Type.Skill1)
+               amt = upObj.GetComponent<SkillMgr>().Time_shield;
+            else if (type == Type.Skill2)
+                amt = upObj.GetComponent<EnemyDam>().DamageAmt;
             else
-            {
-                try
-                {
-                    upObj.GetComponent<EnemyDam>().Upgrade(upVal);
-                }
-                catch { }
-            }
-            */
+                amt = upObj.GetComponent<EnemyDam_Multiple>().DamageAmt;
             currTier++;
+
+            amt += amt * upPer / 100;
 
             if (price.Length - 1 < currTier)
             {
@@ -61,6 +60,11 @@ public class Reinforce_Grid : MonoBehaviour
             }
             Refresh();
         }
+
+    }
+
+    void IncPercent()
+    {
 
     }
 

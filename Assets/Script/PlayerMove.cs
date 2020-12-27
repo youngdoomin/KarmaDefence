@@ -38,12 +38,12 @@ public class PlayerMove : MonoBehaviour
         {
             
             local.x = -1;
-            rainTr.localPosition = new Vector3(-rainX, rainY, -transform.position.z);
+            rainTr.localPosition = new Vector3(-rainX, rainY, 0);
         }
         else if(mH > 0)
         {
             local.x = 1;
-            rainTr.localPosition = new Vector3(rainX, rainY, -transform.position.z);
+            rainTr.localPosition = new Vector3(rainX, rainY, 0);
         }
         transform.localScale = local;
 

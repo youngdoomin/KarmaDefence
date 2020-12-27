@@ -16,6 +16,7 @@ public class OnClick : MonoBehaviour
     void Start()
     {
         GridLayout.SetActive(false);
+        i = SceneManager.GetActiveScene().buildIndex;
     }
 
     void Update()

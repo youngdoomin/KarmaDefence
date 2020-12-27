@@ -31,13 +31,11 @@ public class UnitHp : MonoBehaviour
 
     public void Damaged(int damage)
     {
-        if (!Invincible)
+
+        if (Invincible == false)
             Hp -= damage;
 
-        var current_hp = Hp / initHp;
-
-        hpBarImage.fillAmount = current_hp;
-
+        hpBarImage.fillAmount = Hp / initHp;
 
         if (Hp <= 0)
         {
@@ -64,10 +62,10 @@ public class UnitHp : MonoBehaviour
     void SetHpBar(Canvas canvas)
     {
         GameObject hpBar;
-        hpBar = Instantiate<GameObject>(hpBarPrefab, canvas.transform);
+        hpBar = Instantiate(hpBarPrefab, canvas.transform);
         hpBarImage = hpBar.GetComponentsInChildren<Image>()[0];
 
-        var _hpBar = hpBar.GetComponent<EnemyHpBar>();
+        var _hpBar = hpBar.GetComponent<HpBar>();
         _hpBar.targetTr = this.gameObject.transform;
         _hpBar.offset = hpBarOffset;
 

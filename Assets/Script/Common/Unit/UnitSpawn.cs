@@ -35,7 +35,7 @@ public class UnitSpawn : MonoBehaviour
         else { random = Random.Range(0, Units.Length); }
         Instantiate(Units[random], Pos, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
         yield return new WaitForSeconds(SpawnDelay[random]);
-        Debug.Log(SpawnDelay[random]);
+        //Debug.Log(SpawnDelay[random]);
         StartCoroutine(AutoSpawner());
     }
 

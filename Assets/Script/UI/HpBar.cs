@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class EnemyHpBar : MonoBehaviour
+
+public class HpBar : MonoBehaviour
 {
     //Canvas를 렌더링하는 카메라
     private Camera uiCamera;
@@ -24,6 +26,8 @@ public class EnemyHpBar : MonoBehaviour
         uiCamera = canvas.worldCamera;
         rectParent = canvas.GetComponent<RectTransform>();
         rectHp = this.gameObject.GetComponent<RectTransform>();
+        GetComponent<RawImage>().enabled = true;
+        transform.GetChild(0).GetComponent<Image>().enabled = true;
     }
 
     void LateUpdate()

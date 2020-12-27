@@ -19117,7 +19117,6 @@ MonoBehaviour:
   AttackRange: 6.2
   Speed: 1
   AttackSpeed: 1
-  AttackDelay: 2
   Effect: {fileID: 0}
   Projectile: {fileID: 3034869627125675292, guid: b6e1bae27d44b014d866477d956bfc6e,
     type: 3}
