@@ -48,11 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0a511f38b9a934f8238cf82cd854b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 2
-  AttackRange: 30
+  Damage: 17
+  AttackRange: 20
   Speed: 2
   AttackSpeed: 3
-  AttackDelay: 0
   Effect: {fileID: 0}
   Projectile: {fileID: 3034869627125675292, guid: f5515d4b85256bd4ab449850ed678a42,
     type: 3}
