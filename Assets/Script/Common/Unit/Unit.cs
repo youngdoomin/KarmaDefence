@@ -105,14 +105,15 @@ public class Unit : MonoBehaviour
     {
         //rb.velocity = transform.right * Speed;
         if (transform.rotation.y == 0)
-            transform.Translate(transform.right * 5 * Time.deltaTime);
+            transform.Translate(transform.right * Speed * Time.deltaTime);
         else
-            transform.Translate(transform.right * -5 * Time.deltaTime);
+            transform.Translate(transform.right * -Speed * Time.deltaTime);
         animator.SetBool(hashWalk, true);
     }
 
     IEnumerator Shoot(GameObject Enemy)
     {
+        Debug.Log("try Shoot");
         animator.SetBool(hashWalk, false);
         animator.SetBool(hashAttack, true);
 
@@ -122,18 +123,18 @@ public class Unit : MonoBehaviour
         //rb.velocity = Vector3.zero;
         Shooting = true;
 
-        yield return new WaitForSeconds(AttackSpeed);
-        if (Enemy.gameObject != null)
+        ShootPos.LookAt(Enemy.transform);
+        if (Enemy != null)
         {
-            ShootPos.LookAt(Enemy.transform);
+            yield return new WaitForSeconds(AttackSpeed);
 
             GameObject projectile = Instantiate(Projectile, ShootPos.position, ShootPos.rotation);
             projectile.tag = OtherTag;
             projectile.name = Damage.ToString();
-            animator.SetBool(hashAttack, false);
+            yield return new WaitForSeconds(AttackSpeed);
 
         }
-        yield return new WaitForSeconds(AttackSpeed);
+        animator.SetBool(hashAttack, false);
         Shooting = false;
 
         EffectToggle();
@@ -152,9 +153,9 @@ public class Unit : MonoBehaviour
         {
             Enemy.GetComponent<UnitHp>().Damaged(Damage);
             ShowEffect(Enemy);
+            yield return new WaitForSeconds(AttackSpeed);
         }
         animator.SetBool(hashAttack, false);
-        yield return new WaitForSeconds(AttackSpeed);
         Fighting = false;
     }
 
@@ -181,7 +182,7 @@ public class Unit : MonoBehaviour
         Debug.Log("Upgrade");
         Damage += Damage * per / 100;
         Debug.Log(Damage);
-        AttackSpeed -= AttackSpeed * per / 100;
+        //AttackSpeed -= AttackSpeed * per / 100;
         Speed += Speed * per / 100;
     }
     /*

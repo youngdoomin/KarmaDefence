@@ -63,10 +63,6 @@ public class Reinforce_Grid : MonoBehaviour
 
     }
 
-    void IncPercent()
-    {
-
-    }
 
     void Refresh()
     {
