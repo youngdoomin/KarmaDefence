@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public QuestUI[] ui;
     public int fast;
     [HideInInspector]
-    public bool killed;
+    public bool killed, Invincible;
     [HideInInspector]
     public int CurrentMoney, Gold;
     [HideInInspector]

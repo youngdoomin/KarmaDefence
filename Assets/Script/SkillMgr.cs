@@ -34,9 +34,18 @@ public class SkillMgr : MonoBehaviour
                 var spawn = Instantiate(Shield, transform.position, Quaternion.identity);
                 spawn.transform.parent = fUnit.transform;
                 spawn.transform.localPosition = reset;
-                spawn.transform.parent.GetComponent<UnitHp>().StartCoroutine("Protect", Time_shield); 
+                GameManager.instance.Invincible = true;
+                StartCoroutine(shieldCt(spawn));
+                
             }
         }
+    }
+
+    IEnumerator shieldCt(GameObject obj)
+    {
+        yield return new WaitForSeconds(Time_shield);
+        Destroy(obj);
+        GameManager.instance.Invincible = false;
     }
 
     public void LightRain(GameObject Rain)

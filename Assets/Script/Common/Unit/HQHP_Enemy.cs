@@ -5,7 +5,7 @@ using UnityEngine;
 public class HQHP_Enemy : UnitHp
 {
     public Transform bossPos;
-    public GameObject boss;
+    // public GameObject boss;
 
     protected override void Disable()
     {

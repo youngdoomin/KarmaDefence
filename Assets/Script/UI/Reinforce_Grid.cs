@@ -28,6 +28,18 @@ public class Reinforce_Grid : MonoBehaviour
         b.onClick.AddListener(() => Upgrade());
         txt = transform.GetChild(0).GetComponent<Text>();
         Refresh();
+
+        if (type == Type.Skill1)
+            amt = upObj.GetComponent<SkillMgr>().Time_shield;
+        else if (type == Type.Skill2)
+        {
+            amt = upObj.GetComponent<EnemyDam_Multiple>().DamageAmt;
+
+        }
+        else if (type == Type.Skill3)
+        {
+            amt = upObj.transform.GetChild(0).GetComponent<EnemyDam>().DamageAmt;
+        }
     }
 
     void Update()
@@ -42,15 +54,22 @@ public class Reinforce_Grid : MonoBehaviour
             GameManager.instance.Gold -= price[currTier];
             if (type == Type.Unit)
                 upObj.GetComponent<Unit>().Upgrade(upPer);
-            else if(type == Type.Skill1)
-               amt = upObj.GetComponent<SkillMgr>().Time_shield;
-            else if (type == Type.Skill2)
-                amt = upObj.GetComponent<EnemyDam>().DamageAmt;
-            else
-                amt = upObj.GetComponent<EnemyDam_Multiple>().DamageAmt;
+            
             currTier++;
 
             amt += amt * upPer / 100;
+            if (type == Type.Skill1)
+                upObj.GetComponent<SkillMgr>().Time_shield = amt;
+            else if (type == Type.Skill2)
+            {
+                upObj.GetComponent<EnemyDam_Multiple>().DamageAmt = (int)amt;
+
+            }
+            else if (type == Type.Skill3)
+            {
+                upObj.transform.GetChild(0).GetComponent<EnemyDam>().DamageAmt = (int)amt;
+            }
+
 
             if (price.Length - 1 < currTier)
             {

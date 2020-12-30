@@ -24,7 +24,6 @@ public class Unit : MonoBehaviour
     Animator animator;
     private readonly int hashAttack = Animator.StringToHash("Attack");
     private readonly int hashWalk = Animator.StringToHash("Walk");
-    private readonly int hashSpeed = Animator.StringToHash("Speed");
     private float speed_animation = 1f;
 
     bool isTrue;
@@ -119,7 +118,7 @@ public class Unit : MonoBehaviour
 
         EffectToggle();
 
-        animator.SetFloat(hashSpeed, speed_animation / AttackSpeed);
+        animator.speed = speed_animation / AttackSpeed;
         //rb.velocity = Vector3.zero;
         Shooting = true;
 
@@ -131,10 +130,11 @@ public class Unit : MonoBehaviour
             GameObject projectile = Instantiate(Projectile, ShootPos.position, ShootPos.rotation);
             projectile.tag = OtherTag;
             projectile.name = Damage.ToString();
+            animator.SetBool(hashAttack, false);
             yield return new WaitForSeconds(AttackSpeed);
+            animator.speed = 1;
 
         }
-        animator.SetBool(hashAttack, false);
         Shooting = false;
 
         EffectToggle();
@@ -145,7 +145,7 @@ public class Unit : MonoBehaviour
         animator.SetBool(hashWalk, false);
         animator.SetBool(hashAttack, true);
 
-        animator.SetFloat(hashSpeed, speed_animation / AttackSpeed);
+        animator.speed = speed_animation / AttackSpeed / 2;
         //rb.velocity = Vector3.zero;
         Fighting = true;
         yield return new WaitForSeconds(AttackSpeed);
@@ -153,9 +153,10 @@ public class Unit : MonoBehaviour
         {
             Enemy.GetComponent<UnitHp>().Damaged(Damage);
             ShowEffect(Enemy);
+            animator.SetBool(hashAttack, false);
             yield return new WaitForSeconds(AttackSpeed);
+            animator.speed = 1;
         }
-        animator.SetBool(hashAttack, false);
         Fighting = false;
     }
 

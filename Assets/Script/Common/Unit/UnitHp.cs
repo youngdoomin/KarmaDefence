@@ -8,7 +8,6 @@ public class UnitHp : MonoBehaviour
     public int Hp;
     private float initHp;
 
-    private bool Invincible = false;
 
     //생명 게이지 프리팹을 저장할 변수
     public GameObject hpBarPrefab;
@@ -32,7 +31,7 @@ public class UnitHp : MonoBehaviour
     public void Damaged(int damage)
     {
 
-        if (Invincible == false)
+        if (GameManager.instance.Invincible == false || this.gameObject.tag == "Enemy")
             Hp -= damage;
 
         hpBarImage.fillAmount = Hp / initHp;
@@ -49,14 +48,6 @@ public class UnitHp : MonoBehaviour
     protected virtual void Disable()
     {
         Destroy(gameObject);
-    }
-    public IEnumerator Protect(float t)
-    {
-        Debug.Log(t);
-        Invincible = true;
-        yield return new WaitForSeconds(t);
-        Destroy(transform.GetChild(1).gameObject);
-        Invincible = false;
     }
 
     void SetHpBar(Canvas canvas)

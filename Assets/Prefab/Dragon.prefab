@@ -19044,7 +19044,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8117295667743041493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 1}
+  m_LocalPosition: {x: -6, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8117295668437786162}
@@ -19113,7 +19113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0a511f38b9a934f8238cf82cd854b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 2
+  Damage: 50
   AttackRange: 6.2
   Speed: 1
   AttackSpeed: 1
@@ -19220,8 +19220,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 1000
-  hpBarPrefab: {fileID: 0}
-  hpBarOffset: {x: 0, y: 2.2, z: 0}
+  hpBarPrefab: {fileID: 350518011063597351, guid: 66ebd127edcb5bb45a1d31937afd9952,
+    type: 3}
+  hpBarOffset: {x: 0, y: 10, z: 0}
   winObj: {fileID: 141748302413502800, guid: 5dae4ff781b2b5b478d8ba0f76710ecf, type: 3}
 --- !u!1 &8719682824866259258
 GameObject:
