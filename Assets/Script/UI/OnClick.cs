@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,11 +12,24 @@ public class OnClick : MonoBehaviour
     private int i = 0;
     bool isTrue_speed;
     public GameObject GridLayout;
+    public GameObject image;
+    private readonly int hashisEnter = Animator.StringToHash("isEnter");
+    Animator animator;
     bool isTrue_reinforce;
 
     void Start()
     {
-        GridLayout.SetActive(false);
+        try
+        {
+            animator = image.GetComponent<Animator>();
+            animator.SetBool(hashisEnter, true);
+            GridLayout.SetActive(false);
+
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.ToString());
+        }
         i = SceneManager.GetActiveScene().buildIndex;
     }
 
@@ -59,8 +73,25 @@ public class OnClick : MonoBehaviour
 
     public void LoadScene(int s)
     {
+        animator.SetBool(hashisEnter, false);
+
+
+        if (i == s)
+        {
+            SceneManager.LoadScene("Loading");
+        }
+        // else { i = s; }
         i = s;
-        GameManager.instance.thisStage = i;
+
+        try
+        {
+            GameManager.instance.thisStage = i;
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.ToString());
+        }
+
         SceneManager.LoadScene(s, LoadSceneMode.Single);
     }
 

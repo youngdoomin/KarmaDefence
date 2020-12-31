@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class SkillMgr : MonoBehaviour
     public float ExpAxisX;
 
     public float SecAxisX;
+    private IEnumerator coroutine;
+
     /*
     [System.Serializable]
     public enum Skills
@@ -23,30 +26,59 @@ public class SkillMgr : MonoBehaviour
 
     //public Skills Skill;
 
+    public void StopCoroutines()
+    {
+        StopCoroutine("Coroutine");
+    }
+
+
     public void Mercy(GameObject Shield)
     {
         Vector3 reset = new Vector3(0, 0, 0);
         GameObject[] friendly = GameObject.FindGameObjectsWithTag("Friendly");
         foreach (GameObject fUnit in friendly)
         {
-            if (fUnit.layer == 13 && fUnit.transform.childCount <= 1)
+            if (fUnit.layer == 13)
             {
+                if(fUnit.transform.childCount > 1)
+                {
+                    Destroy(fUnit.transform.GetChild(1).gameObject);
+                }
                 var spawn = Instantiate(Shield, transform.position, Quaternion.identity);
                 spawn.transform.parent = fUnit.transform;
                 spawn.transform.localPosition = reset;
-                GameManager.instance.Invincible = true;
-                StartCoroutine(shieldCt(spawn));
+                
+                coroutine = shieldCt(spawn);
+                if (GameManager.instance.Invincible)
+                {
+                    StopCoroutine(coroutine);
+
+                }
+                
+                //if(coroutine != null)
+                //StopCoroutine(coroutine);
+                StartCoroutine(coroutine);
                 
             }
         }
+                GameManager.instance.Invincible = true;
     }
 
     IEnumerator shieldCt(GameObject obj)
     {
         yield return new WaitForSeconds(Time_shield);
+        try
+        {
+            if(obj.transform.parent.transform.childCount == 1)
+            GameManager.instance.Invincible = false;
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.ToString());
+        }
         Destroy(obj);
-        GameManager.instance.Invincible = false;
     }
+
 
     public void LightRain(GameObject Rain)
     {
