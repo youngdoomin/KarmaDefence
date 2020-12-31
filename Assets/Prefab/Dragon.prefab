@@ -19113,10 +19113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0a511f38b9a934f8238cf82cd854b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 50
+  Damage: 100
   AttackRange: 6.2
-  Speed: 1
-  AttackSpeed: 1
+  Speed: 1.5
+  AttackSpeed: 1.4
   Effect: {fileID: 0}
   Projectile: {fileID: 3034869627125675292, guid: b6e1bae27d44b014d866477d956bfc6e,
     type: 3}

@@ -92,10 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0a511f38b9a934f8238cf82cd854b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 2
+  Damage: 20
   AttackRange: 5
   Speed: 3
-  AttackSpeed: 1
+  AttackSpeed: 2
   Effect: {fileID: 1570423950586096, guid: 01afa85b461d4dc49ba4530e39b61739, type: 3}
   Projectile: {fileID: 3034869627125675292, guid: b6e1bae27d44b014d866477d956bfc6e,
     type: 3}
@@ -202,4 +202,4 @@ MonoBehaviour:
   hpBarPrefab: {fileID: 350518011063597351, guid: 66ebd127edcb5bb45a1d31937afd9952,
     type: 3}
   hpBarOffset: {x: 0, y: 2.2, z: 0}
-  incGold: 10
+  incGold: 150

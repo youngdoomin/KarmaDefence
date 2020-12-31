@@ -52,7 +52,7 @@ MonoBehaviour:
   Damage: 50
   AttackRange: 15
   Speed: 2
-  AttackSpeed: 2
+  AttackSpeed: 1.3
   Effect: {fileID: 0}
   Projectile: {fileID: 3034869627125675292, guid: ec097a14a2ba400488b020d8a83daa17,
     type: 3}
