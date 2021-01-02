@@ -19,7 +19,6 @@ public class BuySomething : MonoBehaviour
     //control the value to pass to event as you need
     public int Amt;
     public float coolTime;
-    public GameObject UnitObj;
     string unitObj = "MyHq";
     string skillObj = "Player";
     public string Message;
@@ -28,9 +27,9 @@ public class BuySomething : MonoBehaviour
 
     void Start()
     {
-        slider = transform.GetChild(0).GetComponent<Slider>();
+        slider = transform.GetChild(1).GetComponent<Slider>();
         //register new event to onclick with the variables that control your args
-        b.onClick.AddListener(() => BuySome(Amt, UnitObj));
+        b.onClick.AddListener(() => BuySome(Amt));
         Text txt = transform.Find("Text").GetComponent<Text>();
         txt.text = txt.text = Amt.ToString();
     }
@@ -49,7 +48,7 @@ public class BuySomething : MonoBehaviour
 
     }
 
-    public void BuySome(int Amt, GameObject obj)
+    public void BuySome(int Amt)
     {
         if (GameManager.instance.CurrentMoney >= Amt && !isWait)
         {
@@ -67,13 +66,13 @@ public class BuySomething : MonoBehaviour
                 switch (Message)
                 {
                     case "Mercy":
-                        spawn.GetComponent<SkillMgr>().Mercy(obj);
+                        spawn.GetComponent<SkillMgr>().Mercy();
                         break;
                     case "LightRain":
-                        spawn.GetComponent<SkillMgr>().LightRain(obj);
+                        spawn.GetComponent<SkillMgr>().LightRain();
                         break;
                     case "LightExp":
-                        spawn.GetComponent<SkillMgr>().LightExp(obj);
+                        spawn.GetComponent<SkillMgr>().LightExp();
                         break;
                     default:
                         Debug.Log("There is no skill");

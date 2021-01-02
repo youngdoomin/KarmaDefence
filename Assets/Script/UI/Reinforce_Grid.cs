@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Reinforce_Grid : MonoBehaviour
 {
     float amt;
-    public int upPer;
+    public int[] upPer;
     public enum Type
     {
         Unit,
@@ -53,11 +53,13 @@ public class Reinforce_Grid : MonoBehaviour
         {
             GameManager.instance.Gold -= price[currTier];
             if (type == Type.Unit)
-                upObj.GetComponent<Unit>().Upgrade(upPer);
+                upObj.GetComponent<Unit>().Upgrade(upPer[currTier]);
             
             currTier++;
 
-            amt += amt * upPer / 100;
+            // amt += amt * upPer[currTier] / 100; // 퍼센트 방식
+            amt += upPer[currTier]; // 값 증가 방식
+
             if (type == Type.Skill1)
                 upObj.GetComponent<SkillMgr>().Time_shield = amt;
             else if (type == Type.Skill2)

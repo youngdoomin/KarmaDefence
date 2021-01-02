@@ -19,6 +19,13 @@ public class EnemyDam_Multiple : MonoBehaviour
         coll = GetComponent<BoxCollider>();
         StartCoroutine(AttackDelay());
     }
+    private void OnEnable()
+    {
+        waiting = false;
+        coll.enabled = true;
+        hitCt = 0;
+        StartCoroutine(AttackDelay());
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -42,7 +49,8 @@ public class EnemyDam_Multiple : MonoBehaviour
 
         if (hitCt >= hitMax)
         {
-            Destroy(gameObject, WaitDestroy);
+            yield return new WaitForSeconds(WaitDestroy);
+            gameObject.SetActive(false);
         }
         else { StartCoroutine(AttackDelay()); }
     }

@@ -18,13 +18,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        move = Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime;
-        if (transform.position.x < PlayerClamp && Input.GetAxis("Horizontal") > 0)
-            transform.position += new Vector3(move, 0, 0);
-        else if (transform.position.x > -PlayerClamp && Input.GetAxis("Horizontal") < 0)
-            transform.position += new Vector3(move, 0, 0);
-        */
+
         float mH = Input.GetAxis("Horizontal");
         
             rb.velocity = new Vector3(mH * MoveSpeed, 0, 0);
@@ -45,8 +39,8 @@ public class PlayerMove : MonoBehaviour
             local.x = 1;
             rainTr.localPosition = new Vector3(rainX, rainY, 0);
         }
-        transform.localScale = local;
 
+        transform.localScale = local;
 
     }
 }

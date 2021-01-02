@@ -3,54 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 public class UnitSpawn : MonoBehaviour
 {
-    /*
-    GameObject PlayerFinder;
-
-    public GameObject[] tilePooledObjects;
-    private GameObject spawnedTile;
-    public GameObject[] pooledObjects;
-    
-    public GameObject enemy;
-
-    public Transform tileSpawnPos;
-    public Transform enemySpawnPos;
-    public Transform itemSpawnPos;
-    public float xAxisRandom;
-    public float tileDelay;
-    public float enemyDelay;
-    public float itemDelay;
-    public float jamDelay;
-
-    float xAxis;
-    int poolCt;
-    */
-    private GameObject unitObj;
-    public int spawnCt;
-
-
     public bool IsSpawn;
     public float[] SpawnDelay;
     public Transform SpawnPos;
+    public Transform p_SpawnPos;
+
+    public GameObject[] projectileObj;
     public GameObject[] Units;
     public GameObject Hp_bar;
+    public int spawnCt;
     public float zAxis;
     public int chooseUnit;
-    // Start is called before the first frame update
+
+    private GameObject unitObj;
 
     void Start()
     {
-        PoolSpawn();
-        // GetPooledObject(false, enemySpawnPos.transform);
-
-        /*
-        for (int i = 0; i < tilePooledObjects.Length; i++)
-        {
-            spawnedTile = Instantiate(tilePooledObjects[i], transform.position, Quaternion.identity);
-            spawnedTile.transform.parent = tileSpawnPos.transform;
-            spawnedTile.SetActive(false);
-        } // 인스펙터에 있는 타일 생성
-        */
-        // GetRandomPooledObject();
+        PoolSpawn(Units, SpawnPos);
+        PoolSpawn(projectileObj, p_SpawnPos);
+        
 
         if (IsSpawn == true)
         StartCoroutine(AutoSpawner());
@@ -62,14 +33,14 @@ public class UnitSpawn : MonoBehaviour
         
     }
 
-    void PoolSpawn()
+    void PoolSpawn(GameObject[] obj, Transform tr)
     {
         for (int i = 0; i < spawnCt; i++) // 인스펙터에 있는 적 생성
         {
-            for (int j = 0; j < Units.Length; j++)
+            for (int j = 0; j < obj.Length; j++)
             {
-                unitObj = Instantiate(Units[j], transform.position, Quaternion.identity);
-                unitObj.transform.parent = SpawnPos.transform;
+                unitObj = Instantiate(obj[j], transform.position, Quaternion.identity);
+                unitObj.transform.parent = tr.transform;
                 unitObj.SetActive(false);
 
             }
@@ -103,7 +74,7 @@ public class UnitSpawn : MonoBehaviour
             else if (i + Units.Length >= Units.Length * spawnCt)
             {
                 spawnCt += spawnCt;
-                PoolSpawn();
+                PoolSpawn(Units, SpawnPos);
             }
             
 
@@ -130,7 +101,7 @@ public class UnitSpawn : MonoBehaviour
             else if (i + Units.Length >= Units.Length * spawnCt)
             {
                 spawnCt += spawnCt;
-                PoolSpawn();
+                PoolSpawn(Units, SpawnPos);
             }
         }
         //Instantiate(obj, Pos, Quaternion.identity);
