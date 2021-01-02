@@ -9,6 +9,6 @@ public class HQHP : UnitHp
     {
         loseObj.SetActive(true);
         Time.timeScale = 0;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

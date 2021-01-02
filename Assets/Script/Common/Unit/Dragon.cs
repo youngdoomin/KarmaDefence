@@ -11,6 +11,6 @@ public class Dragon : UnitHp
         winObj.SetActive(true);
         Time.timeScale = 0;
         GameManager.instance.Result();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

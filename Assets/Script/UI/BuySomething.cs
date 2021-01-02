@@ -58,7 +58,8 @@ public class BuySomething : MonoBehaviour
             if(Sale == Type.Unit)
             {
                 var spawn = GameObject.Find(unitObj);
-                spawn.GetComponent<UnitSpawn>().Spawner(obj);
+                var i = int.Parse(this.gameObject.name.Substring(this.gameObject.name.Length - 1));
+                spawn.GetComponent<UnitSpawn>().Spawner(i);
             }
             else
             {

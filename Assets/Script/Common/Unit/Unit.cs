@@ -103,10 +103,12 @@ public class Unit : MonoBehaviour
     void Move()
     {
         //rb.velocity = transform.right * Speed;
-        if (transform.rotation.y == 0)
+        
+        if (this.gameObject.tag == "Friendly")
             transform.Translate(transform.right * Speed * Time.deltaTime);
         else
-            transform.Translate(transform.right * -Speed * Time.deltaTime);
+            transform.Translate(-transform.right * Speed * Time.deltaTime);
+            
         animator.SetBool(hashWalk, true);
     }
 

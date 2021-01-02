@@ -40,14 +40,14 @@ public class UnitHp : MonoBehaviour
         {
             //hpBarImage.GetComponentsInParent<RawImage>()[0].color = Color.clear;
             //hpBarImage.transform.parent.GetComponent<RawImage>().color = Color.clear;
-            Destroy(hpBarImage.transform.parent.gameObject);
+            hpBarImage.transform.parent.gameObject.SetActive(false);
             Disable();
         }
     }
 
     protected virtual void Disable()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     void SetHpBar(Canvas canvas)

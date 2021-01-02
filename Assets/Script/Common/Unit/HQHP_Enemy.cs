@@ -10,7 +10,8 @@ public class HQHP_Enemy : UnitHp
     protected override void Disable()
     {
         //Instantiate(boss, bossPos);
+        this.gameObject.transform.GetChild(1).parent = null;
         bossPos.GetChild(0).gameObject.SetActive(true);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

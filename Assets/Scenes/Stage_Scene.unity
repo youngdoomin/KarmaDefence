@@ -1627,6 +1627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f811d33a8b9b34e84c7c9decd7488b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnCt: 5
   IsSpawn: 1
   SpawnDelay:
   - 1
@@ -2932,7 +2933,7 @@ GameObject:
   - component: {fileID: 762702323}
   - component: {fileID: 762702326}
   m_Layer: 5
-  m_Name: Button1
+  m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4691,13 +4692,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087163171}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.5, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1236974887920899050}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1090877013
 GameObject:
   m_ObjectHideFlags: 0
@@ -6125,7 +6126,7 @@ GameObject:
   - component: {fileID: 1377705720}
   - component: {fileID: 1377705723}
   m_Layer: 5
-  m_Name: Button1
+  m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6291,7 +6292,7 @@ GameObject:
   - component: {fileID: 1548422837}
   - component: {fileID: 1548422840}
   m_Layer: 5
-  m_Name: Button2
+  m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7130,6 +7131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f811d33a8b9b34e84c7c9decd7488b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnCt: 5
   IsSpawn: 0
   SpawnDelay: []
   SpawnPos: {fileID: 2034430347}
@@ -8509,7 +8511,7 @@ GameObject:
   - component: {fileID: 1843529718}
   - component: {fileID: 1843529721}
   m_Layer: 5
-  m_Name: Button3
+  m_Name: Button0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9304,7 +9306,7 @@ GameObject:
   - component: {fileID: 1993333720}
   - component: {fileID: 1993333723}
   m_Layer: 5
-  m_Name: Button2
+  m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10861,7 +10863,7 @@ GameObject:
   - component: {fileID: 3604621734530007657}
   - component: {fileID: 3604621734530007652}
   m_Layer: 5
-  m_Name: Button3
+  m_Name: Button0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

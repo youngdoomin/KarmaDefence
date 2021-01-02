@@ -11,6 +11,6 @@ public class UnitGold : UnitHp
     {
         GameManager.instance.killCt++;
         GameManager.instance.Gold += incGold;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
