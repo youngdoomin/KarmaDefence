@@ -18,8 +18,13 @@ public class SkillMgr : MonoBehaviour
     public float SecAxisX;
     private IEnumerator coroutine;
 
+    Vector3 expStartScale;
     int unitCt;
 
+    private void Awake()
+    {
+        expStartScale = SkillObj[2].transform.localScale;
+    }
     private void Start()
     {
         unitCt = GameObject.Find("MyHq").GetComponent<UnitSpawn>().spawnCt * GameObject.Find("MyHq").GetComponent<UnitSpawn>().Units.Length;
@@ -119,33 +124,59 @@ public class SkillMgr : MonoBehaviour
     }
     public void LightExp()
     {
-        StartCoroutine(xScaleInc());
-    }
+   
 
-    IEnumerator xScaleInc()
-    {
-        /*
-        var xScale = 0;
-        var ExpSkill = Instantiate(Explosion, ExpPos.position, Quaternion.identity);
-        int i;
-        if(RainPos.localPosition.x > 0) { i = 1; }
-        else 
-        { 
-            i = -1;
-            ExpSkill.transform.GetChild(1).rotation = Quaternion.Euler(0, 180, 0);
+        for (int idx = 0; idx < ExpPos.transform.childCount; idx++)
+        {
+            var ExpSkill = ExpPos.transform.GetChild(idx);
+            if (!ExpSkill.gameObject.activeSelf)
+            {
+                ExpSkill.gameObject.SetActive(true);
+                StartCoroutine(xScaleInc(ExpSkill.gameObject));
+                break;
+                
+            }
+            else if (idx + 1 == ExpPos.transform.childCount)
+            {
+                skillPool(2, ExpPos);
+            }
+
 
         }
 
-        ExpSkill.transform.GetChild(0).localPosition = new Vector3(0.5f * i, 0, 0);
 
-        while (ExpSkill.transform.localScale.x < ExpAxisX)
-         {
-             ExpSkill.transform.localScale += new Vector3(xScale, 0, 0);
-             xScale++;
-             yield return new WaitForSeconds(SecAxisX);
-         }
-         */
+
+        // yield return new WaitForSeconds(0.1f);
+    }
+
+    IEnumerator xScaleInc(GameObject obj)
+    {
+        var spawnPos = new Vector3(this.gameObject.transform.position.x + RainPos.localPosition.x, ExpPos.position.y, ExpPos.position.z);
+        var xScale = 0;
+        int i;
+        if (RainTargetPos.localPosition.x > 0) 
+        { 
+            i = 1;
+            obj.transform.GetChild(1).rotation = Quaternion.Euler(0, 0, 0); // 보는 방향에 따른 이펙트 수정
+        }
+        else
+        {
+            i = -1;
+            obj.transform.GetChild(1).rotation = Quaternion.Euler(0, 180, 0); // 보는 방향에 따른 이펙트 수정
+        }
+
+        obj.transform.position = spawnPos;
+        obj.transform.GetChild(0).localPosition = new Vector3(0.5f * i, 0, 0); // 콜라이더를 보는 방향에 맞게 위치 선정
+
+        while (xScale < ExpAxisX)
+        {
+            obj.transform.localScale = new Vector3(xScale, obj.transform.localScale.y, obj.transform.localScale.z);
+            xScale++;
+            yield return new WaitForSeconds(SecAxisX);
+        }
+
         yield return new WaitForSeconds(0.1f);
-        // Destroy(ExpSkill);
+        obj.transform.localScale = expStartScale;
+        obj.gameObject.SetActive(false);
     }
 }

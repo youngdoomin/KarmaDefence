@@ -14,14 +14,19 @@ public class EnemyDam_Multiple : MonoBehaviour
     BoxCollider coll;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         coll = GetComponent<BoxCollider>();
+        
+    }
+    void Start()
+    {
         StartCoroutine(AttackDelay());
     }
     private void OnEnable()
     {
         waiting = false;
+        if(coll.gameObject != null)
         coll.enabled = true;
         hitCt = 0;
         StartCoroutine(AttackDelay());

@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileExp : ProjectileSet
+public class ProjectileExp : ProjectileDefault
 {
     public float ExpRange;  // 광역 데미지 범위
     private Vector3 boxSize;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         boxSize = new Vector3(ExpRange, ExpRange, 1000);
         GetComponent<Rigidbody>().AddForce(transform.forward * speed);
-        Destroy(this.gameObject, 10);
+        Invoke("False", 10);
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class ProjectileExp : ProjectileSet
 
     }
 
-    protected void OnTriggerEnter(Collider coll)
+    protected override void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == this.gameObject.tag)
         {
@@ -33,8 +33,7 @@ public class ProjectileExp : ProjectileSet
                 if (col.gameObject.tag == this.gameObject.tag)
                 {
                     coll.GetComponent<UnitHp>().Damaged(int.Parse(this.gameObject.name));
-
-                    Destroy(gameObject, 1f);
+                    Invoke("False", 1);
                 }
             }
         }

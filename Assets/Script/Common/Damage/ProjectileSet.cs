@@ -8,7 +8,6 @@ public class ProjectileSet : MonoBehaviour
     public float speed;
 
 
-    
     // Start is called before the first frame update
 
 }

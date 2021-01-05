@@ -38,7 +38,11 @@ public class Unit : MonoBehaviour
     public Type Class;
     void Start()
     {
-        
+        if (this.gameObject.tag == "Friendly" && this.gameObject.layer == 13)   // 상대방 구분
+        { OtherTag = "Enemy"; }
+        else
+        { OtherTag = "Friendly"; }
+
         FindObj();
         //rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
@@ -49,11 +53,6 @@ public class Unit : MonoBehaviour
 
     void FindObj()
     {
-
-        if (this.gameObject.tag == "Friendly" && this.gameObject.layer == 13)   // 상대방 구분
-        { OtherTag = "Enemy"; }
-        else
-        { OtherTag = "Friendly"; }
         Other = GameObject.FindGameObjectsWithTag(OtherTag);
     }
 
@@ -151,7 +150,7 @@ public class Unit : MonoBehaviour
         //rb.velocity = Vector3.zero;
         Fighting = true;
         yield return new WaitForSeconds(AttackSpeed);
-        if (Enemy != null)
+        if (Enemy != null && Mathf.Abs(Enemy.transform.position.x - transform.position.x) <= AttackRange + Enemy.transform.localScale.x)
         {
             Enemy.GetComponent<UnitHp>().Damaged(Damage);
             ShowEffect(Enemy);
@@ -164,10 +163,10 @@ public class Unit : MonoBehaviour
 
     void ShowEffect(GameObject Enemy)
     {
-        GameObject effect = Instantiate(Effect);
+        GameObject effect = this.gameObject.transform.GetChild(1).gameObject;
         effect.transform.localScale = new Vector3(2, 2, 2);
         effect.transform.position = Enemy.transform.position;
-        Destroy(effect, 1);
+        effect.SetActive(true);
     }
 
     void EffectToggle()

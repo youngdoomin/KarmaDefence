@@ -26,7 +26,7 @@ public class EnemyDam : MonoBehaviour
 
         }
         if (IsDestroy == true)
-            Destroy(gameObject, WaitDestroy);
+            gameObject.SetActive(false);
     }
 
     public void Upgrade(int per)

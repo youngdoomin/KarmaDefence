@@ -4,37 +4,20 @@ using UnityEngine;
 
 public class ProjectileDefault : ProjectileSet
 {
-    void Start()
+    protected virtual void Start()
     {
 
         if (isMove == true)
         {
             GetComponent<Rigidbody>().AddForce(transform.forward * speed);
-            //Destroy(this.gameObject, 10);
         }
-        else
-        {
-            //Destroy(this.gameObject, 1);
-        }
+        Invoke("False", 10);
 
-        //GetComponent<Rigidbody>().AddForce(transform.forward * speed);
-        /*
-        if (this.gameObject.tag == "Friendly")
-        {
-            GetComponent<Rigidbody>().AddForce(transform.forward * speed);
-
-        }
-        else
-        {
-            GetComponent<Rigidbody>().AddForce(-transform.forward * speed);
-        }
-        */
+       
     }
 
-    // Update is called once per frame
 
-
-    protected void OnTriggerEnter(Collider coll)
+    protected virtual void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == this.gameObject.tag)
         {
@@ -46,16 +29,20 @@ public class ProjectileDefault : ProjectileSet
 
             if (isMove == true)
             {
-                transform.parent = coll.transform;
-                transform.localPosition = Vector3.zero;
+                //transform.parent = coll.transform;
+                //transform.localPosition = Vector3.zero;
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
                 transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
-                Destroy(this.gameObject, 1);
-
+                Invoke("False", 1);
             }
 
         }
 
 
+    }
+
+    protected void False()
+    {
+        this.gameObject.SetActive(false);
     }
 }

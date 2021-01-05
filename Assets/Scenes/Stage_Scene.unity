@@ -7298,8 +7298,8 @@ MonoBehaviour:
   - {fileID: 3034869627125675292, guid: ec097a14a2ba400488b020d8a83daa17, type: 3}
   Units:
   - {fileID: 8495076336296136352, guid: aeba0a4fd8774e74eb78ed211c1f846e, type: 3}
-  - {fileID: 8495076336296136352, guid: 5f0350a938b7ef2408ce02b1d322f85d, type: 3}
   - {fileID: 8495076336296136352, guid: 5177a810026f81b4fa785187723df216, type: 3}
+  - {fileID: 8495076336296136352, guid: 5f0350a938b7ef2408ce02b1d322f85d, type: 3}
   Hp_bar: {fileID: 0}
   spawnCt: 5
   zAxis: 2
@@ -7443,10 +7443,10 @@ MonoBehaviour:
   - {fileID: 8191058831206445995, guid: 8b5c15b7bfec9e549956fb51e0eb7ab0, type: 3}
   ShieldPos: {fileID: 1436073209}
   RainPos: {fileID: 1606945793}
-  ExpPos: {fileID: 1474724480}
+  ExpPos: {fileID: 1940193493}
   RainTargetPos: {fileID: 642656926}
   Time_shield: 8
-  ExpAxisX: 15
+  ExpAxisX: 30
   SecAxisX: 0.1
 --- !u!54 &1657604257
 Rigidbody:
@@ -9205,7 +9205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940193492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: -1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2146330907}
@@ -10602,7 +10602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146330906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 844.8856, y: 67.54158, z: -10.257482}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1436073209}
