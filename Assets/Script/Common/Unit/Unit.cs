@@ -26,7 +26,6 @@ public class Unit : MonoBehaviour
     private readonly int hashWalk = Animator.StringToHash("Walk");
     private float speed_animation = 1f;
 
-    bool isTrue;
 
     [System.Serializable]
     public enum Type
@@ -60,14 +59,20 @@ public class Unit : MonoBehaviour
     {
         if (Time.timeScale != 0)
         {
+            FindObj();
             float closestDist = Mathf.Infinity;
             GameObject closestEn = null;
             GameObject[] allEn = Other;
 
-            FindObj();
 
             foreach (GameObject potentTarget in allEn) // 가장 가까운 적 공격
             {
+                /*
+                if (!potentTarget.activeSelf)
+                {
+
+                }
+                */
                 float distTarget;// = Mathf.Abs(potentTarget.transform.position.x - transform.position.x);
                                  //float distTarget = (potentTarget.transform.position - this.transform.position).sqrMagnitude;
 
@@ -117,28 +122,51 @@ public class Unit : MonoBehaviour
         animator.SetBool(hashWalk, false);
         animator.SetBool(hashAttack, true);
 
-        EffectToggle();
+        //EffectToggle();
 
         animator.speed = speed_animation / AttackSpeed;
         //rb.velocity = Vector3.zero;
         Shooting = true;
 
         ShootPos.LookAt(Enemy.transform);
-        if (Enemy != null)
+        if (Enemy != null && Enemy.activeSelf)
         {
             yield return new WaitForSeconds(AttackSpeed);
-
-            GameObject projectile = Instantiate(Projectile, ShootPos.position, ShootPos.rotation);
-            projectile.tag = OtherTag;
-            projectile.name = Damage.ToString();
+            
+            GameObject projectile = Projectile;
+            for (int i = 1; i < transform.childCount; i++)
+            {
+                if (!gameObject.transform.GetChild(i).gameObject.activeSelf)
+                {
+                    projectile = this.gameObject.transform.GetChild(i).gameObject;
+                    projectile.transform.position = ShootPos.position;
+                    projectile.transform.rotation = ShootPos.rotation;
+                    projectile.tag = OtherTag;
+                    projectile.name = Damage.ToString();
+                    projectile.SetActive(true);
+                    break;
+                }
+                else if (i + 1 == transform.childCount)
+                {
+                    projectile = Instantiate(Projectile, ShootPos.position, ShootPos.rotation);
+                    projectile.transform.SetParent(gameObject.transform);
+                    projectile.tag = OtherTag;
+                    projectile.name = Damage.ToString();
+                    break;
+                }
+            }
+            
             animator.SetBool(hashAttack, false);
             yield return new WaitForSeconds(AttackSpeed);
             animator.speed = 1;
 
         }
+        else
+        {
+            animator.SetBool(hashAttack, false);
+        }
         Shooting = false;
 
-        EffectToggle();
     }
 
     IEnumerator Fight(GameObject Enemy)
@@ -150,13 +178,17 @@ public class Unit : MonoBehaviour
         //rb.velocity = Vector3.zero;
         Fighting = true;
         yield return new WaitForSeconds(AttackSpeed);
-        if (Enemy != null && Mathf.Abs(Enemy.transform.position.x - transform.position.x) <= AttackRange + Enemy.transform.localScale.x)
+        if (Enemy != null && Enemy.activeSelf && Mathf.Abs(Enemy.transform.position.x - transform.position.x) <= AttackRange + Enemy.transform.localScale.x)
         {
             Enemy.GetComponent<UnitHp>().Damaged(Damage);
             ShowEffect(Enemy);
             animator.SetBool(hashAttack, false);
             yield return new WaitForSeconds(AttackSpeed);
             animator.speed = 1;
+        }
+        else
+        {
+            animator.SetBool(hashAttack, false);
         }
         Fighting = false;
     }
@@ -168,17 +200,17 @@ public class Unit : MonoBehaviour
         effect.transform.position = Enemy.transform.position;
         effect.SetActive(true);
     }
-
-    void EffectToggle()
+    /*
+    void EffectToggle(GameObject obj)
     {
-        if (transform.childCount > 1)
+        if (obj.transform.childCount > 1)
         {
             isTrue = !isTrue;
-            transform.GetChild(1).gameObject.SetActive(isTrue);
+            obj.transform.GetChild(1).gameObject.SetActive(isTrue);
 
         }
     }
-
+    */
     public void Upgrade(int per)
     {
         Debug.Log("Upgrade");
@@ -187,10 +219,10 @@ public class Unit : MonoBehaviour
         //AttackSpeed -= AttackSpeed * per / 100;
         Speed += Speed * per / 100;
     }
-    /*
-    void Reset()
-    {
 
+    private void OnDisable()
+    {
+        Fighting = false;
+        Shooting = false;
     }
-    */
 }

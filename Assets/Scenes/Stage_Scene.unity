@@ -1709,7 +1709,7 @@ MonoBehaviour:
   Hp_bar: {fileID: 0}
   spawnCt: 5
   zAxis: 2
-  chooseUnit: 0
+  chooseUnit: 1
 --- !u!1 &477569543
 GameObject:
   m_ObjectHideFlags: 0
@@ -6641,7 +6641,7 @@ PrefabInstance:
     - target: {fileID: 8117295668437786126, guid: 1e031efef45b2314aa2d84d0c44d4b04,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
         type: 3}
@@ -10698,6 +10698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 3
+  initHp: 0
   hpBarPrefab: {fileID: 350518011063597351, guid: 66ebd127edcb5bb45a1d31937afd9952,
     type: 3}
   hpBarOffset: {x: 0, y: 6, z: 0}
@@ -11105,6 +11106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 5000000
+  initHp: 0
   hpBarPrefab: {fileID: 2592966944224695532, guid: c94a84d48093b08429407051b72d791d,
     type: 3}
   hpBarOffset: {x: 0, y: 6, z: 0}

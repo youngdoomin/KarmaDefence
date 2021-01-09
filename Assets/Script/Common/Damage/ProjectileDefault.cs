@@ -7,15 +7,18 @@ public class ProjectileDefault : ProjectileSet
     protected virtual void Start()
     {
 
-        if (isMove == true)
-        {
-            GetComponent<Rigidbody>().AddForce(transform.forward * speed);
-        }
-        Invoke("False", 10);
-
-       
+        //Fire();
     }
 
+    private void OnEnable()
+    {
+        for (int i = 0; i < transform.childCount - 1; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(true);
+        }
+        transform.GetChild(transform.childCount - 1).gameObject.SetActive(false);
+        Fire();
+    }
 
     protected virtual void OnTriggerEnter(Collider coll)
     {
@@ -39,6 +42,16 @@ public class ProjectileDefault : ProjectileSet
         }
 
 
+    }
+
+    protected virtual void Fire()
+    {
+        if (isMove == true)
+        {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GetComponent<Rigidbody>().AddForce(transform.forward * speed);
+        }
+        // Invoke("False", 5);
     }
 
     protected void False()

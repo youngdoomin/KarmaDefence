@@ -9,6 +9,7 @@ public class UnitGold : UnitHp
 
     protected override void Disable()
     {
+        Hp = (int)initHp;
         GameManager.instance.killCt++;
         GameManager.instance.Gold += incGold;
         gameObject.SetActive(false);

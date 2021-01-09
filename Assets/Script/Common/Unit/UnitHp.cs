@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class UnitHp : MonoBehaviour
 {
     public int Hp;
-    private float initHp;
+    [HideInInspector]
+    public float initHp;
 
 
     //생명 게이지 프리팹을 저장할 변수
@@ -25,7 +26,11 @@ public class UnitHp : MonoBehaviour
         //overlayCanvas = GameObject.Find("UICanvas_Overlay").GetComponent<Canvas>();
 
         SetHpBar(uiCanvas);
-        hpBarOffset.y += 5;
+    }
+    private void OnEnable()
+    {
+        if(uiCanvas != null)
+            SetHpBar(uiCanvas);
     }
 
     public void Damaged(int damage)
@@ -47,6 +52,7 @@ public class UnitHp : MonoBehaviour
 
     protected virtual void Disable()
     {
+        Hp = (int)initHp;
         gameObject.SetActive(false);
     }
 

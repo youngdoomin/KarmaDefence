@@ -10,8 +10,7 @@ public class ProjectileExp : ProjectileDefault
     protected override void Start()
     {
         boxSize = new Vector3(ExpRange, ExpRange, 1000);
-        GetComponent<Rigidbody>().AddForce(transform.forward * speed);
-        Invoke("False", 10);
+
     }
 
     // Update is called once per frame
@@ -38,6 +37,7 @@ public class ProjectileExp : ProjectileDefault
             }
         }
     }
+
     /*
     private void OnDrawGizmos()
     {

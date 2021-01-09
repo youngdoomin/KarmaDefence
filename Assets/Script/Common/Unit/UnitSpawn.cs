@@ -24,7 +24,9 @@ public class UnitSpawn : MonoBehaviour
         
 
         if (IsSpawn == true)
-        StartCoroutine(AutoSpawner());
+        {
+            StartCoroutine(AutoSpawner());
+        }
     }
 
     // Update is called once per frame
@@ -66,8 +68,8 @@ public class UnitSpawn : MonoBehaviour
             {
                 spawnObj.SetActive(true);
                 spawnObj.transform.position = Pos;
-                //spawnObj.transform.rotation = transform.rotation * Quaternion.Euler(0f, 180f, 0f);
                 yield return new WaitForSeconds(SpawnDelay[random]);
+                //spawnObj.transform.rotation = transform.rotation * Quaternion.Euler(0f, 180f, 0f);
                 break;
             }
             
@@ -75,11 +77,13 @@ public class UnitSpawn : MonoBehaviour
             {
                 spawnCt += spawnCt;
                 PoolSpawn(Units, SpawnPos);
+                PoolSpawn(projectileObj, p_SpawnPos);
             }
             
 
         }
-        StartCoroutine(AutoSpawner());
+        if (IsSpawn == true)
+            StartCoroutine(AutoSpawner());
         //Debug.Log(SpawnDelay[random]);
     }
 
@@ -102,10 +106,31 @@ public class UnitSpawn : MonoBehaviour
             {
                 spawnCt += spawnCt;
                 PoolSpawn(Units, SpawnPos);
+                PoolSpawn(projectileObj, p_SpawnPos);
             }
         }
         //Instantiate(obj, Pos, Quaternion.identity);
         GameManager.instance.spawnCt++;
+    }
+
+    public GameObject PSpawner(int idx)
+    {
+        for (int i = 0; i < projectileObj.Length * spawnCt; i += projectileObj.Length)
+        {
+            if (i < idx) { i = idx; }
+            var spawnObj = SpawnPos.transform.GetChild(i).gameObject;
+            if (!spawnObj.activeSelf)
+            {
+                spawnObj.SetActive(true);
+                return spawnObj;
+            }
+            else if (i + projectileObj.Length >= projectileObj.Length * spawnCt)
+            {
+                spawnCt += spawnCt;
+                PoolSpawn(projectileObj, p_SpawnPos);
+            }
+        }
+        return null;
     }
 
 }
