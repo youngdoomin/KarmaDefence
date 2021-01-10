@@ -30,7 +30,7 @@ public class UnitHp : MonoBehaviour
     private void OnEnable()
     {
         if(uiCanvas != null)
-            SetHpBar(uiCanvas);
+            RestartHpBar(uiCanvas);
     }
 
     public void Damaged(int damage)
@@ -60,9 +60,36 @@ public class UnitHp : MonoBehaviour
     {
         GameObject hpBar;
         hpBar = Instantiate(hpBarPrefab, canvas.transform);
-        hpBarImage = hpBar.GetComponentsInChildren<Image>()[0];
 
-        var _hpBar = hpBar.GetComponent<HpBar>();
+        HpFollow(hpBar);
+    }
+
+    void RestartHpBar(Canvas canvas)
+    {
+        GameObject hpBar = hpBarPrefab;
+        for (int i = 0; i < canvas.transform.childCount - 1; i++)
+        {
+            if (!canvas.transform.GetChild(i).gameObject.activeInHierarchy && canvas.transform.GetChild(i).gameObject.name.Substring(0, 1) == this.gameObject.tag.Substring(0, 1))
+            {
+                hpBar = canvas.transform.GetChild(i).gameObject;
+                hpBarImage.fillAmount = 1;
+                hpBar.SetActive(true);
+                break;
+            }
+            else if (i + 1 >= canvas.transform.childCount - 1)
+            {
+                hpBar = Instantiate(hpBarPrefab, canvas.transform);
+
+            }
+        }
+        HpFollow(hpBar);
+    }
+
+    void HpFollow(GameObject obj)
+    {
+        hpBarImage = obj.GetComponentsInChildren<Image>()[0];
+
+        var _hpBar = obj.GetComponent<HpBar>();
         _hpBar.targetTr = this.gameObject.transform;
         _hpBar.offset = hpBarOffset;
 

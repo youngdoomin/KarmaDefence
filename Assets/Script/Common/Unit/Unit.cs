@@ -67,12 +67,7 @@ public class Unit : MonoBehaviour
 
             foreach (GameObject potentTarget in allEn) // 가장 가까운 적 공격
             {
-                /*
-                if (!potentTarget.activeSelf)
-                {
 
-                }
-                */
                 float distTarget;// = Mathf.Abs(potentTarget.transform.position.x - transform.position.x);
                                  //float distTarget = (potentTarget.transform.position - this.transform.position).sqrMagnitude;
 

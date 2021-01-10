@@ -6,9 +6,7 @@ public class UnitSpawn : MonoBehaviour
     public bool IsSpawn;
     public float[] SpawnDelay;
     public Transform SpawnPos;
-    public Transform p_SpawnPos;
 
-    public GameObject[] projectileObj;
     public GameObject[] Units;
     public GameObject Hp_bar;
     public int spawnCt;
@@ -20,7 +18,6 @@ public class UnitSpawn : MonoBehaviour
     void Start()
     {
         PoolSpawn(Units, SpawnPos);
-        PoolSpawn(projectileObj, p_SpawnPos);
         
 
         if (IsSpawn == true)
@@ -77,7 +74,6 @@ public class UnitSpawn : MonoBehaviour
             {
                 spawnCt += spawnCt;
                 PoolSpawn(Units, SpawnPos);
-                PoolSpawn(projectileObj, p_SpawnPos);
             }
             
 
@@ -106,31 +102,11 @@ public class UnitSpawn : MonoBehaviour
             {
                 spawnCt += spawnCt;
                 PoolSpawn(Units, SpawnPos);
-                PoolSpawn(projectileObj, p_SpawnPos);
             }
         }
         //Instantiate(obj, Pos, Quaternion.identity);
         GameManager.instance.spawnCt++;
     }
 
-    public GameObject PSpawner(int idx)
-    {
-        for (int i = 0; i < projectileObj.Length * spawnCt; i += projectileObj.Length)
-        {
-            if (i < idx) { i = idx; }
-            var spawnObj = SpawnPos.transform.GetChild(i).gameObject;
-            if (!spawnObj.activeSelf)
-            {
-                spawnObj.SetActive(true);
-                return spawnObj;
-            }
-            else if (i + projectileObj.Length >= projectileObj.Length * spawnCt)
-            {
-                spawnCt += spawnCt;
-                PoolSpawn(projectileObj, p_SpawnPos);
-            }
-        }
-        return null;
-    }
 
 }
