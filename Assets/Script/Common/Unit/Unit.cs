@@ -9,8 +9,6 @@ public class Unit : MonoBehaviour
     public float Speed;
     public float AttackSpeed;
 
-    public GameObject Effect;
-
     public GameObject Projectile;   // 원거리 투사체
     public Transform ShootPos;  // 발사 위치
 
@@ -19,7 +17,6 @@ public class Unit : MonoBehaviour
 
     private GameObject[] Other; // 아군, 적 감지
     private string OtherTag;
-    //Rigidbody rb;
 
     Animator animator;
     private readonly int hashAttack = Animator.StringToHash("Attack");
@@ -67,7 +64,6 @@ public class Unit : MonoBehaviour
 
             foreach (GameObject potentTarget in allEn) // 가장 가까운 적 공격
             {
-
                 float distTarget;// = Mathf.Abs(potentTarget.transform.position.x - transform.position.x);
                                  //float distTarget = (potentTarget.transform.position - this.transform.position).sqrMagnitude;
 
@@ -77,7 +73,6 @@ public class Unit : MonoBehaviour
                 }
                 catch (MissingReferenceException)
                 {
-                    //FindObj();
                     return;
                 }
 
@@ -90,10 +85,7 @@ public class Unit : MonoBehaviour
             }
             if (Class == Type.Shooter && AttackRange + closestEn.transform.localScale.x > closestDist && !Shooting) { StartCoroutine(Shoot(closestEn)); } //&& FightDis < closestDist) 
             else if (Class == Type.Fighter && AttackRange + closestEn.transform.localScale.x > closestDist && !Fighting) { StartCoroutine(Fight(closestEn)); }
-            else if (!Shooting && !Fighting)
-            {
-                Move();
-            }
+            else if (!Shooting && !Fighting) { Move(); }
 
         }
 
@@ -102,32 +94,28 @@ public class Unit : MonoBehaviour
     void Move()
     {
         //rb.velocity = transform.right * Speed;
-        
+
         if (this.gameObject.tag == "Friendly")
             transform.Translate(transform.right * Speed * Time.deltaTime);
         else
             transform.Translate(-transform.right * Speed * Time.deltaTime);
-            
+
         animator.SetBool(hashWalk, true);
     }
 
     IEnumerator Shoot(GameObject Enemy)
     {
-        Debug.Log("try Shoot");
         animator.SetBool(hashWalk, false);
         animator.SetBool(hashAttack, true);
 
-        //EffectToggle();
-
         animator.speed = speed_animation / AttackSpeed;
-        //rb.velocity = Vector3.zero;
         Shooting = true;
-
         ShootPos.LookAt(Enemy.transform);
+
         if (Enemy != null && Enemy.activeSelf)
         {
             yield return new WaitForSeconds(AttackSpeed);
-            
+
             GameObject projectile = Projectile;
             for (int i = 1; i < transform.childCount; i++)
             {
@@ -150,7 +138,7 @@ public class Unit : MonoBehaviour
                     break;
                 }
             }
-            
+
             animator.SetBool(hashAttack, false);
             yield return new WaitForSeconds(AttackSpeed);
             animator.speed = 1;
@@ -170,7 +158,6 @@ public class Unit : MonoBehaviour
         animator.SetBool(hashAttack, true);
 
         animator.speed = speed_animation / AttackSpeed / 2;
-        //rb.velocity = Vector3.zero;
         Fighting = true;
         yield return new WaitForSeconds(AttackSpeed);
         if (Enemy != null && Enemy.activeSelf && Mathf.Abs(Enemy.transform.position.x - transform.position.x) <= AttackRange + Enemy.transform.localScale.x)
@@ -195,17 +182,7 @@ public class Unit : MonoBehaviour
         effect.transform.position = Enemy.transform.position;
         effect.SetActive(true);
     }
-    /*
-    void EffectToggle(GameObject obj)
-    {
-        if (obj.transform.childCount > 1)
-        {
-            isTrue = !isTrue;
-            obj.transform.GetChild(1).gameObject.SetActive(isTrue);
 
-        }
-    }
-    */
     public void Upgrade(int per)
     {
         Debug.Log("Upgrade");

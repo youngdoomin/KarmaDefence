@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Quest;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -53,16 +54,23 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         Time.timeScale = 1;
-        starCt = PlayerPrefs.GetInt("saveStarCt");
-        for (int i = 0; i < star.Count; i++)
+        
+        if(SceneManager.GetActiveScene().name == "Stage_Scene")
         {
-            star[i] = PlayerPrefs.GetInt(strings[i]);
-            if(star[i] == 1)
+            Debug.Log("star active");
+            starCt = PlayerPrefs.GetInt("saveStarCt");
+            for (int i = 0; i < star.Count; i++)
             {
-                ui[i].starObj.sprite = starSprite;
+                star[i] = PlayerPrefs.GetInt(strings[i]);
+                if(star[i] == 1)
+                {
+                    ui[i].starObj.sprite = starSprite;
 
+                }
             }
+
         }
+
     }
     // Start is called before the first frame update
     void Start()
