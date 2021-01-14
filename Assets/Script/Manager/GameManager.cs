@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public Sprite starSprite;
 
     public GameObject winObj;
-
+    public GameObject currStar;
 
 
     private List<int> star = new List<int>{0, 0, 0};
@@ -70,12 +70,13 @@ public class GameManager : MonoBehaviour
             }
 
         }
+        
 
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
     }
 
     // Update is called once per frame
@@ -137,4 +138,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void TestStar()
+    {
+        starCt++;
+        PlayerPrefs.SetInt("saveStarCt", starCt);
+        currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
+    }
 }

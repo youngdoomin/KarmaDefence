@@ -28,8 +28,12 @@ public class LevelSelectMenu : MonoBehaviour
         if (level == unlockedLevel)
         {
             unlockedLevel += 1;
-            Refresh();
         }
+
+        int star = GetStar(level);
+        star = Mathf.Clamp(star + 1, 0, 3);
+        SetStar(level, star);
+        Refresh();
     }
     /*
     public void ClickNext()
@@ -57,7 +61,7 @@ public class LevelSelectMenu : MonoBehaviour
             if (level <= totalLevel)
             {
                 levelButtons[i].gameObject.SetActive(true);
-                levelButtons[i].Setup(level, level <= unlockedLevel);
+                levelButtons[i].Setup(level, GetStar(level), level <= unlockedLevel);
 
             }
             else
@@ -73,4 +77,19 @@ public class LevelSelectMenu : MonoBehaviour
         nextButton.SetActive(page < totalPage);
     }
     */
+
+    private void SetStar(int level, int starAmt)
+    {
+        PlayerPrefs.SetInt(GetKey(level), starAmt);
+    }
+
+    private int GetStar(int level)
+    {
+        return PlayerPrefs.GetInt(GetKey(level));
+    }
+
+    private string GetKey(int level)
+    {
+        return "Level " + level + "_Star";
+    }
 }
