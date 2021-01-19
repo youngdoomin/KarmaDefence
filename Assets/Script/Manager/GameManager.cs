@@ -70,13 +70,15 @@ public class GameManager : MonoBehaviour
             }
 
         }
+        else
+            currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
         
 
     }
     // Start is called before the first frame update
     void Start()
     {
-        currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
+
     }
 
     // Update is called once per frame
@@ -140,8 +142,9 @@ public class GameManager : MonoBehaviour
 
     public void TestStar()
     {
+        starCt = PlayerPrefs.GetInt("saveStarCt");
         starCt++;
-        PlayerPrefs.SetInt("saveStarCt", starCt);
         currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
+        PlayerPrefs.SetInt("saveStarCt", starCt);
     }
 }

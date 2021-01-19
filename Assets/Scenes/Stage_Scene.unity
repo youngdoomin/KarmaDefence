@@ -1834,6 +1834,7 @@ MonoBehaviour:
   starCt: 0
   starSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 3}
   winObj: {fileID: 1883795576}
+  currStar: {fileID: 0}
   spawnCt: 0
   killCt: 0
   reinforceCt: 0

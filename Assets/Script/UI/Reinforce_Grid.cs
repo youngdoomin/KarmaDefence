@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Reinforce_Grid : MonoBehaviour
@@ -12,9 +13,14 @@ public class Reinforce_Grid : MonoBehaviour
         Unit,
         Skill1,
         Skill2,
-        Skill3
-    }
+        Skill3,
 
+        S_Hp,
+        S_Attack,
+        S_Skill1,
+        S_Skill2,
+        S_Skill3
+    }
     public Type type;
     public GameObject upObj;
     public int[] price;
@@ -25,7 +31,10 @@ public class Reinforce_Grid : MonoBehaviour
     void Start()
     {
         b = GetComponent<Button>();
-        b.onClick.AddListener(() => Upgrade());
+        if(SceneManager.GetActiveScene().name == "Stage_Scene")
+            b.onClick.AddListener(() => Reinforce());
+        else
+            b.onClick.AddListener(() => Upgrade());
         txt = transform.GetChild(0).GetComponent<Text>();
         Refresh();
 
@@ -47,7 +56,7 @@ public class Reinforce_Grid : MonoBehaviour
 
     }
 
-    public void Upgrade()
+    public void Reinforce()
     {
         if (price[currTier] <= GameManager.instance.Gold)
         {
@@ -55,10 +64,11 @@ public class Reinforce_Grid : MonoBehaviour
             if (type == Type.Unit)
                 upObj.GetComponent<Unit>().Upgrade(upPer[currTier]);
             
-            currTier++;
 
             // amt += amt * upPer[currTier] / 100; // 퍼센트 방식
             amt += upPer[currTier]; // 값 증가 방식
+
+            currTier++;
 
             if (type == Type.Skill1)
                 upObj.GetComponent<SkillMgr>().Time_shield = amt;
@@ -72,6 +82,49 @@ public class Reinforce_Grid : MonoBehaviour
                 upObj.transform.GetChild(0).GetComponent<EnemyDam>().DamageAmt = (int)amt;
             }
 
+            if (price.Length - 1 < currTier)
+            {
+                txt.text = "Max";
+                b.onClick.RemoveAllListeners();
+                return;
+            }
+
+            Refresh();
+        }
+    }
+
+    public void Upgrade()
+    {
+        Debug.Log(currTier);
+        if (price[currTier] <= GameManager.instance.starCt)
+        {
+            GameManager.instance.starCt -= price[currTier];
+
+            // amt += amt * upPer[currTier] / 100; // 퍼센트 방식
+            amt += upPer[currTier]; // 값 증가 방식
+
+            currTier++;
+            /*
+            if (type == Type.S_Hp)
+                upObj.GetComponent<SkillMgr>().Time_shield = amt;
+            else if (type == Type.S_Attack)
+            {
+                upObj.GetComponent<EnemyDam_Multiple>().DamageAmt = (int)amt;
+
+            }
+            else if (type == Type.S_Skill1)
+            {
+                upObj.transform.GetChild(0).GetComponent<EnemyDam>().DamageAmt = (int)amt;
+            }
+            else if (type == Type.S_Skill2)
+            {
+                upObj.transform.GetChild(0).GetComponent<EnemyDam>().DamageAmt = (int)amt;
+            }
+            else if (type == Type.S_Skill3)
+            {
+                upObj.transform.GetChild(0).GetComponent<EnemyDam>().DamageAmt = (int)amt;
+            }
+            */
 
             if (price.Length - 1 < currTier)
             {
@@ -79,9 +132,9 @@ public class Reinforce_Grid : MonoBehaviour
                 b.onClick.RemoveAllListeners();
                 return;
             }
+
             Refresh();
         }
-
     }
 
 

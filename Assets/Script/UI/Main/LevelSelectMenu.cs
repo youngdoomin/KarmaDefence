@@ -10,6 +10,10 @@ public class LevelSelectMenu : MonoBehaviour
     private int totalPage = 0; 
     private int page = 0; // 페이지
     private int pageItem = 9; // 페이지 당 스테이지 개수
+
+    private GameObject bfObj;
+    private bool isFirst;
+    private bool isLaunched;
     // public GameObject nextButton;
     // public GameObject backButton;
 
@@ -30,7 +34,7 @@ public class LevelSelectMenu : MonoBehaviour
             unlockedLevel += 1;
         }
 
-        int star = GetStar(level);
+        int star = GetStar(level, this.gameObject);
         star = Mathf.Clamp(star + 1, 0, 3);
         SetStar(level, star);
         Refresh();
@@ -61,13 +65,16 @@ public class LevelSelectMenu : MonoBehaviour
             if (level <= totalLevel)
             {
                 levelButtons[i].gameObject.SetActive(true);
-                levelButtons[i].Setup(level, GetStar(level), level <= unlockedLevel);
+                int star = GetStar(level, levelButtons[i].gameObject);
+                
+                if(star > 0 && isFirst && !isLaunched) { unlockedLevel += 1; }
+                levelButtons[i].Setup(level, star, level <= unlockedLevel);
 
             }
             else
                 levelButtons[i].gameObject.SetActive(false);
         }
-
+        isLaunched = true;
         // CheckButton();
     }
     /*
@@ -83,8 +90,18 @@ public class LevelSelectMenu : MonoBehaviour
         PlayerPrefs.SetInt(GetKey(level), starAmt);
     }
 
-    private int GetStar(int level)
+    private int GetStar(int level, GameObject obj)
     {
+        if (!isLaunched)
+        {
+            if(bfObj != obj)
+            {
+                bfObj = obj;
+                isFirst = true;
+            }
+            else { isFirst = false; }
+
+        }
         return PlayerPrefs.GetInt(GetKey(level));
     }
 
