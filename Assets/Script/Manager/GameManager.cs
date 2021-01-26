@@ -142,9 +142,32 @@ public class GameManager : MonoBehaviour
 
     public void TestStar()
     {
-        starCt = PlayerPrefs.GetInt("saveStarCt");
         starCt++;
-        currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
         PlayerPrefs.SetInt("saveStarCt", starCt);
+        currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
     }
+    
+    public void RefreshStar()
+    {
+        // PlayerPrefs.SetInt("saveStarCt", starCt);
+        currStar.GetComponent<Text>().text = starCt.ToString();
+    }
+
+    public void CancelUpgrade() 
+    {
+        PlayerPrefs.SetInt("saveStarCt", starCt);
+        currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
+        Reinforce_Grid[] rgs = (Reinforce_Grid[])GameObject.FindObjectsOfType(typeof(Reinforce_Grid));
+        foreach (Reinforce_Grid rg in rgs)
+        {
+            rg.currTier = PlayerPrefs.GetInt(rg.gameObject.name);
+            rg.Refresh();
+        }
+    }
+
+    public void SaveUpgrade()
+    {
+
+    }
+
 }

@@ -16,7 +16,7 @@ public class Reinforce_Grid : MonoBehaviour
         Skill3,
 
         S_Hp,
-        S_Attack,
+        S_Damage,
         S_Skill1,
         S_Skill2,
         S_Skill3
@@ -25,8 +25,10 @@ public class Reinforce_Grid : MonoBehaviour
     public GameObject upObj;
     public int[] price;
     Text txt;
+    Text starTxt;
     Button b;
-    int currTier;
+    [HideInInspector]
+    public int currTier;
 
     void Start()
     {
@@ -34,7 +36,11 @@ public class Reinforce_Grid : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Stage_Scene")
             b.onClick.AddListener(() => Reinforce());
         else
+        {
             b.onClick.AddListener(() => Upgrade());
+            starTxt = GameObject.Find("StarText").GetComponent<Text>();
+            PlayerPrefs.SetInt(this.gameObject.name, currTier);
+        }
         txt = transform.GetChild(0).GetComponent<Text>();
         Refresh();
 
@@ -96,10 +102,10 @@ public class Reinforce_Grid : MonoBehaviour
     public void Upgrade()
     {
         Debug.Log(currTier);
-        if (price[currTier] <= GameManager.instance.starCt)
+        if (price[currTier] <= int.Parse(starTxt.text))
         {
-            GameManager.instance.starCt -= price[currTier];
-
+            starTxt.text = (int.Parse(starTxt.text) - price[currTier]).ToString();
+            // GameManager.instance.RefreshStar();
             // amt += amt * upPer[currTier] / 100; // 퍼센트 방식
             amt += upPer[currTier]; // 값 증가 방식
 
@@ -138,7 +144,7 @@ public class Reinforce_Grid : MonoBehaviour
     }
 
 
-    void Refresh()
+    public void Refresh()
     {
         txt.text = price[currTier].ToString();
         
