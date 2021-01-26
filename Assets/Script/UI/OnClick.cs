@@ -104,9 +104,9 @@ public class OnClick : MonoBehaviour
         LoadScene(i);
     }
 
-    public void GoFirst()
+    public void GoMain()
     {
-        LoadScene(0);
+        LoadScene(1);
     }
 
     public void GoAgain()

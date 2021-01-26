@@ -25,7 +25,8 @@ public class Reinforce_Grid : MonoBehaviour
     public GameObject upObj;
     public int[] price;
     Text txt;
-    Text starTxt;
+    [HideInInspector]
+    public Text starTxt;
     Button b;
     [HideInInspector]
     public int currTier;
@@ -39,7 +40,7 @@ public class Reinforce_Grid : MonoBehaviour
         {
             b.onClick.AddListener(() => Upgrade());
             starTxt = GameObject.Find("StarText").GetComponent<Text>();
-            PlayerPrefs.SetInt(this.gameObject.name, currTier);
+            currTier = PlayerPrefs.GetInt(this.gameObject.name);
         }
         txt = transform.GetChild(0).GetComponent<Text>();
         Refresh();
@@ -113,7 +114,7 @@ public class Reinforce_Grid : MonoBehaviour
             /*
             if (type == Type.S_Hp)
                 upObj.GetComponent<SkillMgr>().Time_shield = amt;
-            else if (type == Type.S_Attack)
+            else if (type == Type.S_Damage)
             {
                 upObj.GetComponent<EnemyDam_Multiple>().DamageAmt = (int)amt;
 
@@ -148,5 +149,10 @@ public class Reinforce_Grid : MonoBehaviour
     {
         txt.text = price[currTier].ToString();
         
+    }
+
+    public void Save()
+    {
+        PlayerPrefs.SetInt(this.gameObject.name, currTier);
     }
 }

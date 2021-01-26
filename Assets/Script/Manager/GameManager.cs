@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public int CurrentMoney, Gold;
     [HideInInspector]
     public int starCt;
+    [HideInInspector]
+    public int stageStar;
     public Sprite starSprite;
 
     public GameObject winObj;
@@ -47,7 +49,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int thisStage;
 
-
+    Reinforce_Grid[] rgs;
 
     void Awake()
     {
@@ -58,7 +60,7 @@ public class GameManager : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Stage_Scene")
         {
             Debug.Log("star active");
-            starCt = PlayerPrefs.GetInt("saveStarCt");
+            stageStar = PlayerPrefs.GetInt("stageStarCt");
             for (int i = 0; i < star.Count; i++)
             {
                 star[i] = PlayerPrefs.GetInt(strings[i]);
@@ -71,7 +73,11 @@ public class GameManager : MonoBehaviour
 
         }
         else
+        {
+            starCt = PlayerPrefs.GetInt("saveStarCt");
             currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
+            rgs = (Reinforce_Grid[])GameObject.FindObjectsOfType(typeof(Reinforce_Grid));
+        }
         
 
     }
@@ -129,11 +135,11 @@ public class GameManager : MonoBehaviour
     {
         if(star[i] == 0)
         {
-            starCt++;
+            stageStar++;
             star[i] = 1;
             PlayerPrefs.SetInt("saveInt", star[i]);
-            PlayerPrefs.SetInt("saveStarCt", starCt);
-            PlayerPrefs.SetInt(strings[i], starCt);
+            PlayerPrefs.SetInt("saveStarCt", stageStar);
+            PlayerPrefs.SetInt(strings[i], stageStar);
             IsComplete[i] = true;
             ui[i].starObj.sprite = starSprite;
 
@@ -157,7 +163,6 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("saveStarCt", starCt);
         currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
-        Reinforce_Grid[] rgs = (Reinforce_Grid[])GameObject.FindObjectsOfType(typeof(Reinforce_Grid));
         foreach (Reinforce_Grid rg in rgs)
         {
             rg.currTier = PlayerPrefs.GetInt(rg.gameObject.name);
@@ -167,7 +172,13 @@ public class GameManager : MonoBehaviour
 
     public void SaveUpgrade()
     {
-
+        foreach (Reinforce_Grid rg in rgs)
+        {
+            rg.Save();
+        }
+        starCt = int.Parse(FindObjectOfType<Reinforce_Grid>().starTxt.text);
+        PlayerPrefs.SetInt("saveStarCt", starCt);
+        currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
     }
 
 }
