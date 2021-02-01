@@ -27,6 +27,7 @@ public class SkillMgr : MonoBehaviour
     }
     private void Start()
     {
+        Time_shield += PlayerPrefs.GetFloat("skill1");
         unitCt = GameObject.Find("MyHq").GetComponent<UnitSpawn>().spawnCt * GameObject.Find("MyHq").GetComponent<UnitSpawn>().Units.Length;
         shieldPool();
         skillPool(1, RainPos);

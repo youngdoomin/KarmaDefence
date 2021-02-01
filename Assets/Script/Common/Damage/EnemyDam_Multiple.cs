@@ -22,6 +22,7 @@ public class EnemyDam_Multiple : MonoBehaviour
     void Start()
     {
         StartCoroutine(AttackDelay());
+        DamageAmt += (int)PlayerPrefs.GetFloat("skill2");
     }
     private void OnEnable()
     {

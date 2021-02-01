@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelSelectMenu : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class LevelSelectMenu : MonoBehaviour
         {
             unlockedLevel += 1;
         }
+        SceneManager.LoadScene(2);
 
         int star = GetStar(level, this.gameObject);
         star = Mathf.Clamp(star + 1, 0, 3);

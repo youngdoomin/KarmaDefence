@@ -10,7 +10,7 @@ public class EnemyDam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        DamageAmt += (int)PlayerPrefs.GetFloat("skill3");
     }
 
     // Update is called once per frame

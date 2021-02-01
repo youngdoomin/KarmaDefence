@@ -35,7 +35,12 @@ public class Unit : MonoBehaviour
     void Start()
     {
         if (this.gameObject.tag == "Friendly" && this.gameObject.layer == 13)   // 상대방 구분
-        { OtherTag = "Enemy"; }
+        {
+            Debug.Log(PlayerPrefs.GetFloat("unitDamage"));
+            OtherTag = "Enemy";
+            Damage += (int)PlayerPrefs.GetFloat("unitDamage");
+            this.gameObject.GetComponent<UnitHp>().Hp += (int)PlayerPrefs.GetFloat("unitHp");
+        }
         else
         { OtherTag = "Friendly"; }
 

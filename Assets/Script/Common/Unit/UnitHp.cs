@@ -29,7 +29,8 @@ public class UnitHp : MonoBehaviour
     }
     private void OnEnable()
     {
-        if(uiCanvas != null)
+
+        if (uiCanvas != null)
             RestartHpBar(uiCanvas);
     }
 

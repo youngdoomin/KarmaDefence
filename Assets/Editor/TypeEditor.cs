@@ -11,7 +11,6 @@ public class TypeEditor : Editor
         AttackRange_Prop,
         Speed_Prop,
         AttackSpeed_Prop,
-        Effect_Prop,
 
         Projectile_Prop,
         ShootPos_Prop;
@@ -26,7 +25,6 @@ public class TypeEditor : Editor
         AttackRange_Prop = serializedObject.FindProperty("AttackRange");
         Speed_Prop = serializedObject.FindProperty("Speed");
         AttackSpeed_Prop = serializedObject.FindProperty("AttackSpeed");
-        Effect_Prop = serializedObject.FindProperty("Effect");
 
         Projectile_Prop = serializedObject.FindProperty("Projectile");
         ShootPos_Prop = serializedObject.FindProperty("ShootPos");
@@ -47,10 +45,10 @@ public class TypeEditor : Editor
                 EditorGUILayout.ObjectField(Projectile_Prop);
                 EditorGUILayout.ObjectField(ShootPos_Prop);
                 break;
-
+                /*
             case Unit.Type.Fighter:
-                EditorGUILayout.ObjectField(Effect_Prop);
                 break;
+                */
         }
 
         EditorGUILayout.IntSlider(Damage_Prop, 0, 100, new GUIContent("Damage"));
