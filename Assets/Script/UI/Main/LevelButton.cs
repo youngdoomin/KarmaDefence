@@ -53,6 +53,7 @@ public class LevelButton : MonoBehaviour
     public void OnClick()
     {
         Debug.Log(level);
+        PlayerPrefs.SetInt("level", level);
         menu.StartLevel(level);
     }
 

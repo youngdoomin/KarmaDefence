@@ -92,15 +92,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0a511f38b9a934f8238cf82cd854b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Damage: 
+  _AttackRange: []
+  _Speed: []
+  _AttackSpeed: []
   Damage: 40
   AttackRange: 15
   Speed: 2
   AttackSpeed: 1.3
-  Effect: {fileID: 0}
   Projectile: {fileID: 3034869627125675292, guid: e1261d4beee51da47aaec96643eaa041,
     type: 3}
   ShootPos: {fileID: 8117295667743041498}
   Class: 0
+  Teams: 1
 --- !u!54 &7885818714885721405
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -203,4 +207,4 @@ MonoBehaviour:
   hpBarPrefab: {fileID: 350518011063597351, guid: 66ebd127edcb5bb45a1d31937afd9952,
     type: 3}
   hpBarOffset: {x: 0, y: 2.2, z: 0}
-  incGold: 300
+  incGold: 0100000002000000030000000400000005000000

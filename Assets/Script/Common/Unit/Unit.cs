@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    /*
+    public int[] _Damage;
+    public float[] _AttackRange;  // 공격 사거리
+    public float[] _Speed;
+    public float[] _AttackSpeed;
+    */
+
     public int Damage;
     public float AttackRange;  // 공격 사거리
     public float Speed;
@@ -32,17 +39,19 @@ public class Unit : MonoBehaviour
     }
 
     public Type Class;
+
     void Start()
     {
         if (this.gameObject.tag == "Friendly" && this.gameObject.layer == 13)   // 상대방 구분
         {
-            Debug.Log(PlayerPrefs.GetFloat("unitDamage"));
             OtherTag = "Enemy";
             Damage += (int)PlayerPrefs.GetFloat("unitDamage");
             this.gameObject.GetComponent<UnitHp>().Hp += (int)PlayerPrefs.GetFloat("unitHp");
         }
         else
-        { OtherTag = "Friendly"; }
+        { 
+            OtherTag = "Friendly";
+        }
 
         FindObj();
         //rb = GetComponent<Rigidbody>();

@@ -24,7 +24,6 @@ public class UnitHp : MonoBehaviour
         //생명 게이지의 생성 및 초기화
         uiCanvas = GameObject.Find("UICanvas").GetComponent<Canvas>();
         //overlayCanvas = GameObject.Find("UICanvas_Overlay").GetComponent<Canvas>();
-
         SetHpBar(uiCanvas);
     }
     private void OnEnable()
@@ -49,6 +48,10 @@ public class UnitHp : MonoBehaviour
             hpBarImage.transform.parent.gameObject.SetActive(false);
             Disable();
         }
+    }
+    protected virtual void StageStat()
+    {
+        return;
     }
 
     protected virtual void Disable()

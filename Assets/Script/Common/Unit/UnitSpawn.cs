@@ -4,7 +4,6 @@ using UnityEngine;
 public class UnitSpawn : MonoBehaviour
 {
     public bool IsSpawn;
-    public float[] SpawnDelay;
     public Transform SpawnPos;
 
     public GameObject[] Units;
@@ -12,6 +11,7 @@ public class UnitSpawn : MonoBehaviour
     public int spawnCt;
     public float zAxis;
     public int chooseUnit;
+    public int[] spawnTime;
 
     private GameObject unitObj;
 
@@ -65,7 +65,9 @@ public class UnitSpawn : MonoBehaviour
             {
                 spawnObj.SetActive(true);
                 spawnObj.transform.position = Pos;
-                yield return new WaitForSeconds(SpawnDelay[random]);
+                Debug.Log(PlayerPrefs.GetInt("level"));
+                Debug.Log(spawnTime[spawnTime.Length / Units.Length * random + PlayerPrefs.GetInt("level")]);
+                yield return new WaitForSeconds(spawnTime[spawnTime.Length / Units.Length * random + PlayerPrefs.GetInt("level")]);
                 //spawnObj.transform.rotation = transform.rotation * Quaternion.Euler(0f, 180f, 0f);
                 break;
             }
