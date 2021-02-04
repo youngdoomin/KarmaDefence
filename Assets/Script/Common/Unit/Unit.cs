@@ -16,6 +16,10 @@ public class Unit : MonoBehaviour
     public float Speed;
     public float AttackSpeed;
 
+    public int IncHp;
+    public int IncDam;
+    public float DecAttSp;
+
     public GameObject Projectile;   // 원거리 투사체
     public Transform ShootPos;  // 발사 위치
 
@@ -51,6 +55,12 @@ public class Unit : MonoBehaviour
         else
         { 
             OtherTag = "Friendly";
+            for (int i = 1; i < PlayerPrefs.GetInt("level"); i++)
+            {
+                Damage += IncDam;
+                this.gameObject.GetComponent<UnitHp>().Hp += IncHp;
+                AttackSpeed -= DecAttSp;
+            }
         }
 
         FindObj();

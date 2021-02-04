@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class HQHP_Enemy : UnitHp
 {
+    public int incHp;
     public Transform bossPos;
-    // public GameObject boss;
 
+    protected override void SetHp()
+    {
+        for (int i = 1; i < PlayerPrefs.GetInt("level"); i++)
+        {
+            Hp += incHp;
+        }
+        initHp = Hp;
+    }
     protected override void Disable()
     {
         //Instantiate(boss, bossPos);

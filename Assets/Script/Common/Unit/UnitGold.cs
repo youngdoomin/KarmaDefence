@@ -11,7 +11,7 @@ public class UnitGold : UnitHp
     {
         Hp = (int)initHp;
         GameManager.instance.killCt++;
-        GameManager.instance.Gold += incGold[(int)PlayerPrefs.GetFloat("level") - 1];
+        GameManager.instance.Gold += incGold[PlayerPrefs.GetInt("level") - 1];
         gameObject.SetActive(false);
     }
 }

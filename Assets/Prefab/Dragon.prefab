@@ -19117,7 +19117,9 @@ MonoBehaviour:
   AttackRange: 6.2
   Speed: 1.5
   AttackSpeed: 1.4
-  Effect: {fileID: 0}
+  IncDam: 30
+  IncHp: 1500
+  DecAttSp: 0.2
   Projectile: {fileID: 3034869627125675292, guid: b6e1bae27d44b014d866477d956bfc6e,
     type: 3}
   ShootPos: {fileID: 8117295667743041498}
@@ -19220,6 +19222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 1000
+  initHp: 0
   hpBarPrefab: {fileID: 350518011063597351, guid: 66ebd127edcb5bb45a1d31937afd9952,
     type: 3}
   hpBarOffset: {x: 0, y: 10, z: 0}

@@ -10817,11 +10817,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ec073ce76d24f4f8d557d55070524c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 3
+  Hp: 300
   initHp: 0
   hpBarPrefab: {fileID: 350518011063597351, guid: 66ebd127edcb5bb45a1d31937afd9952,
     type: 3}
   hpBarOffset: {x: 0, y: 6, z: 0}
+  incHp: 200
   bossPos: {fileID: 2084616682}
 --- !u!4 &1236974887920899050
 Transform:
@@ -11225,11 +11226,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edaea8dce94ac084798b5f0131d54341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 5000000
+  Hp: 300
   initHp: 0
   hpBarPrefab: {fileID: 2592966944224695532, guid: c94a84d48093b08429407051b72d791d,
     type: 3}
   hpBarOffset: {x: 0, y: 6, z: 0}
+  incHp: 200
   loseObj: {fileID: 1212324292}
 --- !u!4 &4692491109310275642
 Transform:

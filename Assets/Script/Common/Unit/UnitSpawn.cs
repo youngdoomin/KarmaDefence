@@ -66,8 +66,8 @@ public class UnitSpawn : MonoBehaviour
                 spawnObj.SetActive(true);
                 spawnObj.transform.position = Pos;
                 Debug.Log(PlayerPrefs.GetInt("level"));
-                Debug.Log(spawnTime[spawnTime.Length / Units.Length * random + PlayerPrefs.GetInt("level")]);
-                yield return new WaitForSeconds(spawnTime[spawnTime.Length / Units.Length * random + PlayerPrefs.GetInt("level")]);
+                Debug.Log(spawnTime[spawnTime.Length / Units.Length * random + PlayerPrefs.GetInt("level") - 1]);
+                yield return new WaitForSeconds(spawnTime[spawnTime.Length / Units.Length * random + PlayerPrefs.GetInt("level") - 1]);
                 //spawnObj.transform.rotation = transform.rotation * Quaternion.Euler(0f, 180f, 0f);
                 break;
             }

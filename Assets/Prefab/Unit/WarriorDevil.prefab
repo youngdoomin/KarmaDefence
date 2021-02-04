@@ -106,34 +106,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0a511f38b9a934f8238cf82cd854b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Damage: 0200000000000000000000000000000000000000
-  _AttackRange:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  _Speed:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  _AttackSpeed:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
   Damage: 20
   AttackRange: 5
   Speed: 3
   AttackSpeed: 2
+  IncDam: 10
+  IncHp: 30
+  DecAttSp: 0
   Projectile: {fileID: 3034869627125675292, guid: b6e1bae27d44b014d866477d956bfc6e,
     type: 3}
   ShootPos: {fileID: 0}
   Class: 1
-  Teams: 1
 --- !u!54 &3320352487613716193
 Rigidbody:
   m_ObjectHideFlags: 0

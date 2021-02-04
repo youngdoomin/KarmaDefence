@@ -13,8 +13,11 @@ public class TypeEditor : Editor
         AttackSpeed_Prop,
 
         Projectile_Prop,
-        ShootPos_Prop;
+        ShootPos_Prop,
 
+        IncHp_Prop,
+        IncDam_Prop,
+        DecAttSp_Prop;
         //controllable_Prop;
 
     void OnEnable()
@@ -28,6 +31,10 @@ public class TypeEditor : Editor
 
         Projectile_Prop = serializedObject.FindProperty("Projectile");
         ShootPos_Prop = serializedObject.FindProperty("ShootPos");
+
+        IncHp_Prop = serializedObject.FindProperty("IncHp");
+        IncDam_Prop = serializedObject.FindProperty("IncDam");
+        DecAttSp_Prop = serializedObject.FindProperty("DecAttSp");
         //controllable_Prop = serializedObject.FindProperty("controllable");
     }
 
@@ -55,6 +62,10 @@ public class TypeEditor : Editor
         EditorGUILayout.Slider(AttackRange_Prop, 0, 100, new GUIContent("AttackRange"));
         EditorGUILayout.Slider(AttackSpeed_Prop, 0, 100, new GUIContent("AttackSpeed"));
         EditorGUILayout.Slider(Speed_Prop, 0, 100, new GUIContent("Speed"));
+
+        EditorGUILayout.IntSlider(IncHp_Prop, 0, 2000, new GUIContent("IncHp"));
+        EditorGUILayout.IntSlider(IncDam_Prop, 0, 100, new GUIContent("IncDam"));
+        EditorGUILayout.Slider(DecAttSp_Prop, 0, 100, new GUIContent("DecAttSp"));
 
         serializedObject.ApplyModifiedProperties();
     }

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class UnitHp : MonoBehaviour
 {
-    public int Hp;
+    [ReadOnly(true)]public int Hp;
     [HideInInspector]
     public float initHp;
 
@@ -20,7 +21,7 @@ public class UnitHp : MonoBehaviour
 
     void Start()
     {
-        initHp = Hp;
+        SetHp();
         //생명 게이지의 생성 및 초기화
         uiCanvas = GameObject.Find("UICanvas").GetComponent<Canvas>();
         //overlayCanvas = GameObject.Find("UICanvas_Overlay").GetComponent<Canvas>();
@@ -58,6 +59,11 @@ public class UnitHp : MonoBehaviour
     {
         Hp = (int)initHp;
         gameObject.SetActive(false);
+    }
+
+    protected virtual void SetHp()
+    {
+        initHp = Hp;
     }
 
     void SetHpBar(Canvas canvas)
