@@ -114916,7 +114916,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDestroy: 0
   DamageAmt: 30
+  WaitTime: 0
   WaitDestroy: 0
+  hitMax: 0
+  skill: 1
 --- !u!54 &5469320495319456210
 Rigidbody:
   m_ObjectHideFlags: 0

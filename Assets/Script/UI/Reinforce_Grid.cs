@@ -49,12 +49,12 @@ public class Reinforce_Grid : MonoBehaviour
             amt = upObj.GetComponent<SkillMgr>().Time_shield;
         else if (type == Type.Skill2)
         {
-            amt = upObj.GetComponent<EnemyDam_Multiple>().DamageAmt;
+            amt = upObj.GetComponent<SkillDam>().DamageAmt;
 
         }
         else if (type == Type.Skill3)
         {
-            amt = upObj.transform.GetChild(0).GetComponent<EnemyDam>().DamageAmt;
+            amt = upObj.transform.GetChild(0).GetComponent<SkillDam>().DamageAmt;
         }
     }
 
@@ -76,17 +76,18 @@ public class Reinforce_Grid : MonoBehaviour
             amt += upPer[currTier]; // 값 증가 방식
 
             currTier++;
+            GameManager.instance.reinforceCt++;
 
             if (type == Type.Skill1)
                 upObj.GetComponent<SkillMgr>().Time_shield = amt;
             else if (type == Type.Skill2)
             {
-                upObj.GetComponent<EnemyDam_Multiple>().DamageAmt = (int)amt;
+                upObj.GetComponent<SkillDam>().DamageAmt = (int)amt;
 
             }
             else if (type == Type.Skill3)
             {
-                upObj.transform.GetChild(0).GetComponent<EnemyDam>().DamageAmt = (int)amt;
+                upObj.transform.GetChild(0).GetComponent<SkillDam>().DamageAmt = (int)amt;
             }
 
             if (price.Length - 1 < currTier)

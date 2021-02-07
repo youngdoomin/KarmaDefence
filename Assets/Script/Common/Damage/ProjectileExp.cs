@@ -31,7 +31,7 @@ public class ProjectileExp : ProjectileDefault
             {
                 if (col.gameObject.tag == this.gameObject.tag)
                 {
-                    coll.GetComponent<UnitHp>().Damaged(int.Parse(this.gameObject.name));
+                    coll.GetComponent<UnitHp>().Damaged(int.Parse(this.gameObject.name), "Magic");
                     Invoke("False", 1);
                 }
             }

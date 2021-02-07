@@ -83,15 +83,6 @@ public class OnClick : MonoBehaviour
         // else { i = s; }
         i = s;
 
-        try
-        {
-            GameManager.instance.thisStage = i;
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e.ToString());
-        }
-
         SceneManager.LoadScene(s, LoadSceneMode.Single);
     }
 

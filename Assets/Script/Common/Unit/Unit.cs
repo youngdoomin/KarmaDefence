@@ -186,7 +186,7 @@ public class Unit : MonoBehaviour
         yield return new WaitForSeconds(AttackSpeed);
         if (Enemy != null && Enemy.activeSelf && Mathf.Abs(Enemy.transform.position.x - transform.position.x) <= AttackRange + Enemy.transform.localScale.x)
         {
-            Enemy.GetComponent<UnitHp>().Damaged(Damage);
+            Enemy.GetComponent<UnitHp>().Damaged(Damage, "Sword");
             ShowEffect(Enemy);
             animator.SetBool(hashAttack, false);
             yield return new WaitForSeconds(AttackSpeed);

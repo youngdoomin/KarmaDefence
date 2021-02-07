@@ -12,10 +12,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
-    [HideInInspector]
-    //List<QuestInfo> Quests = new List<QuestInfo>();
-    public QuestInfo[] Quests;
-    private List<bool> IsComplete = new List<bool> { false, false, false };
+    public StageQuest[] stQuest;
+    // public QuestInfo[] Quests;
+    // private List<bool> IsComplete = new List<bool> { false, false, false };
     [SerializeField]
     public QuestUI[] ui;
     public int fast;
@@ -33,32 +32,45 @@ public class GameManager : MonoBehaviour
     public GameObject currStar;
 
 
-    private List<int> star = new List<int>{0, 0, 0};
-    private List<string> strings = new List<string> { "one", "two", "three" }; 
-    private bool cleared;
+    // private List<int> star = new List<int>{0, 0, 0};
+    // private List<string> strings = new List<string> { "one", "two", "three" }; 
     [HideInInspector]
     public int spawnCt;
     [HideInInspector]
     public int killCt;
     [HideInInspector]
+    public int killbySkillCt;
+    [HideInInspector]
+    public int killbySwordCt;
+    [HideInInspector]
+    public int killbyBowCt;
+    [HideInInspector]
+    public int bossHitbySkill;
+    [HideInInspector]
     public int reinforceCt;
     [HideInInspector]
-    public int saveHPCt;
+    public int saveHQCt;
     [HideInInspector]
     public int saveUnitCt;
-    [HideInInspector]
-    public int thisStage;
 
     Reinforce_Grid[] rgs;
 
+    [System.Serializable]
+    public class StageQuest
+    {
+        public QuestInfo[] Quests;
+    }
     void Awake()
     {
         instance = this;
 
         Time.timeScale = 1;
         
+        starCt = PlayerPrefs.GetInt("saveStarCt");
+
         if(SceneManager.GetActiveScene().name == "Stage_Scene")
         {
+            /*
             Debug.Log("star active");
             stageStar = PlayerPrefs.GetInt("stageStarCt");
             for (int i = 0; i < star.Count; i++)
@@ -70,11 +82,10 @@ public class GameManager : MonoBehaviour
 
                 }
             }
-
+            */
         }
         else
         {
-            starCt = PlayerPrefs.GetInt("saveStarCt");
             currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
             rgs = (Reinforce_Grid[])GameObject.FindObjectsOfType(typeof(Reinforce_Grid));
         }
@@ -84,57 +95,91 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
-
     // Update is called once per frame
     void Update()
     {
 
     }
 
-
+    
     public void Result()
     {
-        cleared = true;
-
-        for (int i = 0; i < Quests.Length; i++)
+        StageQuest q = stQuest[PlayerPrefs.GetInt("level") - 1];
+        for (int i = 0; i < q.Quests.Length; i++)
         {
-            if (Quests[i].Type == QuestInfo.questType.Clear)
+            if (q.Quests[i].Type == QuestInfo.questType.Clear)
             {
-                ui[i].text_Quest.text = "스테이지 " + Quests[i].QuestValue + " 클리어 하기";
-                if(cleared == true) { CheckStar(i); }
+                ui[i].text_Quest.text = "스테이지 " + q.Quests[i].QuestValue + " 클리어 하기";
+                CheckStar(i);
             }
-            else if(Quests[i].Type == QuestInfo.questType.Spawn)
+            else if(q.Quests[i].Type == QuestInfo.questType.Spawn)
             {
-                ui[i].text_Quest.text = "천사 유닛 " + Quests[i].QuestValue + " 명 이상 소환하기";
-                if (spawnCt > Quests[i].QuestValue) { CheckStar(i); }
+                ui[i].text_Quest.text = "천사 유닛 " + q.Quests[i].QuestValue + " 명 이상 소환하기";
+                if (spawnCt > q.Quests[i].QuestValue) { CheckStar(i); }
             }
-            else if (Quests[i].Type == QuestInfo.questType.Kill)
+            else if (q.Quests[i].Type == QuestInfo.questType.Kill)
             {
-                ui[i].text_Quest.text = "악마 유닛 " + Quests[i].QuestValue + " 마리 처치하기";
-                if (killCt > Quests[i].QuestValue) { CheckStar(i); }
+                ui[i].text_Quest.text = "악마 유닛 " + q.Quests[i].QuestValue + " 마리 처치하기";
+                if (killCt > q.Quests[i].QuestValue) { CheckStar(i); }
             }
-            else if (Quests[i].Type == QuestInfo.questType.Reinforce)
+            else if (q.Quests[i].Type == QuestInfo.questType.KillbySkill)
             {
-                if (reinforceCt > Quests[i].QuestValue) { CheckStar(i); }
+                ui[i].text_Quest.text = "대 천사 스킬로 악마 유닛 " + q.Quests[i].QuestValue + " 마리 처치하기";
+                // if (killCt > Quests[i].QuestValue) { CheckStar(i); } // 대 천사 스킬 킬카운트 변수 생성 필요
             }
-            else if (Quests[i].Type == QuestInfo.questType.SaveHP)
+            else if (q.Quests[i].Type == QuestInfo.questType.KillbySword)
             {
-                if (saveHPCt > Quests[i].QuestValue) { CheckStar(i); }
+                ui[i].text_Quest.text = "대 천사 스킬로 악마 유닛 " + q.Quests[i].QuestValue + " 마리 처치하기";
+                // if (killCt > Quests[i].QuestValue) { CheckStar(i); } // 대 천사 스킬 킬카운트 변수 생성 필요
             }
-            else if (Quests[i].Type == QuestInfo.questType.SaveUnit)
+            else if (q.Quests[i].Type == QuestInfo.questType.KillbyBow)
             {
-                if (saveUnitCt > Quests[i].QuestValue) { CheckStar(i); }
+                ui[i].text_Quest.text = "대 천사 스킬로 악마 유닛 " + q.Quests[i].QuestValue + " 마리 처치하기";
+                // if (killCt > Quests[i].QuestValue) { CheckStar(i); } // 대 천사 스킬 킬카운트 변수 생성 필요
+            }
+            else if (q.Quests[i].Type == QuestInfo.questType.BossHitbySkill)
+            {
+                ui[i].text_Quest.text = "궁수 유닛으로 악마 유닛 " + q.Quests[i].QuestValue + " 마리 처치하기";
+                // if (killCt > Quests[i].QuestValue) { CheckStar(i); } // 대 천사 스킬 킬카운트 변수 생성 필요
+            }
+            else if (q.Quests[i].Type == QuestInfo.questType.Reinforce)
+            {
+                if (reinforceCt > q.Quests[i].QuestValue) { CheckStar(i); }
+            }
+            else if (q.Quests[i].Type == QuestInfo.questType.SaveHP)
+            {
+                if (saveHQCt > q.Quests[i].QuestValue) { CheckStar(i); }
+            }
+            else if (q.Quests[i].Type == QuestInfo.questType.SaveUnit)
+            {
+                if (saveUnitCt > q.Quests[i].QuestValue) { CheckStar(i); }
             }
         }
         
     }
-
+    
     void CheckStar(int i)
     {
+        int lv = PlayerPrefs.GetInt("level");
+        // Get boolean using PlayerPrefs
+        var isDuplicate = PlayerPrefs.GetInt(lv + i.ToString()) == 1 ? true : false;
+        if (!isDuplicate)
+        {
+            isDuplicate = true;
+            PlayerPrefs.SetInt(lv + i.ToString(), isDuplicate ? 1 : 0);
+            starCt++;
+            Debug.Log(starCt);
+            PlayerPrefs.SetInt("saveStarCt", starCt);
+        }
+        ui[i].starObj.sprite = starSprite;
+
+        Debug.Log(lv + i.ToString());
+        /*
         if(star[i] == 0)
         {
+            
             stageStar++;
             star[i] = 1;
             PlayerPrefs.SetInt("saveInt", star[i]);
@@ -144,6 +189,7 @@ public class GameManager : MonoBehaviour
             ui[i].starObj.sprite = starSprite;
 
         }
+        */
     }
 
     public void TestStar()

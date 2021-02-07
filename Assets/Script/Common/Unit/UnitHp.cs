@@ -34,25 +34,45 @@ public class UnitHp : MonoBehaviour
             RestartHpBar(uiCanvas);
     }
 
-    public void Damaged(int damage)
+    public void Damaged(int damage, string str)
     {
 
         if (GameManager.instance.Invincible == false || this.gameObject.tag == "Enemy")
+        {
             Hp -= damage;
+            HitCheck(str);
+        }
 
         hpBarImage.fillAmount = Hp / initHp;
 
         if (Hp <= 0)
         {
-            //hpBarImage.GetComponentsInParent<RawImage>()[0].color = Color.clear;
-            //hpBarImage.transform.parent.GetComponent<RawImage>().color = Color.clear;
+            if (this.gameObject.tag == "Friendly")
+                KillCheck(str);
+            else
+                GameManager.instance.saveUnitCt--;
+
             hpBarImage.transform.parent.gameObject.SetActive(false);
             Disable();
         }
     }
-    protected virtual void StageStat()
+
+    void HitCheck(string str)
     {
-        return;
+        if (this.gameObject.name == "Dragon" && str == "Skill")
+            GameManager.instance.bossHitbySkill++;
+        else if (this.gameObject.name == "MyHq_HitBox")
+            GameManager.instance.saveHQCt = (int)(Hp / initHp) * 100;
+    }
+
+    void KillCheck(string str)
+    {
+        if(str == "Skill")
+            GameManager.instance.killbySkillCt++;
+        else if(str == "Sword")
+            GameManager.instance.killbySwordCt++;
+        else if (str == "Bow")
+            GameManager.instance.killbyBowCt++;
     }
 
     protected virtual void Disable()

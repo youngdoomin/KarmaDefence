@@ -24,7 +24,8 @@ public class ProjectileDefault : ProjectileSet
     {
         if (coll.gameObject.tag == this.gameObject.tag)
         {
-            coll.GetComponent<UnitHp>().Damaged(int.Parse(this.gameObject.name));
+            coll.GetComponent<UnitHp>().Damaged(int.Parse(this.gameObject.name), "Bow");
+             
             for (int i = 0; i < transform.childCount - 1; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(false);

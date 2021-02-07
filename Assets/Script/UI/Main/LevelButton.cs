@@ -32,7 +32,6 @@ public class LevelButton : MonoBehaviour
 
         if (isUnlock)
         {
-            Debug.Log("Open");
             image.sprite = btSprite;
             childImage.color = new Color(1, 1, 1, 0);
             button.enabled = true;
@@ -52,7 +51,6 @@ public class LevelButton : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log(level);
         PlayerPrefs.SetInt("level", level);
         menu.StartLevel(level);
     }
