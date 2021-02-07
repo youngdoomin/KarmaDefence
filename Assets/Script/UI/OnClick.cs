@@ -108,6 +108,7 @@ public class OnClick : MonoBehaviour
 
     public void Faster()
     {
+        Debug.Log("Clicked");
         isTrue_speed = !isTrue_speed;
         if (isTrue_speed) { Time.timeScale = GameManager.instance.fast; }
         else { Time.timeScale = 1; }

@@ -106,6 +106,8 @@ public class GameManager : MonoBehaviour
     
     public void Result()
     {
+        winObj.SetActive(true);
+
         StageQuest q = stQuest[PlayerPrefs.GetInt("level") - 1];
         for (int i = 0; i < q.Quests.Length; i++)
         {

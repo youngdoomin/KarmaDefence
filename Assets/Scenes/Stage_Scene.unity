@@ -1742,7 +1742,7 @@ MonoBehaviour:
   Hp_bar: {fileID: 0}
   spawnCt: 5
   zAxis: 2
-  chooseUnit: 3
+  chooseUnit: 2
   spawnTime: 040000000400000003000000030000000200000006000000060000000500000005000000040000000900000009000000080000000800000007000000
 --- !u!1 &477569543
 GameObject:
@@ -3349,12 +3349,12 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 774539129}
+  m_TargetGraphic: {fileID: 988473505}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 507464639}
-        m_MethodName: Result
+      - m_Target: {fileID: 581456967}
+        m_MethodName: Faster
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3717,7 +3717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
-  m_DragThreshold: 10
+  m_DragThreshold: 50
 --- !u!4 &911712546
 Transform:
   m_ObjectHideFlags: 0
@@ -10523,12 +10523,12 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2089773530}
+  m_TargetGraphic: {fileID: 1921334676}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 581456967}
-        m_MethodName: GoFirst
+        m_MethodName: GoMain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
