@@ -14,6 +14,7 @@ public class HQHP : UnitHp
             Hp += incHp;
         }
         initHp = Hp;
+        GameManager.instance.saveHQCt = (int)(Hp / initHp) * 100;
     }
     protected override void Disable()
     {

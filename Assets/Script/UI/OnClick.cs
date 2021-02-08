@@ -88,11 +88,8 @@ public class OnClick : MonoBehaviour
 
     public void GoNext() // 다음 씬으로 이동
     {
-        if (i < SceneManager.sceneCountInBuildSettings)
-        {
-            i++;
-        }
-        LoadScene(i);
+        PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
+        LoadScene(2);
     }
 
     public void GoMain()

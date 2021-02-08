@@ -52,6 +52,8 @@ public class LevelButton : MonoBehaviour
     public void OnClick()
     {
         PlayerPrefs.SetInt("level", level);
+        GameManager.instance.quest = GameManager.instance.stQuest[PlayerPrefs.GetInt("level") - 1];
+        GameManager.instance.Result();
         menu.StartLevel(level);
     }
 

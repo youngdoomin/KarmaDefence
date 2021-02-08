@@ -1994,15 +1994,18 @@ MonoBehaviour:
   starSprite: {fileID: 21300000, guid: 0416a79573f86fa44b638f9cd6af4161, type: 3}
   winObj: {fileID: 1883795576}
   currStar: {fileID: 0}
+  currStage: {fileID: 1995560359}
   spawnCt: 0
   killCt: 0
   killbySkillCt: 0
   killbySwordCt: 0
   killbyBowCt: 0
-  bossHitbySkill: 0
+  bossHitbySkillCt: 0
   reinforceCt: 0
   saveHQCt: 0
   saveUnitCt: 0
+  quest:
+    Quests: []
 --- !u!4 &507464640
 Transform:
   m_ObjectHideFlags: 0

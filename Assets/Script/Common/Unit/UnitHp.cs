@@ -60,7 +60,7 @@ public class UnitHp : MonoBehaviour
     void HitCheck(string str)
     {
         if (this.gameObject.name == "Dragon" && str == "Skill")
-            GameManager.instance.bossHitbySkill++;
+            GameManager.instance.bossHitbySkillCt++;
         else if (this.gameObject.name == "MyHq_HitBox")
             GameManager.instance.saveHQCt = (int)(Hp / initHp) * 100;
     }

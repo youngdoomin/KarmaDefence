@@ -34,7 +34,7 @@ public class LevelSelectMenu : MonoBehaviour
         {
             unlockedLevel += 1;
         }
-        SceneManager.LoadScene(2);
+        // SceneManager.LoadScene(2);
 
         int star = GetStar(level, this.gameObject);
         star = Mathf.Clamp(star + 1, 0, 3);

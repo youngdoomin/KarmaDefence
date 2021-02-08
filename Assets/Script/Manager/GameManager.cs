@@ -28,9 +28,10 @@ public class GameManager : MonoBehaviour
     public int stageStar;
     public Sprite starSprite;
 
+    bool toggle;
     public GameObject winObj;
     public GameObject currStar;
-
+    public Text currStage;
 
     // private List<int> star = new List<int>{0, 0, 0};
     // private List<string> strings = new List<string> { "one", "two", "three" }; 
@@ -45,7 +46,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int killbyBowCt;
     [HideInInspector]
-    public int bossHitbySkill;
+    public int bossHitbySkillCt;
     [HideInInspector]
     public int reinforceCt;
     [HideInInspector]
@@ -60,6 +61,8 @@ public class GameManager : MonoBehaviour
     {
         public QuestInfo[] Quests;
     }
+    [HideInInspector]
+    public StageQuest quest;
     void Awake()
     {
         instance = this;
@@ -70,6 +73,7 @@ public class GameManager : MonoBehaviour
 
         if(SceneManager.GetActiveScene().name == "Stage_Scene")
         {
+            quest = stQuest[PlayerPrefs.GetInt("level") - 1];
             /*
             Debug.Log("star active");
             stageStar = PlayerPrefs.GetInt("stageStarCt");
@@ -104,70 +108,85 @@ public class GameManager : MonoBehaviour
     }
 
     
+
+
     public void Result()
     {
-        winObj.SetActive(true);
-
-        StageQuest q = stQuest[PlayerPrefs.GetInt("level") - 1];
-        for (int i = 0; i < q.Quests.Length; i++)
+        toggle = !toggle;
+        winObj.SetActive(toggle);
+        currStage.text = "스테이지 " + PlayerPrefs.GetInt("level");
+        for (int i = 0; i < quest.Quests.Length; i++)
         {
-            if (q.Quests[i].Type == QuestInfo.questType.Clear)
+            if (quest.Quests[i].Type == QuestInfo.questType.Clear)
             {
-                ui[i].text_Quest.text = "스테이지 " + q.Quests[i].QuestValue + " 클리어 하기";
-                CheckStar(i);
+                ui[i].text_Quest.text = "스테이지 " + PlayerPrefs.GetInt("level") + " 클리어 하기";
+                CheckOrRefresh(i, 1);
             }
-            else if(q.Quests[i].Type == QuestInfo.questType.Spawn)
+            else if(quest.Quests[i].Type == QuestInfo.questType.Spawn)
             {
-                ui[i].text_Quest.text = "천사 유닛 " + q.Quests[i].QuestValue + " 명 이상 소환하기";
-                if (spawnCt > q.Quests[i].QuestValue) { CheckStar(i); }
+                ui[i].text_Quest.text = "천사 유닛 " + quest.Quests[i].QuestValue + "명 이상 소환하기";
+                CheckOrRefresh(i, spawnCt);
             }
-            else if (q.Quests[i].Type == QuestInfo.questType.Kill)
+            else if (quest.Quests[i].Type == QuestInfo.questType.Kill)
             {
-                ui[i].text_Quest.text = "악마 유닛 " + q.Quests[i].QuestValue + " 마리 처치하기";
-                if (killCt > q.Quests[i].QuestValue) { CheckStar(i); }
+                ui[i].text_Quest.text = "악마 유닛 " + quest.Quests[i].QuestValue + "마리 처치하기";
+                CheckOrRefresh(i, killCt);
             }
-            else if (q.Quests[i].Type == QuestInfo.questType.KillbySkill)
+            else if (quest.Quests[i].Type == QuestInfo.questType.KillbySkill)
             {
-                ui[i].text_Quest.text = "대 천사 스킬로 악마 유닛 " + q.Quests[i].QuestValue + " 마리 처치하기";
-                // if (killCt > Quests[i].QuestValue) { CheckStar(i); } // 대 천사 스킬 킬카운트 변수 생성 필요
+                ui[i].text_Quest.text = "대 천사 스킬로 악마 유닛 " + quest.Quests[i].QuestValue + "마리 처치하기";
+                CheckOrRefresh(i, killbySkillCt);
             }
-            else if (q.Quests[i].Type == QuestInfo.questType.KillbySword)
+            else if (quest.Quests[i].Type == QuestInfo.questType.KillbySword)
             {
-                ui[i].text_Quest.text = "대 천사 스킬로 악마 유닛 " + q.Quests[i].QuestValue + " 마리 처치하기";
-                // if (killCt > Quests[i].QuestValue) { CheckStar(i); } // 대 천사 스킬 킬카운트 변수 생성 필요
+                ui[i].text_Quest.text = "전사 유닛으로 악마 유닛 " + quest.Quests[i].QuestValue + "마리 처치하기";
+                CheckOrRefresh(i, killbySwordCt);
             }
-            else if (q.Quests[i].Type == QuestInfo.questType.KillbyBow)
+            else if (quest.Quests[i].Type == QuestInfo.questType.KillbyBow)
             {
-                ui[i].text_Quest.text = "대 천사 스킬로 악마 유닛 " + q.Quests[i].QuestValue + " 마리 처치하기";
-                // if (killCt > Quests[i].QuestValue) { CheckStar(i); } // 대 천사 스킬 킬카운트 변수 생성 필요
+                ui[i].text_Quest.text = "궁수 유닛으로 악마 유닛 " + quest.Quests[i].QuestValue + "마리 처치하기";
+                CheckOrRefresh(i, killbyBowCt);
             }
-            else if (q.Quests[i].Type == QuestInfo.questType.BossHitbySkill)
+            else if (quest.Quests[i].Type == QuestInfo.questType.BossHitbySkill)
             {
-                ui[i].text_Quest.text = "궁수 유닛으로 악마 유닛 " + q.Quests[i].QuestValue + " 마리 처치하기";
-                // if (killCt > Quests[i].QuestValue) { CheckStar(i); } // 대 천사 스킬 킬카운트 변수 생성 필요
+                ui[i].text_Quest.text = "보스 캐릭터에게 스킬 3번 " + quest.Quests[i].QuestValue + "마리 사용하기";
+                CheckOrRefresh(i, bossHitbySkillCt);
             }
-            else if (q.Quests[i].Type == QuestInfo.questType.Reinforce)
+            else if (quest.Quests[i].Type == QuestInfo.questType.Reinforce)
             {
-                if (reinforceCt > q.Quests[i].QuestValue) { CheckStar(i); }
+                ui[i].text_Quest.text = "강화 " + quest.Quests[i].QuestValue + "회 시도하기";
+                CheckOrRefresh(i, reinforceCt);
             }
-            else if (q.Quests[i].Type == QuestInfo.questType.SaveHP)
+            else if (quest.Quests[i].Type == QuestInfo.questType.SaveHP)
             {
-                if (saveHQCt > q.Quests[i].QuestValue) { CheckStar(i); }
+                ui[i].text_Quest.text = "천사의 석상 체력 " + quest.Quests[i].QuestValue + "% 이상 유지하기";
+                Debug.Log("석상" + saveHQCt);
+                CheckOrRefresh(i, saveHQCt);
             }
-            else if (q.Quests[i].Type == QuestInfo.questType.SaveUnit)
+            else if (quest.Quests[i].Type == QuestInfo.questType.SaveUnit)
             {
-                if (saveUnitCt > q.Quests[i].QuestValue) { CheckStar(i); }
+                ui[i].text_Quest.text = "천사 유닛 " + quest.Quests[i].QuestValue + "명 이상 살려둔 채 클리어하기";
+                CheckOrRefresh(i, saveUnitCt);
             }
         }
         
     }
     
-    void CheckStar(int i)
+    void CheckOrRefresh(int i, int val)
+    {
+        if (SceneManager.GetActiveScene().name == "Main_Scene")
+            RefreshStar(i);
+        else
+            CheckStar(i, val);
+
+    }
+
+    void CheckStar(int i, int val)
     {
         int lv = PlayerPrefs.GetInt("level");
         // Get boolean using PlayerPrefs
         var isDuplicate = PlayerPrefs.GetInt(lv + i.ToString()) == 1 ? true : false;
-        if (!isDuplicate)
+        if (!isDuplicate && val >= quest.Quests[i].QuestValue)
         {
             isDuplicate = true;
             PlayerPrefs.SetInt(lv + i.ToString(), isDuplicate ? 1 : 0);
@@ -175,7 +194,8 @@ public class GameManager : MonoBehaviour
             Debug.Log(starCt);
             PlayerPrefs.SetInt("saveStarCt", starCt);
         }
-        ui[i].starObj.sprite = starSprite;
+        else if(isDuplicate)
+            ui[i].starObj.sprite = starSprite;
 
         Debug.Log(lv + i.ToString());
         /*
@@ -201,10 +221,16 @@ public class GameManager : MonoBehaviour
         currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
     }
     
-    public void RefreshStar()
+    public void RefreshStar(int i)
     {
-        // PlayerPrefs.SetInt("saveStarCt", starCt);
-        currStar.GetComponent<Text>().text = starCt.ToString();
+        int lv = PlayerPrefs.GetInt("level");
+        // Get boolean using PlayerPrefs
+        var isDuplicate = PlayerPrefs.GetInt(lv + i.ToString()) == 1 ? true : false;
+        if (isDuplicate)
+        {
+            ui[i].starObj.sprite = starSprite;
+        }
+        
     }
 
     public void CancelUpgrade() 
