@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int stageStar;
     public Sprite starSprite;
-
+    public Sprite nullStarSprite;
     bool toggle;
     public GameObject winObj;
     public GameObject currStar;
@@ -35,24 +35,7 @@ public class GameManager : MonoBehaviour
 
     // private List<int> star = new List<int>{0, 0, 0};
     // private List<string> strings = new List<string> { "one", "two", "three" }; 
-    [HideInInspector]
-    public int spawnCt;
-    [HideInInspector]
-    public int killCt;
-    [HideInInspector]
-    public int killbySkillCt;
-    [HideInInspector]
-    public int killbySwordCt;
-    [HideInInspector]
-    public int killbyBowCt;
-    [HideInInspector]
-    public int bossHitbySkillCt;
-    [HideInInspector]
-    public int reinforceCt;
-    [HideInInspector]
-    public int saveHQCt;
-    [HideInInspector]
-    public int saveUnitCt;
+    [ReadOnly] public int spawnCt, killCt, killbySkillCt, killbySwordCt, killbyBowCt, bossHitbySkillCt, reinforceCt, saveHQCt, saveUnitCt;
 
     Reinforce_Grid[] rgs;
 
@@ -149,7 +132,7 @@ public class GameManager : MonoBehaviour
             }
             else if (quest.Quests[i].Type == QuestInfo.questType.BossHitbySkill)
             {
-                ui[i].text_Quest.text = "보스 캐릭터에게 스킬 3번 " + quest.Quests[i].QuestValue + "마리 사용하기";
+                ui[i].text_Quest.text = "보스 캐릭터에게 스킬 3번 " + quest.Quests[i].QuestValue + "사용하기";
                 CheckOrRefresh(i, bossHitbySkillCt);
             }
             else if (quest.Quests[i].Type == QuestInfo.questType.Reinforce)
@@ -193,6 +176,7 @@ public class GameManager : MonoBehaviour
             starCt++;
             Debug.Log(starCt);
             PlayerPrefs.SetInt("saveStarCt", starCt);
+            ui[i].starObj.sprite = starSprite;
         }
         else if(isDuplicate)
             ui[i].starObj.sprite = starSprite;
@@ -213,14 +197,6 @@ public class GameManager : MonoBehaviour
         }
         */
     }
-
-    public void TestStar()
-    {
-        starCt++;
-        PlayerPrefs.SetInt("saveStarCt", starCt);
-        currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
-    }
-    
     public void RefreshStar(int i)
     {
         int lv = PlayerPrefs.GetInt("level");
@@ -230,8 +206,19 @@ public class GameManager : MonoBehaviour
         {
             ui[i].starObj.sprite = starSprite;
         }
-        
+        else
+        {
+            ui[i].starObj.sprite = nullStarSprite;
+        }
     }
+
+    public void TestStar()
+    {
+        starCt++;
+        PlayerPrefs.SetInt("saveStarCt", starCt);
+        currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
+    }
+    
 
     public void CancelUpgrade() 
     {

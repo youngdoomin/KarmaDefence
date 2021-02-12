@@ -12,6 +12,8 @@ public class LevelSelectMenu : MonoBehaviour
     private int page = 0; // 페이지
     private int pageItem = 9; // 페이지 당 스테이지 개수
 
+    private int starLength = 3;
+
     private GameObject bfObj;
     private bool isFirst;
     private bool isLaunched;
@@ -25,22 +27,47 @@ public class LevelSelectMenu : MonoBehaviour
 
     private void Start()
     {
+        for (int j = 1; j < totalLevel; j++)
+        {
+            int ct = 0;
+            for (int i = 0; i < starLength; i++)
+            {
+                if (PlayerPrefs.GetInt(j + i.ToString()) == 1)
+                {
+                    ct++;
+                    int star = GetStar(j, this.gameObject);
+                    star = Mathf.Clamp(ct, 0, 3);
+                    SetStar(j, star);
+                }
+            } 
+            
+        }
         Refresh();
     }
-
+    /*
     public void StartLevel(int level)
     {
-        if (level == unlockedLevel)
+        for (int i = 0; i < starLength; i++)
         {
-            unlockedLevel += 1;
-        }
-        // SceneManager.LoadScene(2);
 
-        int star = GetStar(level, this.gameObject);
-        star = Mathf.Clamp(star + 1, 0, 3);
-        SetStar(level, star);
+            // SceneManager.LoadScene(2);
+            if (PlayerPrefs.GetInt(level + i.ToString()) == 1)
+            {
+                if (level == unlockedLevel)
+                {
+                    unlockedLevel += 1;
+                }
+                int star = GetStar(level, this.gameObject);
+                star = Mathf.Clamp(star + 1, 0, 3);
+                SetStar(level, star);
+                break;
+            }
+        }
+
         Refresh();
     }
+    */
+
     /*
     public void ClickNext()
     {

@@ -115,6 +115,11 @@ public class OnClick : MonoBehaviour
     {
         popUp[i].SetActive(true);
     }
+    
+    public void OpenSpecific(string str)
+    {
+        GameObject.Find(str).gameObject.SetActive(true);
+    }
 
     public void ClosePopUP()
     {

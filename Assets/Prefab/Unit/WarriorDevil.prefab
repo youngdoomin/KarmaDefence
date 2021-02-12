@@ -110,8 +110,8 @@ MonoBehaviour:
   AttackRange: 5
   Speed: 3
   AttackSpeed: 2
-  IncDam: 10
   IncHp: 30
+  IncDam: 10
   DecAttSp: 0
   Projectile: {fileID: 3034869627125675292, guid: b6e1bae27d44b014d866477d956bfc6e,
     type: 3}
@@ -219,7 +219,7 @@ MonoBehaviour:
   hpBarPrefab: {fileID: 350518011063597351, guid: 66ebd127edcb5bb45a1d31937afd9952,
     type: 3}
   hpBarOffset: {x: 0, y: 2.2, z: 0}
-  incGold: 0100000002000000030000000400000005000000
+  incGold: 96000000c8000000fa0000002c0100005e010000
 --- !u!1001 &6917662745764668980
 PrefabInstance:
   m_ObjectHideFlags: 0

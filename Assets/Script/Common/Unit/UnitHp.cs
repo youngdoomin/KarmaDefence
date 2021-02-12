@@ -47,12 +47,8 @@ public class UnitHp : MonoBehaviour
 
         if (Hp <= 0)
         {
-            if (this.gameObject.tag == "Friendly")
-                KillCheck(str);
-            else
-                GameManager.instance.saveUnitCt--;
-
             hpBarImage.transform.parent.gameObject.SetActive(false);
+            KillCheck(str);
             Disable();
         }
     }
@@ -65,20 +61,16 @@ public class UnitHp : MonoBehaviour
             GameManager.instance.saveHQCt = (int)(Hp / initHp) * 100;
     }
 
-    void KillCheck(string str)
-    {
-        if(str == "Skill")
-            GameManager.instance.killbySkillCt++;
-        else if(str == "Sword")
-            GameManager.instance.killbySwordCt++;
-        else if (str == "Bow")
-            GameManager.instance.killbyBowCt++;
-    }
-
     protected virtual void Disable()
     {
+        GameManager.instance.saveUnitCt--;
         Hp = (int)initHp;
         gameObject.SetActive(false);
+    }
+
+    protected virtual void KillCheck(string str)
+    {
+        return;
     }
 
     protected virtual void SetHp()
