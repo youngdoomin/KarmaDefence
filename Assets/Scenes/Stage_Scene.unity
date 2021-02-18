@@ -1947,7 +1947,6 @@ MonoBehaviour:
   - {fileID: 8117295668437786126, guid: b7990bc713f59f74d9ccf02b5a085e3a, type: 3}
   - {fileID: 8117295668437786126, guid: 0bd79ced78a59184ca764ccfa0c49621, type: 3}
   - {fileID: 8117295668437786126, guid: 746fb16867154ef4ab2af9868ad43d8b, type: 3}
-  Hp_bar: {fileID: 0}
   spawnCt: 5
   zAxis: 2
   chooseUnit: 0
@@ -6789,7 +6788,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1436073209}
   m_Layer: 0
-  m_Name: Shield
+  m_Name: Shields
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7278,7 +7277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1606945793}
   m_Layer: 0
-  m_Name: Rain
+  m_Name: Rains
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7780,7 +7779,6 @@ MonoBehaviour:
   - {fileID: 8495076336296136352, guid: aeba0a4fd8774e74eb78ed211c1f846e, type: 3}
   - {fileID: 8495076336296136352, guid: 5177a810026f81b4fa785187723df216, type: 3}
   - {fileID: 8495076336296136352, guid: 5f0350a938b7ef2408ce02b1d322f85d, type: 3}
-  Hp_bar: {fileID: 0}
   spawnCt: 5
   zAxis: 2
   chooseUnit: 0
@@ -9675,7 +9673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1940193493}
   m_Layer: 0
-  m_Name: Explo
+  m_Name: Explos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
