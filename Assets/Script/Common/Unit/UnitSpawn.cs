@@ -7,7 +7,6 @@ public class UnitSpawn : MonoBehaviour
     public Transform SpawnPos;
 
     public GameObject[] Units;
-    public GameObject Hp_bar;
     public int spawnCt;
     public float zAxis;
     public int chooseUnit;

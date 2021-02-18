@@ -16,7 +16,7 @@ public class ProjectileDefault : ProjectileSet
         {
             transform.GetChild(i).gameObject.SetActive(true);
         }
-        transform.GetChild(transform.childCount - 1).gameObject.SetActive(false);
+        transform.GetChild(transform.childCount - 1).gameObject.SetActive(!isMove);
         Fire();
     }
 
@@ -39,6 +39,10 @@ public class ProjectileDefault : ProjectileSet
                 transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
                 Invoke("False", 1);
             }
+            else if(!coll.gameObject.activeSelf)
+            {
+                False();
+            }
 
         }
 
@@ -52,7 +56,11 @@ public class ProjectileDefault : ProjectileSet
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             GetComponent<Rigidbody>().AddForce(transform.forward * speed);
         }
-        // Invoke("False", 5);
+        else
+        {
+            Invoke("False", 2);
+        }
+        Debug.Log(this.gameObject.name);
     }
 
     protected void False()
