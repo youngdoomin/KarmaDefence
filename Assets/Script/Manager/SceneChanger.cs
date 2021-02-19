@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+    public GameObject[] closeObj;
+
+
     public GameObject[] keepObj;
     public static SceneChanger instance = null;
 
@@ -26,5 +30,18 @@ public class SceneChanger : MonoBehaviour
                 DontDestroyOnLoad(keepObj[i]);
             }
         }
+
     }
+
+    private void Start()
+    {
+        if(SceneManager.GetActiveScene().name == "Stage_Scene")
+        {
+            foreach (GameObject obj in closeObj)
+                obj.SetActive(false);
+
+        }
+        
+    }
+
 }

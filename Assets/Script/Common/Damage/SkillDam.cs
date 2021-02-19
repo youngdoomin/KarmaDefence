@@ -11,7 +11,7 @@ public class SkillDam : MonoBehaviour
     public int hitMax;
     private int hitCt;
     private bool waiting;
-
+    private bool FirstAttack;
     BoxCollider coll;
 
     [System.Serializable]
@@ -34,6 +34,8 @@ public class SkillDam : MonoBehaviour
         }
         if (skill == skillType.Explo)
             DamageAmt += (int)PlayerPrefs.GetFloat("skill3");
+
+        
     }
 
     // Update is called once per frame
@@ -45,7 +47,14 @@ public class SkillDam : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.GetComponent<UnitHp>().Damaged(DamageAmt, "Skill");
+            if (!FirstAttack)
+            {
+                other.GetComponent<UnitHp>().Damaged(DamageAmt, "Skill");
+                FirstAttack = true;
+
+            }
+            else
+                other.GetComponent<UnitHp>().Damaged(DamageAmt, "Null");
 
         }
         if (IsDestroy == true)
@@ -87,5 +96,10 @@ public class SkillDam : MonoBehaviour
             StartCoroutine(AttackDelay());
 
         }
+    }
+
+    private void OnDisable()
+    {
+        FirstAttack = false;
     }
 }

@@ -16,21 +16,29 @@ public class OnClick : MonoBehaviour
     private readonly int hashisEnter = Animator.StringToHash("isEnter");
     Animator animator;
     bool isTrue_reinforce;
-
+    public GameObject[] hideObj;
+    GameObject obj_dontDestroy;
+    string search = "StageCanvas";
     void Start()
     {
         try
         {
+            obj_dontDestroy = GameObject.Find(search);
             animator = image.GetComponent<Animator>();
             animator.SetBool(hashisEnter, true);
             GridLayout.SetActive(false);
-
         }
         catch (Exception e)
         {
             Debug.Log(e.ToString());
         }
         i = SceneManager.GetActiveScene().buildIndex;
+        
+        if (PlayerPrefs.GetInt("Next") == 1)
+        {
+            OpenDontDestroyPopUp(1);
+            PlayerPrefs.SetInt("Next", 0);
+        }
     }
 
     void Update()
@@ -88,6 +96,7 @@ public class OnClick : MonoBehaviour
 
     public void GoNext() // 다음 씬으로 이동
     {
+        PlayerPrefs.SetInt("Next", 1);
         PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
         LoadScene(2);
     }
@@ -115,10 +124,15 @@ public class OnClick : MonoBehaviour
     {
         popUp[i].SetActive(true);
     }
-    
-    public void OpenSpecific(string str)
+
+    public void OpenDontDestroyPopUp(int i)
     {
-        GameObject.Find(str).gameObject.SetActive(true);
+        obj_dontDestroy.transform.GetChild(i).gameObject.SetActive(true);
+    }
+
+    public void HideObj(int i)
+    {
+        hideObj[i].SetActive(false);
     }
 
     public void ClosePopUP()
