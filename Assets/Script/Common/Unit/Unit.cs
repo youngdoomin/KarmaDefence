@@ -67,8 +67,8 @@ public class Unit : MonoBehaviour
         //rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
-        if (transform.childCount > 1)
-            transform.GetChild(1).gameObject.SetActive(false);
+        if (transform.childCount > 2)
+            transform.GetChild(2).gameObject.SetActive(false);
     }
 
     void FindObj()
@@ -201,7 +201,7 @@ public class Unit : MonoBehaviour
 
     void ShowEffect(GameObject Enemy)
     {
-        GameObject effect = this.gameObject.transform.GetChild(1).gameObject;
+        GameObject effect = this.gameObject.transform.GetChild(gameObject.transform.childCount - 1).gameObject;
         effect.transform.localScale = new Vector3(2, 2, 2);
         effect.transform.position = Enemy.transform.position;
         effect.SetActive(true);

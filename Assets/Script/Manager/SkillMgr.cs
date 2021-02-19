@@ -60,44 +60,39 @@ public class SkillMgr : MonoBehaviour
         {
             if (friendly[i].layer == 13)
             {
-                if (friendly[i].transform.childCount > 1)
-                {
-                    friendly[i].transform.GetChild(1).gameObject.SetActive(false);
-                    friendly[i].transform.GetChild(1).gameObject.transform.parent = ShieldPos;
-                }
-
-                var spawn = ShieldPos.transform.GetChild(i);
-                spawn.transform.parent = friendly[i].transform;
-                spawn.transform.localPosition = reset;
-                spawn.gameObject.SetActive(true);
+                var spawn = ShieldPos.transform.GetChild(1);                
                 coroutine = shieldCt(spawn.gameObject);
+
                 if (GameManager.instance.Invincible)
                 {
                     StopCoroutine(coroutine);
+                }
+                
+                if(friendly[i].transform.GetChild(1).childCount == 0)
+                {
+                    spawn.transform.parent = friendly[i].transform.GetChild(1).transform;
+                    spawn.transform.localPosition = reset;
 
                 }
+                else
+                {
+                    spawn = friendly[i].transform.GetChild(1).transform.GetChild(0);
+                }
 
+                spawn.gameObject.SetActive(true);
                 //if(coroutine != null)
                 //StopCoroutine(coroutine);
                 StartCoroutine(coroutine);
             }
         }
 
-        GameManager.instance.Invincible = true;
     }
 
     IEnumerator shieldCt(GameObject obj)
     {
+        GameManager.instance.Invincible = true;
         yield return new WaitForSeconds(Time_shield);
-        try
-        {
-            if (obj.transform.parent.transform.childCount <= 2)
-                GameManager.instance.Invincible = false;
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e.ToString());
-        }
+        GameManager.instance.Invincible = false;
         obj.SetActive(false);
     }
 

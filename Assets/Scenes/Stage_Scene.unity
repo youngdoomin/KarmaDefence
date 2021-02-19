@@ -1858,9 +1858,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 466194840}
-  - component: {fileID: 466194839}
-  - component: {fileID: 466194838}
   - component: {fileID: 466194842}
+  - component: {fileID: 466194837}
   m_Layer: 12
   m_Name: EnemyHq
   m_TagString: Untagged
@@ -1868,25 +1867,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!23 &466194838
-MeshRenderer:
+--- !u!212 &466194837
+SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466194836}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1899,22 +1898,25 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &466194839
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 466194836}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_SortingOrder: -25
+  m_Sprite: {fileID: 21300000, guid: a30cfc047476e9941a0bb149689cac5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 20.48, y: 20.48}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!4 &466194840
 Transform:
   m_ObjectHideFlags: 0
@@ -1923,7 +1925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466194836}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.9, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.97, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1236974887920899050}
@@ -1941,7 +1943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f811d33a8b9b34e84c7c9decd7488b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSpawn: 0
+  IsSpawn: 1
   SpawnPos: {fileID: 1087163172}
   Units:
   - {fileID: 8117295668437786126, guid: b7990bc713f59f74d9ccf02b5a085e3a, type: 3}
@@ -1949,7 +1951,7 @@ MonoBehaviour:
   - {fileID: 8117295668437786126, guid: 746fb16867154ef4ab2af9868ad43d8b, type: 3}
   spawnCt: 5
   zAxis: 2
-  chooseUnit: 0
+  chooseUnit: 3
   spawnTime: 040000000400000003000000030000000200000006000000060000000500000005000000040000000900000009000000080000000800000007000000
 --- !u!1 &477569543
 GameObject:
@@ -7125,7 +7127,7 @@ PrefabInstance:
     - target: {fileID: 8117295668437786126, guid: 1e031efef45b2314aa2d84d0c44d4b04,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
         type: 3}
@@ -11324,7 +11326,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236974887920899030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22, y: 2.66, z: 0}
+  m_LocalPosition: {x: 18.6, y: 2.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 466194840}

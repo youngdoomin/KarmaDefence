@@ -18,6 +18,7 @@ public class UnitHp : MonoBehaviour
     private Canvas uiCanvas;
     //생명 수치에 따라 fillAmount 속성을 변경할 Image
     private Image hpBarImage;
+    GameObject hpBar;
 
     void Start()
     {
@@ -65,6 +66,7 @@ public class UnitHp : MonoBehaviour
     {
         GameManager.instance.saveUnitCt--;
         Hp = (int)initHp;
+        hpBar.SetActive(false);
         gameObject.SetActive(false);
     }
 
@@ -80,15 +82,14 @@ public class UnitHp : MonoBehaviour
 
     void SetHpBar(Canvas canvas)
     {
-        GameObject hpBar;
         hpBar = Instantiate(hpBarPrefab, canvas.transform);
 
-        HpFollow(hpBar);
+        HpFollow();
     }
 
     void RestartHpBar(Canvas canvas)
     {
-        GameObject hpBar = hpBarPrefab;
+        hpBar = hpBarPrefab;
         for (int i = 0; i < canvas.transform.childCount - 1; i++)
         {
             if (!canvas.transform.GetChild(i).gameObject.activeInHierarchy && canvas.transform.GetChild(i).gameObject.name.Substring(0, 1) == this.gameObject.tag.Substring(0, 1))
@@ -104,14 +105,14 @@ public class UnitHp : MonoBehaviour
 
             }
         }
-        HpFollow(hpBar);
+        HpFollow();
     }
 
-    void HpFollow(GameObject obj)
+    void HpFollow()
     {
-        hpBarImage = obj.GetComponentsInChildren<Image>()[0];
+        hpBarImage = hpBar.GetComponentsInChildren<Image>()[0];
 
-        var _hpBar = obj.GetComponent<HpBar>();
+        var _hpBar = hpBar.GetComponent<HpBar>();
         _hpBar.targetTr = this.gameObject.transform;
         _hpBar.offset = hpBarOffset;
 

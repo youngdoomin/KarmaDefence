@@ -219,6 +219,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Default_Projectile_Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3034869627125675292, guid: b0dae48dd60ecc34cad8075426d268b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6975534225506567591, guid: b0dae48dd60ecc34cad8075426d268b1,
         type: 3}
       propertyPath: m_LocalPosition.x
