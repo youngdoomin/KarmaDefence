@@ -36,14 +36,45 @@ public class OnClick : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        // animator = image.GetComponent<Animator>();
+        // animator = image.GetComponent<Animator>(); 분리 후 복구
         // animator.SetBool(hashisEnter, true);
         ClosePopUP();
-
+        // ------------------분리-------------------------
         if (PlayerPrefs.GetInt("Next") == 1)
         {
             OpenPopUp(2);
             PlayerPrefs.SetInt("Next", 0);
+        }
+        // -------------------------------------------
+    }
+
+    public void LSAnimtaion()
+    {
+        animator.SetBool(hashisEnter, false);
+    }
+
+    public void Faster()
+    {
+        Debug.Log("Clicked");
+        isTrue_speed = !isTrue_speed;
+        if (isTrue_speed) { Time.timeScale = GameManager.instance.fast; }
+        else { Time.timeScale = 1; }
+    }
+
+    public void OpenPopUp(int i)
+    {
+        transform.GetChild(i).gameObject.SetActive(true);
+    }
+
+
+    public void ClosePopUP()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).tag == "PopUp")
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
     }
     // ----------------------------------------------------
@@ -82,7 +113,6 @@ public class OnClick : MonoBehaviour
 
     public void LoadScene(int s)
     {
-        // animator.SetBool(hashisEnter, false);
 
 
         if (i == s)
@@ -94,6 +124,8 @@ public class OnClick : MonoBehaviour
 
         SceneManager.LoadScene(s, LoadSceneMode.Single);
     }
+
+    
 
     public void GoNext() // 다음 씬으로 이동
     {
@@ -113,34 +145,8 @@ public class OnClick : MonoBehaviour
     }
 
 
-    public void Faster()
-    {
-        Debug.Log("Clicked");
-        isTrue_speed = !isTrue_speed;
-        if (isTrue_speed) { Time.timeScale = GameManager.instance.fast; }
-        else { Time.timeScale = 1; }
-    }
     public void HideObj(int i)
     {
         hideObj[i].SetActive(false);
     }
-
-    // ------------------------유지---------------------------
-    public void OpenPopUp(int i)
-    {
-        transform.GetChild(i).gameObject.SetActive(true);
-    }
-
-
-    public void ClosePopUP()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            if(transform.GetChild(i).tag == "PopUp")
-            {
-                transform.GetChild(i).gameObject.SetActive(false);
-            }
-        }
-    }
-    // --------------------------------------------------------
 }
