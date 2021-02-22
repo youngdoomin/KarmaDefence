@@ -67,8 +67,6 @@ public class SkillDam : MonoBehaviour
     }
     IEnumerator AttackDelay()
     {
-
-        Debug.Log("coll");
         waiting = !waiting;
         coll.enabled = waiting;
         if (waiting)

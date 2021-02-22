@@ -8,7 +8,6 @@ using UnityEngine.EventSystems;
 
 public class OnClick : MonoBehaviour
 {
-    public GameObject[] popUp;
     private int i = 0;
     bool isTrue_speed;
     public GameObject GridLayout;
@@ -17,13 +16,11 @@ public class OnClick : MonoBehaviour
     Animator animator;
     bool isTrue_reinforce;
     public GameObject[] hideObj;
-    GameObject obj_dontDestroy;
-    string search = "StageCanvas";
+    // ----------------------유지------------------------
     void Start()
     {
         try
         {
-            obj_dontDestroy = GameObject.Find(search);
             animator = image.GetComponent<Animator>();
             animator.SetBool(hashisEnter, true);
             GridLayout.SetActive(false);
@@ -33,19 +30,23 @@ public class OnClick : MonoBehaviour
             Debug.Log(e.ToString());
         }
         i = SceneManager.GetActiveScene().buildIndex;
+
         
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        // animator = image.GetComponent<Animator>();
+        // animator.SetBool(hashisEnter, true);
+        ClosePopUP();
+
         if (PlayerPrefs.GetInt("Next") == 1)
         {
-            OpenDontDestroyPopUp(1);
+            OpenPopUp(2);
             PlayerPrefs.SetInt("Next", 0);
         }
     }
-
-    void Update()
-    {
-
-    }
-
+    // ----------------------------------------------------
     public void TryReinforce()
     {
         var name = EventSystem.current.currentSelectedGameObject.name;
@@ -81,7 +82,7 @@ public class OnClick : MonoBehaviour
 
     public void LoadScene(int s)
     {
-        animator.SetBool(hashisEnter, false);
+        // animator.SetBool(hashisEnter, false);
 
 
         if (i == s)
@@ -119,21 +120,17 @@ public class OnClick : MonoBehaviour
         if (isTrue_speed) { Time.timeScale = GameManager.instance.fast; }
         else { Time.timeScale = 1; }
     }
-
-    public void OpenPopUp(int i)
-    {
-        popUp[i].SetActive(true);
-    }
-
-    public void OpenDontDestroyPopUp(int i)
-    {
-        obj_dontDestroy.transform.GetChild(i).gameObject.SetActive(true);
-    }
-
     public void HideObj(int i)
     {
         hideObj[i].SetActive(false);
     }
+
+    // ------------------------유지---------------------------
+    public void OpenPopUp(int i)
+    {
+        transform.GetChild(i).gameObject.SetActive(true);
+    }
+
 
     public void ClosePopUP()
     {
@@ -145,4 +142,5 @@ public class OnClick : MonoBehaviour
             }
         }
     }
+    // --------------------------------------------------------
 }

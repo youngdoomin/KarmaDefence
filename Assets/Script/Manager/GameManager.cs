@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     public StageQuest[] stQuest;
     // public QuestInfo[] Quests;
     // private List<bool> IsComplete = new List<bool> { false, false, false };
+    private QuestUI[] ui;
     [SerializeField]
-    public QuestUI[] ui;
+    private QuestUI[] winUi, questInfoUi;
     public int fast;
     [HideInInspector]
     public bool killed, Invincible;
@@ -30,11 +31,11 @@ public class GameManager : MonoBehaviour
     public Sprite nullStarSprite;
     bool toggle;
     public GameObject winObj;
+    public GameObject questPopUpObj;
+    public GameObject stageInfo;
     public GameObject currStar;
     public Text currStage;
 
-    // private List<int> star = new List<int>{0, 0, 0};
-    // private List<string> strings = new List<string> { "one", "two", "three" }; 
     [ReadOnly] public int spawnCt, killCt, killbySkillCt, killbySwordCt, killbyBowCt, bossHitbySkillCt, reinforceCt, saveHQCt, saveUnitCt;
 
     Reinforce_Grid[] rgs;
@@ -46,43 +47,42 @@ public class GameManager : MonoBehaviour
     }
     [HideInInspector]
     public StageQuest quest;
+
+
     void Awake()
     {
         instance = this;
 
+
+    }
+    // Start is called before the first frame update
+    private void OnLevelWasLoaded(int level)
+    {
         Time.timeScale = 1;
-        
-        starCt = PlayerPrefs.GetInt("saveStarCt");
-
-        if(SceneManager.GetActiveScene().name == "Stage_Scene")
+        if (level == 2)
         {
+            Debug.Log("here");
             quest = stQuest[PlayerPrefs.GetInt("level") - 1];
-            /*
-            Debug.Log("star active");
-            stageStar = PlayerPrefs.GetInt("stageStarCt");
-            for (int i = 0; i < star.Count; i++)
-            {
-                star[i] = PlayerPrefs.GetInt(strings[i]);
-                if(star[i] == 1)
-                {
-                    ui[i].starObj.sprite = starSprite;
-
-                }
-            }
-            */
+            ui = winUi;
+            stageInfo = winObj;
         }
         else
         {
             currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
             rgs = (Reinforce_Grid[])GameObject.FindObjectsOfType(typeof(Reinforce_Grid));
+            ui = questInfoUi;
+            stageInfo = questPopUpObj;
         }
-        
 
+        starCt = PlayerPrefs.GetInt("saveStarCt");
     }
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
+        rgs = (Reinforce_Grid[])GameObject.FindObjectsOfType(typeof(Reinforce_Grid));
+        ui = questInfoUi;
+        stageInfo = questPopUpObj;
     }
     // Update is called once per frame
     void Update()
@@ -90,13 +90,22 @@ public class GameManager : MonoBehaviour
 
     }
 
-    
 
 
     public void Result()
     {
         toggle = !toggle;
-        winObj.SetActive(toggle);
+        stageInfo.SetActive(toggle);
+        /*
+        if (SceneManager.GetActiveScene().name == "Stage_Scene")
+        {
+            winObj.SetActive(toggle);
+        }
+        else
+        {
+            questPopUpObj.SetActive(toggle);
+        }
+        */
         currStage.text = "스테이지 " + PlayerPrefs.GetInt("level");
         for (int i = 0; i < quest.Quests.Length; i++)
         {
