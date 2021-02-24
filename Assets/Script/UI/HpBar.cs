@@ -31,10 +31,18 @@ public class HpBar : MonoBehaviour
     }
 
     void LateUpdate()
-    { 
-        
+    {
+        var screenPos = Vector3.zero;
         //월드 좌표를 스크린의 좌표로 변환
-        var screenPos = Camera.main.WorldToScreenPoint(targetTr.position + offset);
+        try
+        {
+            screenPos = Camera.main.WorldToScreenPoint(targetTr.position + offset);
+
+        }
+        catch (UnassignedReferenceException)
+        {
+            gameObject.SetActive(false);
+        }
         //카메라의 뒷쪽 영역(180도 회전)일 때 좌푯값 보정
         if (screenPos.z < 0.0f)
         {

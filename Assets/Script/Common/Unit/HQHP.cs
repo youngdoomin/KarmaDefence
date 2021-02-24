@@ -5,7 +5,7 @@ using UnityEngine;
 public class HQHP : UnitHp
 {
     public int incHp;
-    public GameObject loseObj;
+
 
     protected override void SetHp()
     {
@@ -18,7 +18,7 @@ public class HQHP : UnitHp
     }
     protected override void Disable()
     {
-        loseObj.SetActive(true);
+        GameManager.instance.Lose();
         Time.timeScale = 0;
         gameObject.SetActive(false);
     }

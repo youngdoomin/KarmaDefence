@@ -31,8 +31,9 @@ public class GameManager : MonoBehaviour
     public Sprite nullStarSprite;
     bool toggle;
     public GameObject winObj;
+    public GameObject loseObj;
     public GameObject questPopUpObj;
-    public GameObject stageInfo;
+    private GameObject stageInfo;
     public GameObject currStar;
     public Text currStage;
 
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
         }
 
         starCt = PlayerPrefs.GetInt("saveStarCt");
+        toggle = false;
     }
 
     void Start()
@@ -90,7 +92,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-
+    public void Lose()
+    {
+        loseObj.SetActive(true);
+    }
 
     public void Result()
     {

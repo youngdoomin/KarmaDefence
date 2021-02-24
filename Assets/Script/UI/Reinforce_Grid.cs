@@ -21,7 +21,15 @@ public class Reinforce_Grid : MonoBehaviour
         S_Skill2,
         S_Skill3
     }
+
+    public enum Type_UI
+    {
+        Upgrade,
+        Reinforce
+    }
+
     public Type type;
+    public Type_UI type_UI;
     public GameObject upObj;
     public int[] price;
     Text txt;
@@ -33,10 +41,10 @@ public class Reinforce_Grid : MonoBehaviour
 
     void Start()
     {
-        b = GetComponent<Button>();
-        if(SceneManager.GetActiveScene().name == "Stage_Scene")
+        b = GetComponent<Button>(); 
+        if(type_UI == Type_UI.Reinforce)
             b.onClick.AddListener(() => Reinforce());
-        else
+        else 
         {
             b.onClick.AddListener(() => Upgrade());
             starTxt = GameObject.Find("StarText").GetComponent<Text>();
