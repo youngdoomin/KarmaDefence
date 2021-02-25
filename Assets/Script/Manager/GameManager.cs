@@ -101,16 +101,7 @@ public class GameManager : MonoBehaviour
     {
         toggle = !toggle;
         stageInfo.SetActive(toggle);
-        /*
-        if (SceneManager.GetActiveScene().name == "Stage_Scene")
-        {
-            winObj.SetActive(toggle);
-        }
-        else
-        {
-            questPopUpObj.SetActive(toggle);
-        }
-        */
+        
         currStage.text = "스테이지 " + PlayerPrefs.GetInt("level");
         for (int i = 0; i < quest.Quests.Length; i++)
         {
@@ -192,9 +183,10 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("saveStarCt", starCt);
             ui[i].starObj.sprite = starSprite;
         }
-        else if(isDuplicate)
+        else if (isDuplicate)
             ui[i].starObj.sprite = starSprite;
-
+        else
+            ui[i].starObj.sprite = nullStarSprite;
         Debug.Log(lv + i.ToString());
         /*
         if(star[i] == 0)

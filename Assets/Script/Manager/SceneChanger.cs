@@ -13,24 +13,25 @@ public class SceneChanger : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null && instance != this) //중복되는 오브젝트가 있으면
+        if (instance == null)
         {
-            foreach (GameObject obj in keepObj) //부속 오브젝트 삭제
-                Destroy(obj);
-
-            Destroy(this.gameObject); //자기자신 삭제
-            return;
-        }
-        else
-        {
-            DontDestroyOnLoad(this);
+            //First run, set the instance
             instance = this;
             for (int i = 0; i < keepObj.Length; i++)
             {
                 DontDestroyOnLoad(keepObj[i]);
             }
-        }
 
+        }
+        else if (instance != this)
+        {
+            //Instance is not the same as the one we have, destroy old one, and reset to newest one
+            foreach (GameObject obj in keepObj) //부속 오브젝트 삭제
+                Destroy(obj);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        
     }
 
     private void Start()

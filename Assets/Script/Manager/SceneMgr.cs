@@ -24,7 +24,7 @@ public class SceneMgr : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        if (PlayerPrefs.GetInt("Next") == 1 && SceneManager.GetActiveScene().buildIndex == 2)
+        if (PlayerPrefs.GetInt("Next") == 1 && level == 2)
         {
             this.GetComponent<OnClick>().OpenPopUp(2);
             HideObj(0);

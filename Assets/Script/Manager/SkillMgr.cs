@@ -61,13 +61,15 @@ public class SkillMgr : MonoBehaviour
             if (friendly[i].layer == 13)
             {
                 var spawn = ShieldPos.transform.GetChild(1);                
+                
+                /*
                 coroutine = shieldCt(spawn.gameObject);
 
                 if (GameManager.instance.Invincible)
                 {
                     StopCoroutine(coroutine);
                 }
-                
+                */
                 if(friendly[i].transform.GetChild(1).childCount == 0)
                 {
                     spawn.transform.parent = friendly[i].transform.GetChild(1).transform;
@@ -82,7 +84,8 @@ public class SkillMgr : MonoBehaviour
                 spawn.gameObject.SetActive(true);
                 //if(coroutine != null)
                 //StopCoroutine(coroutine);
-                StartCoroutine(coroutine);
+                // StartCoroutine(coroutine);
+                StartCoroutine(shieldCt(spawn.gameObject));
             }
         }
 
