@@ -53,8 +53,6 @@ public class UnitSpawn : MonoBehaviour
             random = chooseUnit - 1;
         }
         else { random = Random.Range(0, Units.Length); }
-        Debug.Log(random);
-        // Instantiate(Units[random], Pos, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
         
         for (int i = 0; i < Units.Length * spawnCt; i += Units.Length)
         {
@@ -64,9 +62,7 @@ public class UnitSpawn : MonoBehaviour
             {
                 spawnObj.SetActive(true);
                 spawnObj.transform.position = Pos;
-                Debug.Log(spawnTime[spawnTime.Length / Units.Length * random + PlayerPrefs.GetInt("level") - 1]);
                 yield return new WaitForSeconds(spawnTime[spawnTime.Length / Units.Length * random + PlayerPrefs.GetInt("level") - 1]);
-                //spawnObj.transform.rotation = transform.rotation * Quaternion.Euler(0f, 180f, 0f);
                 break;
             }
             
@@ -75,12 +71,9 @@ public class UnitSpawn : MonoBehaviour
                 spawnCt += spawnCt;
                 PoolSpawn(Units, SpawnPos);
             }
-            
-
         }
         if (IsSpawn == true)
             StartCoroutine(AutoSpawner());
-        //Debug.Log(SpawnDelay[random]);
     }
 
     public void Spawner(int idx)

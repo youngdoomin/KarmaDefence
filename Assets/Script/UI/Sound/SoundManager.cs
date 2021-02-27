@@ -8,11 +8,18 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource bgmSource;
     private AudioSource effectSource;
-    public AudioClip fullSpeed;
-    public AudioClip blockEf;
-    public AudioClip damage;
-    public AudioClip kill;
-    public AudioClip lootItem;
+    public AudioClip click;
+    public AudioClip win;
+    public AudioClip defeat;
+    public AudioClip reinforce;
+    public AudioClip skill1;
+    public AudioClip skill2;
+    public AudioClip skill3;
+    public AudioClip damaged;
+    public AudioClip unitAtt1;
+    public AudioClip unitAtt2;
+    public AudioClip unitAtt3;
+
     public AudioMixerGroup bgmOutput;
 
     [SerializeField] private AudioClip[] bgmClip;
