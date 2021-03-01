@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void OnLevelWasLoaded(int level)
     {
-        Time.timeScale = 1;
+        // Time.timeScale = 1;
         if (level == 2)
         {
             Debug.Log("here");
@@ -85,11 +85,6 @@ public class GameManager : MonoBehaviour
         rgs = (Reinforce_Grid[])GameObject.FindObjectsOfType(typeof(Reinforce_Grid));
         ui = questInfoUi;
         stageInfo = questPopUpObj;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void Lose()
@@ -215,6 +210,18 @@ public class GameManager : MonoBehaviour
         else
         {
             ui[i].starObj.sprite = nullStarSprite;
+        }
+    }
+
+    public void ToggleTime()
+    {
+        if(Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
         }
     }
 

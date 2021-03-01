@@ -8,6 +8,7 @@ public class SceneMgr : MonoBehaviour
     private int i = 0;
 
     public GameObject[] hideObj;
+    public GameObject tutoPopUpObj;
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +25,29 @@ public class SceneMgr : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        if (PlayerPrefs.GetInt("Next") == 1 && level == 2)
+        if (level == 2)
         {
-            this.GetComponent<OnClick>().OpenPopUp(2);
-            HideObj(0);
-            PlayerPrefs.SetInt("Next", 0);
-            Debug.Log("next");
+            if (PlayerPrefs.GetInt("Level 1_Star") == 0)
+            {
+                GameManager.instance.ToggleTime();
+                tutoPopUpObj.SetActive(true);
+            }
+            else if(PlayerPrefs.GetInt("Next") == 1)
+            {
+                this.GetComponent<OnClick>().OpenPopUp(2);
+                HideObj(0);
+                PlayerPrefs.SetInt("Next", 0);
+                Debug.Log("next");
+            }
         }
         else
         {
             this.GetComponent<OnClick>().ClosePopUP();
             BackAll();
+
+            
+            
+            
         }
     }
 

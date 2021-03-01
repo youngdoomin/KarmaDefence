@@ -15,10 +15,14 @@ public class SoundManager : MonoBehaviour
     public AudioClip skill1;
     public AudioClip skill2;
     public AudioClip skill3;
-    public AudioClip damaged;
     public AudioClip unitAtt1;
     public AudioClip unitAtt2;
     public AudioClip unitAtt3;
+    public AudioClip damaged;
+    public AudioClip bossAppear;
+    public AudioClip bossAttack;
+    public AudioClip bossDie;
+
 
     public AudioMixerGroup bgmOutput;
 

@@ -117,6 +117,7 @@ public class LevelSelectMenu : MonoBehaviour
     private void SetStar(int level, int starAmt)
     {
         PlayerPrefs.SetInt(GetKey(level), starAmt);
+        Debug.Log(GetKey(level));
     }
 
     private int GetStar(int level, GameObject obj)
