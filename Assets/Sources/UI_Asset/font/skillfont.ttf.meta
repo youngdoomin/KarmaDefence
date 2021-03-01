@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 2d4d50042f0ee7145a3c3a604eef210c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: MD_EuteumM
+  fontNames:
+  - MD_EuteumM
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 75b47c8201525554a8456d114a2ef5d6, type: 3}
+  - {fileID: 12800000, guid: 7be47503e3fe49449af0120fe7afa0d6, type: 3}
+  - {fileID: 12800000, guid: a36fd104e0eea22469f7565b71c0e0bc, type: 3}
+  - {fileID: 12800000, guid: 468fe2b4bafd88a49bc2bd97e30463af, type: 3}
+  - {fileID: 12800000, guid: e3483086a4fa6864d95347884773a048, type: 3}
+  - {fileID: 12800000, guid: 838888a6e74361d45b1932ef96a1a3c5, type: 3}
+  - {fileID: 12800000, guid: 96c6edda06bb28d429daefdad7413cb8, type: 3}
+  - {fileID: 12800000, guid: 04e8cc0e57c687a4bad59428bc3cfcc0, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
