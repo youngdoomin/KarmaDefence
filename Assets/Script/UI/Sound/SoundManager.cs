@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource bgmSource;
     private AudioSource effectSource;
+    private AudioSource loopEffectSource;
     public AudioClip click;
     public AudioClip win;
     public AudioClip defeat;
@@ -28,8 +30,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioClip[] bgmClip;
 
-    public int audioNumber;
-    [SerializeField] private int introPool = 3;
+    // public int audioNumber;
 
     public static SoundManager instance = null;
     public static SoundManager Instance
@@ -58,48 +59,66 @@ public class SoundManager : MonoBehaviour
         bgmSource = child.AddComponent<AudioSource>();
         bgmSource.loop = true;
         bgmSource.outputAudioMixerGroup = bgmOutput;
-
+        
         effectSource = GetComponent<AudioSource>();
         effectSource.loop = false;
+
+        loopEffectSource = GetComponent<AudioSource>();
+
+        /*
+        for (int i = 0; i < effectSource.Length; i++)
+        {
+            effectSource[i] = GetComponent<AudioSource>();
+            effectSource[i].loop = false;
+        }
+        */
     }
     void Start()
     {
-        PlayRandomIntro();
+        ChangeClip(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void PlayRandomIntro() //무작위 인트로음악 재생
+    private void OnLevelWasLoaded(int level)
     {
-        int temp = Random.Range(0, introPool);
-        ChangeClip(temp);
+        ChangeClip(level);
+        
     }
 
-    public void PlayIngameLoop() // 인게임음악 재생
+    public void ChangeClip(int num)
     {
-        if (audioNumber < introPool)
-        {
-            ChangeClip(audioNumber + introPool);
-        }
-        else
-        {
-            Debug.Log("현재 인트로음악이 아님");
-        }
-    }
-
-
-     public void ChangeClip(int num)
-    {
-        bgmSource.Stop();
-        audioNumber = num;
+        if (bgmSource.isPlaying) bgmSource.Stop();
+        // audioNumber = num;
         bgmSource.clip = bgmClip[num];
         bgmSource.Play();
 
     }
 
+    public void StopClip()
+    {
+        bgmSource.Stop();
+    }
+
     public void PlaySE(AudioClip clip)
     {
-        effectSource.Stop();
-        effectSource.clip = clip;
-        effectSource.Play();
+        // effectSource.Stop();
+        // if (effectSource[i].isPlaying) return;
+        // effectSource[i].clip = clip;
+        effectSource.PlayOneShot(clip);
     }
-    
+    public void PlayLoopSE(AudioClip clip)
+    {
+        // effectSource.Stop();
+        // if (effectSource[i].isPlaying) return;
+        // effectSource[i].clip = clip;
+
+        loopEffectSource.loop = true;
+        loopEffectSource.clip = clip;
+        loopEffectSource.Play();
+        // loopEffectSource.PlayOneShot(clip);
+    }
+
+    public void CancelLoop()
+    {
+        loopEffectSource.loop = false;
+    }
 }

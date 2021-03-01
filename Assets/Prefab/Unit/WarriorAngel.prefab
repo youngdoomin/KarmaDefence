@@ -103,6 +103,7 @@ MonoBehaviour:
   Projectile: {fileID: 3034869627125675292, guid: b6e1bae27d44b014d866477d956bfc6e,
     type: 3}
   ShootPos: {fileID: 8495076336539912045}
+  attackSound: {fileID: 8300000, guid: a58e438b7cfa445498120af0e6169082, type: 3}
   Class: 1
 --- !u!114 &8495076336296136366
 MonoBehaviour:

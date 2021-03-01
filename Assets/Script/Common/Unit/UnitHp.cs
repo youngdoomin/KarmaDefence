@@ -37,6 +37,7 @@ public class UnitHp : MonoBehaviour
 
     public void Damaged(int damage, string str)
     {
+        SoundManager.instance.PlaySE(SoundManager.instance.damaged);
 
         if (GameManager.instance.Invincible == false || this.gameObject.tag == "Enemy")
         {

@@ -65,6 +65,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMove: 1
   speed: 1000
+  attackSound: {fileID: 8300000, guid: 78419f98379502c4dbfb2774bc94e7c1, type: 3}
+  idx: 5
   ExpRange: 7
 --- !u!1 &6308664597992928446
 GameObject:

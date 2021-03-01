@@ -98,6 +98,10 @@ public class SkillDam : MonoBehaviour
 
     private void OnDisable()
     {
+        if (skill == skillType.LightRain)
+        {
+            SoundManager.instance.CancelLoop();
+        }
         FirstAttack = false;
     }
 }

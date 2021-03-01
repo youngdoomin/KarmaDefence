@@ -4818,6 +4818,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMove: 0
   speed: 0
+  attackSound: {fileID: 8300000, guid: 45a789f93b412df419b57c4fb5f90ef9, type: 3}
+  idx: 7
 --- !u!1 &3797475489134767895
 GameObject:
   m_ObjectHideFlags: 0

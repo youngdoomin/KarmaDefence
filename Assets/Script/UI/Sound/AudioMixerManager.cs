@@ -13,10 +13,6 @@ public class AudioMixerManager : MonoBehaviour
     {
         get { return instance; }
     }
-    
-
-    public float lowpassOn = 500;
-    public float lowpassOff = 10000;
 
     private void Awake()
     {
@@ -42,11 +38,4 @@ public class AudioMixerManager : MonoBehaviour
     {
         masterMixer.SetFloat("SfxVol", Mathf.Log10(sfxLv) * 20);
     }
-    /*
-    public void Setlowpass(float value)
-    {
-        masterMixer.SetFloat("BgmLowpass", value);
-        
-    }
-    */
 }

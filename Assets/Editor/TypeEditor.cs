@@ -17,7 +17,8 @@ public class TypeEditor : Editor
 
         IncHp_Prop,
         IncDam_Prop,
-        DecAttSp_Prop;
+        DecAttSp_Prop,
+        Sound_Prop;
         //controllable_Prop;
 
     void OnEnable()
@@ -35,6 +36,7 @@ public class TypeEditor : Editor
         IncHp_Prop = serializedObject.FindProperty("IncHp");
         IncDam_Prop = serializedObject.FindProperty("IncDam");
         DecAttSp_Prop = serializedObject.FindProperty("DecAttSp");
+        Sound_Prop = serializedObject.FindProperty("attackSound");
         //controllable_Prop = serializedObject.FindProperty("controllable");
     }
 
@@ -52,10 +54,11 @@ public class TypeEditor : Editor
                 EditorGUILayout.ObjectField(Projectile_Prop);
                 EditorGUILayout.ObjectField(ShootPos_Prop);
                 break;
-                /*
+                
             case Unit.Type.Fighter:
+                EditorGUILayout.ObjectField(Sound_Prop);
                 break;
-                */
+                
         }
 
         EditorGUILayout.IntSlider(Damage_Prop, 0, 100, new GUIContent("Damage"));

@@ -90,6 +90,7 @@ MonoBehaviour:
   Projectile: {fileID: 3034869627125675292, guid: f5515d4b85256bd4ab449850ed678a42,
     type: 3}
   ShootPos: {fileID: 8495076336539912045}
+  attackSound: {fileID: 8300000, guid: d9419ba0bfac1e84a95418ac5851caf6, type: 3}
   Class: 0
 --- !u!114 &8495076336296136366
 MonoBehaviour:

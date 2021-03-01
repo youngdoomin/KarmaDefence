@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour
 
     public void Lose()
     {
+        SoundManager.instance.PlaySE(SoundManager.instance.defeat);
+        SoundManager.instance.StopClip();
         loseObj.SetActive(true);
     }
 
@@ -166,6 +168,8 @@ public class GameManager : MonoBehaviour
 
     void CheckStar(int i, int val)
     {
+        SoundManager.instance.PlaySE(SoundManager.instance.win);
+        SoundManager.instance.StopClip();
         int lv = PlayerPrefs.GetInt("level");
         // Get boolean using PlayerPrefs
         var isDuplicate = PlayerPrefs.GetInt(lv + i.ToString()) == 1 ? true : false;

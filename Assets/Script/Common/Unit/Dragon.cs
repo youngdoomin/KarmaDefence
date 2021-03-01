@@ -6,6 +6,7 @@ public class Dragon : UnitHp
 {
     protected override void Disable()
     {
+        SoundManager.instance.PlaySE(SoundManager.instance.bossDie);
         Time.timeScale = 0;
         GameManager.instance.Result();
         gameObject.SetActive(false);

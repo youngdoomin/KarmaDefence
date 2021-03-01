@@ -6,7 +6,8 @@ public class ProjectileSet : MonoBehaviour
 {
     public bool isMove;
     public float speed;
-
+    public AudioClip attackSound;
+    public int idx;
 
     // Start is called before the first frame update
 

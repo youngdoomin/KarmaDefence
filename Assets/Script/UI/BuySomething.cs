@@ -54,6 +54,7 @@ public class BuySomething : MonoBehaviour
         {
             isWait = true;
             GameManager.instance.CurrentMoney -= Amt;
+            SoundManager.instance.PlaySE(SoundManager.instance.click);
             if(Sale == Type.Unit)
             {
                 var spawn = GameObject.Find(unitObj);

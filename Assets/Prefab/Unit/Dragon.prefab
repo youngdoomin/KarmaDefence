@@ -24034,6 +24034,7 @@ MonoBehaviour:
   Projectile: {fileID: 3034869627125675292, guid: b6e1bae27d44b014d866477d956bfc6e,
     type: 3}
   ShootPos: {fileID: 8117295667743041498}
+  attackSound: {fileID: 8300000, guid: 45a789f93b412df419b57c4fb5f90ef9, type: 3}
   Class: 0
 --- !u!54 &7885818714885721405
 Rigidbody:

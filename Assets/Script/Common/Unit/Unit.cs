@@ -42,6 +42,8 @@ public class Unit : MonoBehaviour
         Fighter
     }
 
+    public AudioClip attackSound;
+
     public Type Class;
 
     void Start()
@@ -128,6 +130,8 @@ public class Unit : MonoBehaviour
 
     IEnumerator Shoot(GameObject Enemy)
     {
+        
+
         animator.SetBool(hashWalk, false);
         animator.SetBool(hashAttack, true);
 
@@ -165,7 +169,6 @@ public class Unit : MonoBehaviour
             animator.SetBool(hashAttack, false);
             yield return new WaitForSeconds(AttackSpeed);
             animator.speed = 1;
-
         }
         else
         {
@@ -188,6 +191,7 @@ public class Unit : MonoBehaviour
             Enemy.GetComponent<UnitHp>().Damaged(Damage, "Sword");
             ShowEffect(Enemy);
             animator.SetBool(hashAttack, false);
+            SoundManager.instance.PlaySE(attackSound);
             yield return new WaitForSeconds(AttackSpeed);
             animator.speed = 1;
         }

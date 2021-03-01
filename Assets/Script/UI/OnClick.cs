@@ -31,6 +31,15 @@ public class OnClick : MonoBehaviour
         ClosePopUP();
     }
 
+    public void ClickSound()
+    {
+        SoundManager.instance.PlaySE(SoundManager.instance.click);
+    }
+
+    public void ReinforceSound()
+    {
+        SoundManager.instance.PlaySE(SoundManager.instance.reinforce);
+    }
 
     public void LSAnimtaion()
     {

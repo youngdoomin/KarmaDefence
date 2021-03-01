@@ -93,6 +93,7 @@ public class SkillMgr : MonoBehaviour
 
     IEnumerator shieldCt(GameObject obj)
     {
+        SoundManager.instance.PlaySE(SoundManager.instance.skill1);
         GameManager.instance.Invincible = true;
         yield return new WaitForSeconds(Time_shield);
         GameManager.instance.Invincible = false;
@@ -105,6 +106,7 @@ public class SkillMgr : MonoBehaviour
         var player = new Vector3(this.gameObject.transform.position.x, 0, 0);
         for (int i = 0; i < RainPos.transform.childCount; i++)
         {
+            SoundManager.instance.PlayLoopSE(SoundManager.instance.skill2);
             var spawn = RainPos.transform.GetChild(i);
             if (!spawn.gameObject.activeSelf)
             {
@@ -117,7 +119,6 @@ public class SkillMgr : MonoBehaviour
                 skillPool(1, RainPos);
                 //LightRain();
             }
-            
         }
         // Instantiate(SkillObj[1], player + RainTargetPos.localPosition, Quaternion.identity);
     }
@@ -127,6 +128,7 @@ public class SkillMgr : MonoBehaviour
 
         for (int idx = 0; idx < ExpPos.transform.childCount; idx++)
         {
+            SoundManager.instance.PlaySE(SoundManager.instance.skill3);
             var ExpSkill = ExpPos.transform.GetChild(idx);
             if (!ExpSkill.gameObject.activeSelf)
             {
@@ -140,11 +142,7 @@ public class SkillMgr : MonoBehaviour
                 skillPool(2, ExpPos);
             }
 
-
         }
-
-
-
         // yield return new WaitForSeconds(0.1f);
     }
 

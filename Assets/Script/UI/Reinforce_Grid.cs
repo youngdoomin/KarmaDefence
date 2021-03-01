@@ -75,6 +75,8 @@ public class Reinforce_Grid : MonoBehaviour
     {
         if (price[currTier] <= GameManager.instance.Gold)
         {
+            SoundManager.instance.PlaySE(SoundManager.instance.reinforce);
+
             GameManager.instance.Gold -= price[currTier];
             if (type == Type.Unit)
                 upObj.GetComponent<Unit>().Upgrade(upPer[currTier]);
@@ -104,7 +106,6 @@ public class Reinforce_Grid : MonoBehaviour
                 b.onClick.RemoveAllListeners();
                 return;
             }
-
             Refresh();
         }
     }

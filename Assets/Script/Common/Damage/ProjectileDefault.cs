@@ -12,6 +12,7 @@ public class ProjectileDefault : ProjectileSet
 
     private void OnEnable()
     {
+        SoundManager.instance.PlaySE(attackSound);
         for (int i = 0; i < transform.childCount - 1; i++)
         {
             transform.GetChild(i).gameObject.SetActive(true);
