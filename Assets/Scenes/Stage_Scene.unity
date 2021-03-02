@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f811d33a8b9b34e84c7c9decd7488b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSpawn: 1
+  IsSpawn: 0
   SpawnPos: {fileID: 1087163172}
   Units:
   - {fileID: 8117295668437786126, guid: b7990bc713f59f74d9ccf02b5a085e3a, type: 3}
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   - {fileID: 8117295668437786126, guid: 746fb16867154ef4ab2af9868ad43d8b, type: 3}
   spawnCt: 5
   zAxis: 2
-  chooseUnit: 0
+  chooseUnit: 3
   spawnTime: 040000000400000003000000030000000200000006000000060000000500000005000000040000000900000009000000080000000800000007000000
 --- !u!1 &521096914
 GameObject:
@@ -5663,6 +5663,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1558174511963162084, guid: 1e031efef45b2314aa2d84d0c44d4b04,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 1716422876508951607, guid: 1e031efef45b2314aa2d84d0c44d4b04,
         type: 3}
       propertyPath: winObj
@@ -5683,6 +5688,11 @@ PrefabInstance:
       propertyPath: speed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7577927136792105599, guid: 1e031efef45b2314aa2d84d0c44d4b04,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 8030394016665108042, guid: 1e031efef45b2314aa2d84d0c44d4b04,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -5701,8 +5711,14 @@ PrefabInstance:
     - target: {fileID: 8117295668437786126, guid: 1e031efef45b2314aa2d84d0c44d4b04,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8117295668437786160, guid: 1e031efef45b2314aa2d84d0c44d4b04,
+        type: 3}
+      propertyPath: Projectile
+      value: 
+      objectReference: {fileID: 3034869627125675292, guid: b6e1bae27d44b014d866477d956bfc6e,
+        type: 3}
     - target: {fileID: 8117295668437786162, guid: 1e031efef45b2314aa2d84d0c44d4b04,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5762,6 +5778,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431465714858770929, guid: 1e031efef45b2314aa2d84d0c44d4b04,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e031efef45b2314aa2d84d0c44d4b04, type: 3}
@@ -9077,7 +9098,7 @@ MonoBehaviour:
   b: {fileID: 3604621734530007657}
   Sale: 1
   Amt: 1
-  coolTime: 1
+  coolTime: 0
   Message: Spawner
 --- !u!114 &3604621734530007654
 MonoBehaviour:

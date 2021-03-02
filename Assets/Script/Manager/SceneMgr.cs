@@ -27,17 +27,23 @@ public class SceneMgr : MonoBehaviour
     {
         if (level == 2)
         {
-            if (PlayerPrefs.GetInt("Level 1_Star") == 0)
+            if (PlayerPrefs.GetInt("Next") == 1)
+            {
+                GameManager.instance.Result();
+                this.GetComponent<OnClick>().OpenPopUp(3);
+                HideObj(0);
+                GameManager.instance.ToggleTime();
+                PlayerPrefs.SetInt("Next", 0);
+                Debug.Log("next");
+            }
+            else if (PlayerPrefs.GetInt("Level 1_Star") == 0)
             {
                 GameManager.instance.ToggleTime();
                 tutoPopUpObj.SetActive(true);
             }
-            else if(PlayerPrefs.GetInt("Next") == 1)
+            if (PlayerPrefs.GetInt("level") == 5)
             {
-                this.GetComponent<OnClick>().OpenPopUp(2);
-                HideObj(0);
-                PlayerPrefs.SetInt("Next", 0);
-                Debug.Log("next");
+                HideObj(1);
             }
         }
         else

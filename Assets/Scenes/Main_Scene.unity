@@ -1651,6 +1651,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1141969743}
+        m_MethodName: Win
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1141969743}
         m_MethodName: Result
         m_Mode: 1
         m_Arguments:
@@ -3169,6 +3180,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2044785284}
         m_MethodName: ClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1141969743}
+        m_MethodName: ToggleTime
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5990,6 +6012,7 @@ MonoBehaviour:
   stageStar: 0
   starSprite: {fileID: 21300000, guid: 0416a79573f86fa44b638f9cd6af4161, type: 3}
   nullStarSprite: {fileID: 21300000, guid: 838c2411682564e44ad5064f879fb4a0, type: 3}
+  toggle: 0
   winObj: {fileID: 1879465999}
   loseObj: {fileID: 37328534}
   questPopUpObj: {fileID: 259906419}
@@ -10583,6 +10606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hideObj:
   - {fileID: 392599342}
+  - {fileID: 1137999210}
   tutoPopUpObj: {fileID: 802959152}
 --- !u!1 &2106640269
 GameObject:

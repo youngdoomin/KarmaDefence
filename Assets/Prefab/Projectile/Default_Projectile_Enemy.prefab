@@ -66,7 +66,6 @@ MonoBehaviour:
   isMove: 1
   speed: 1000
   attackSound: {fileID: 8300000, guid: d9419ba0bfac1e84a95418ac5851caf6, type: 3}
-  idx: 4
 --- !u!1 &6308664597992928446
 GameObject:
   m_ObjectHideFlags: 0

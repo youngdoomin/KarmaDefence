@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour
     public int stageStar;
     public Sprite starSprite;
     public Sprite nullStarSprite;
-    bool toggle;
+    [HideInInspector]
+    public bool toggle;
     public GameObject winObj;
     public GameObject loseObj;
     public GameObject questPopUpObj;
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
     }
     [HideInInspector]
     public StageQuest quest;
-
+    bool isWin;
 
     void Awake()
     {
@@ -63,20 +64,23 @@ public class GameManager : MonoBehaviour
         if (level == 2)
         {
             Debug.Log("here");
-            quest = stQuest[PlayerPrefs.GetInt("level") - 1];
+            
             ui = winUi;
             stageInfo = winObj;
         }
         else
         {
+            
             currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
             rgs = (Reinforce_Grid[])GameObject.FindObjectsOfType(typeof(Reinforce_Grid));
             ui = questInfoUi;
             stageInfo = questPopUpObj;
         }
 
+        quest = stQuest[PlayerPrefs.GetInt("level") - 1];
         starCt = PlayerPrefs.GetInt("saveStarCt");
         toggle = false;
+        isWin = false;
     }
 
     void Start()
@@ -92,6 +96,13 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.PlaySE(SoundManager.instance.defeat);
         SoundManager.instance.StopClip();
         loseObj.SetActive(true);
+    }
+
+    public void Win()
+    {
+        isWin = true;
+        SoundManager.instance.PlaySE(SoundManager.instance.win);
+        SoundManager.instance.StopClip();
     }
 
     public void Result()
@@ -159,7 +170,7 @@ public class GameManager : MonoBehaviour
     
     void CheckOrRefresh(int i, int val)
     {
-        if (SceneManager.GetActiveScene().name == "Main_Scene")
+        if (SceneManager.GetActiveScene().name == "Main_Scene" || !isWin)
             RefreshStar(i);
         else
             CheckStar(i, val);
@@ -168,8 +179,7 @@ public class GameManager : MonoBehaviour
 
     void CheckStar(int i, int val)
     {
-        SoundManager.instance.PlaySE(SoundManager.instance.win);
-        SoundManager.instance.StopClip();
+        
         int lv = PlayerPrefs.GetInt("level");
         // Get boolean using PlayerPrefs
         var isDuplicate = PlayerPrefs.GetInt(lv + i.ToString()) == 1 ? true : false;
@@ -204,6 +214,7 @@ public class GameManager : MonoBehaviour
     }
     public void RefreshStar(int i)
     {
+        toggle = false;
         int lv = PlayerPrefs.GetInt("level");
         // Get boolean using PlayerPrefs
         var isDuplicate = PlayerPrefs.GetInt(lv + i.ToString()) == 1 ? true : false;

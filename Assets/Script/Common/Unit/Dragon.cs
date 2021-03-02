@@ -8,6 +8,7 @@ public class Dragon : UnitHp
     {
         SoundManager.instance.PlaySE(SoundManager.instance.bossDie);
         Time.timeScale = 0;
+        GameManager.instance.Win();
         GameManager.instance.Result();
         gameObject.SetActive(false);
     }
