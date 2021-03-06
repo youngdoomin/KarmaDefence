@@ -60,6 +60,7 @@ public class SoundManager : MonoBehaviour
         bgmSource.loop = true;
         bgmSource.outputAudioMixerGroup = bgmOutput;
         
+
         effectSource = GetComponent<AudioSource>();
         effectSource.loop = false;
 

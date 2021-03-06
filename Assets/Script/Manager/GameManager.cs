@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            
+            quest = stQuest[PlayerPrefs.GetInt("level") - 1];
             currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
             rgs = (Reinforce_Grid[])GameObject.FindObjectsOfType(typeof(Reinforce_Grid));
             ui = questInfoUi;
@@ -211,6 +211,7 @@ public class GameManager : MonoBehaviour
 
         }
         */
+        currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
     }
     public void RefreshStar(int i)
     {

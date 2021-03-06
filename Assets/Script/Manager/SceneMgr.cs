@@ -55,6 +55,8 @@ public class SceneMgr : MonoBehaviour
             
             
         }
+
+        HideObj(2);
     }
 
     public void LoadSpecificScene(string scene) // 특정 씬 호출
