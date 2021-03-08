@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f811d33a8b9b34e84c7c9decd7488b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSpawn: 0
+  IsSpawn: 1
   SpawnPos: {fileID: 1087163172}
   Units:
   - {fileID: 8117295668437786126, guid: b7990bc713f59f74d9ccf02b5a085e3a, type: 3}
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   - {fileID: 8117295668437786126, guid: 746fb16867154ef4ab2af9868ad43d8b, type: 3}
   spawnCt: 5
   zAxis: 2
-  chooseUnit: 3
+  chooseUnit: 0
   spawnTime: 040000000400000003000000030000000200000006000000060000000500000005000000040000000900000009000000080000000800000007000000
 --- !u!1 &521096914
 GameObject:
@@ -9098,7 +9098,7 @@ MonoBehaviour:
   b: {fileID: 3604621734530007657}
   Sale: 1
   Amt: 1
-  coolTime: 0
+  coolTime: 1
   Message: Spawner
 --- !u!114 &3604621734530007654
 MonoBehaviour:
