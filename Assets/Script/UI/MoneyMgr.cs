@@ -18,7 +18,7 @@ public class MoneyMgr : MonoBehaviour
 
     void Start()
     {
-        //register new event to onclick with the variables that control your args
+        GameManager.instance.CurrentMoney = 0;
         MoneyText.text = "0 / " + MoneyCap[SnowLevel];
         UpgradeMoney.text = "UP\n" + upgradeVal[SnowLevel];
         StartCoroutine(MoneyInc());

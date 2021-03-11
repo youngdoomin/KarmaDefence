@@ -25,12 +25,13 @@ public class SceneMgr : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
+        i = SceneManager.GetActiveScene().buildIndex;
         if (level == 2)
         {
             if (PlayerPrefs.GetInt("Next") == 1)
             {
                 GameManager.instance.Result();
-                this.GetComponent<OnClick>().OpenPopUp(3);
+                this.GetComponent<OnClick>().OpenPopUp(4);
                 HideObj(0);
                 PlayerPrefs.SetInt("Next", 0);
                 Debug.Log("next");
@@ -44,15 +45,21 @@ public class SceneMgr : MonoBehaviour
             {
                 HideObj(1);
             }
+            else
+            {
+                Time.timeScale = 1;
+            }
+        }
+        else if(level == 3)
+        {
+            LoadScene(GameManager.instance.lastScene);
+            Debug.Log("load");
         }
         else
         {
             this.GetComponent<OnClick>().ClosePopUP();
             BackAll();
 
-            
-            
-            
         }
 
         HideObj(2);
@@ -60,25 +67,11 @@ public class SceneMgr : MonoBehaviour
 
     public void LoadSpecificScene(string scene) // 특정 씬 호출
     {
-        /*
-        i = int.Parse(this.gameObject.transform.GetChild(0).name);
-        GameManager.instance.thisStage = i;
-        Debug.Log(i);
-        */
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 
     public void LoadScene(int s)
     {
-
-        
-        if (i == s)
-        {
-            SceneManager.LoadScene("Loading");
-        }
-        // else { i = s; }
-        
-        i = s;
         SceneManager.LoadScene(s, LoadSceneMode.Single);
     }
 
@@ -86,10 +79,11 @@ public class SceneMgr : MonoBehaviour
 
     public void GoNext() // 다음 씬으로 이동
     {
+        GameManager.instance.lastScene = i;
         PlayerPrefs.SetInt("Next", 1);
         PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
         this.GetComponent<OnClick>().ClosePopUP();
-        LoadScene(2);
+        LoadScene(3);
     }
 
     public void GoMain()
@@ -99,7 +93,8 @@ public class SceneMgr : MonoBehaviour
 
     public void GoAgain()
     {
-        LoadScene(i);
+        GameManager.instance.lastScene = i;
+        LoadScene(3);
     }
 
 

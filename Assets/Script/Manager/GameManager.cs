@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public StageQuest quest;
     bool isWin;
-
+    [HideInInspector]
+    public int lastScene;
     void Awake()
     {
         instance = this;
