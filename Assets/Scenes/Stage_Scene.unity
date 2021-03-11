@@ -1752,6 +1752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GridLayout: {fileID: 1171144887}
   image: {fileID: 1905752187}
+  cancelClick: {fileID: 0}
 --- !u!1 &632207012
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,7 +32,6 @@ public class SceneMgr : MonoBehaviour
                 GameManager.instance.Result();
                 this.GetComponent<OnClick>().OpenPopUp(3);
                 HideObj(0);
-                GameManager.instance.ToggleTime();
                 PlayerPrefs.SetInt("Next", 0);
                 Debug.Log("next");
             }

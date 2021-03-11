@@ -10,9 +10,11 @@ public class OnClick : MonoBehaviour
     bool isTrue_speed;
     public GameObject GridLayout;
     public GameObject image;
+    public GameObject cancelClick;
     private readonly int hashisEnter = Animator.StringToHash("isEnter");
     Animator animator;
     bool isTrue_reinforce;
+
 
     void Start()
     {
@@ -57,6 +59,8 @@ public class OnClick : MonoBehaviour
     public void OpenPopUp(int i)
     {
         transform.GetChild(i).gameObject.SetActive(true);
+        if (cancelClick != null)
+            cancelClick.SetActive(true);
     }
 
 
@@ -69,6 +73,8 @@ public class OnClick : MonoBehaviour
                 transform.GetChild(i).gameObject.SetActive(false);
             }
         }
+        if (cancelClick != null)
+            cancelClick.SetActive(false);
     }
     public void TryReinforce()
     {

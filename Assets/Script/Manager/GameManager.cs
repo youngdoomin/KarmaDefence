@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void OnLevelWasLoaded(int level)
     {
-        Time.timeScale = 1;
+        // ToggleTime();
         if (level == 2)
         {
             Debug.Log("here");
