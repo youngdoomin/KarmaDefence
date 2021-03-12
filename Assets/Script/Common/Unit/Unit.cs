@@ -20,6 +20,7 @@ public class Unit : MonoBehaviour
     public int IncDam;
     public float DecAttSp;
 
+    GameObject effect;
     public GameObject Projectile;   // 원거리 투사체
     public Transform ShootPos;  // 발사 위치
 
@@ -68,9 +69,11 @@ public class Unit : MonoBehaviour
         FindObj();
         //rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-
+        effect = this.gameObject.transform.GetChild(gameObject.transform.childCount - 1).gameObject;
+        /*
         if (transform.childCount > 2)
             transform.GetChild(2).gameObject.SetActive(false);
+            */
     }
 
     void FindObj()
@@ -193,6 +196,7 @@ public class Unit : MonoBehaviour
             animator.SetBool(hashAttack, false);
             SoundManager.instance.PlaySE(attackSound);
             yield return new WaitForSeconds(AttackSpeed);
+            effect.SetActive(false);
             animator.speed = 1;
         }
         else
@@ -204,7 +208,7 @@ public class Unit : MonoBehaviour
 
     void ShowEffect(GameObject Enemy)
     {
-        GameObject effect = this.gameObject.transform.GetChild(gameObject.transform.childCount - 1).gameObject;
+        // effect = this.gameObject.transform.GetChild(gameObject.transform.childCount - 1).gameObject;
         effect.transform.localScale = new Vector3(2, 2, 2);
         effect.transform.position = Enemy.transform.position;
         effect.SetActive(true);
