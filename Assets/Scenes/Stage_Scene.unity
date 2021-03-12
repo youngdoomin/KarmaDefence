@@ -1037,7 +1037,7 @@ MonoBehaviour:
   type: 1
   type_UI: 1
   upObj: {fileID: 1657604250}
-  price: 0a000000140000001e000000
+  price: 900100005802000020030000
   starTxt: {fileID: 0}
   currTier: 0
 --- !u!1 &401876650
@@ -1630,7 +1630,7 @@ MonoBehaviour:
   b: {fileID: 563228209}
   Sale: 0
   Amt: 60
-  coolTime: 1
+  coolTime: 5
   Message: LightExp
 --- !u!1 &581456962
 GameObject:
@@ -3118,7 +3118,7 @@ MonoBehaviour:
   type: 3
   type_UI: 1
   upObj: {fileID: 8191058831206445995, guid: 8b5c15b7bfec9e549956fb51e0eb7ab0, type: 3}
-  price: 0a000000140000001e000000
+  price: 900100005802000020030000
   starTxt: {fileID: 0}
   currTier: 0
 --- !u!1 &963194225
@@ -3995,8 +3995,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: {fileID: 1070409423}
   Sale: 0
-  Amt: 100
-  coolTime: 1
+  Amt: 80
+  coolTime: 5
   Message: Mercy
 --- !u!1 &1087163171
 GameObject:
@@ -4403,7 +4403,7 @@ MonoBehaviour:
   b: {fileID: 1168111566}
   Sale: 0
   Amt: 30
-  coolTime: 1
+  coolTime: 5
   Message: LightRain
 --- !u!1 &1171144887
 GameObject:
@@ -4724,7 +4724,7 @@ MonoBehaviour:
   type: 2
   type_UI: 1
   upObj: {fileID: 5937737309244096007, guid: ff513a1ea57ccb846b15001c2826088c, type: 3}
-  price: 0a000000140000001e000000
+  price: 900100005802000020030000
   starTxt: {fileID: 0}
   currTier: 0
 --- !u!1 &1299331225
@@ -5351,7 +5351,7 @@ MonoBehaviour:
   type: 0
   type_UI: 1
   upObj: {fileID: 8495076336296136352, guid: 5f0350a938b7ef2408ce02b1d322f85d, type: 3}
-  price: 0a000000140000001e000000
+  price: 900100005802000020030000
   starTxt: {fileID: 0}
   currTier: 0
 --- !u!1 &1436073208
@@ -5550,7 +5550,7 @@ MonoBehaviour:
   type: 0
   type_UI: 1
   upObj: {fileID: 8495076336296136352, guid: 5177a810026f81b4fa785187723df216, type: 3}
-  price: 0a000000140000001e000000
+  price: 900100005802000020030000
   starTxt: {fileID: 0}
   currTier: 0
 --- !u!1 &1593053814
@@ -7670,7 +7670,7 @@ MonoBehaviour:
   type: 0
   type_UI: 1
   upObj: {fileID: 8495076336296136352, guid: aeba0a4fd8774e74eb78ed211c1f846e, type: 3}
-  price: 0a000000140000001e000000
+  price: 900100005802000020030000
   starTxt: {fileID: 0}
   currTier: 0
 --- !u!1 &1845086970
