@@ -342,7 +342,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2d4d50042f0ee7145a3c3a604eef210c, type: 3}
-    m_FontSize: 12
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -534,7 +534,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2d4d50042f0ee7145a3c3a604eef210c, type: 3}
-    m_FontSize: 12
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -648,7 +648,7 @@ MonoBehaviour:
   upgradeVal: 2800000050000000780000008c000000b4000000dc000000f0000000
   MoneyCap: 6400000096000000c8000000fa0000002c0100005e01000090010000
   IncDelay: 1
-  IncAmount: 5
+  IncAmount: 10
 --- !u!1 &254958559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,7 +1629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: {fileID: 563228209}
   Sale: 0
-  Amt: 6
+  Amt: 60
   coolTime: 1
   Message: LightExp
 --- !u!1 &581456962
@@ -2500,7 +2500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: {fileID: 762702323}
   Sale: 1
-  Amt: 5
+  Amt: 40
   coolTime: 1
   Message: Spawner
 --- !u!1 &803696311
@@ -3995,7 +3995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: {fileID: 1070409423}
   Sale: 0
-  Amt: 2
+  Amt: 100
   coolTime: 1
   Message: Mercy
 --- !u!1 &1087163171
@@ -4402,7 +4402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: {fileID: 1168111566}
   Sale: 0
-  Amt: 4
+  Amt: 30
   coolTime: 1
   Message: LightRain
 --- !u!1 &1171144887
@@ -4859,7 +4859,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2d4d50042f0ee7145a3c3a604eef210c, type: 3}
-    m_FontSize: 12
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -6105,7 +6105,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2d4d50042f0ee7145a3c3a604eef210c, type: 3}
-    m_FontSize: 12
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -7803,7 +7803,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2d4d50042f0ee7145a3c3a604eef210c, type: 3}
-    m_FontSize: 12
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -8283,7 +8283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: {fileID: 1993333720}
   Sale: 1
-  Amt: 3
+  Amt: 25
   coolTime: 1
   Message: Spawner
 --- !u!1 &2030381119
@@ -9054,7 +9054,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2d4d50042f0ee7145a3c3a604eef210c, type: 3}
-    m_FontSize: 12
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -9098,7 +9098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   b: {fileID: 3604621734530007657}
   Sale: 1
-  Amt: 1
+  Amt: 20
   coolTime: 1
   Message: Spawner
 --- !u!114 &3604621734530007654

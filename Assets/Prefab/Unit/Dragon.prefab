@@ -93,13 +93,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0a511f38b9a934f8238cf82cd854b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 100
+  Damage: 60
   AttackRange: 6.2
   Speed: 1.5
   AttackSpeed: 1.4
-  IncHp: 1500
-  IncDam: 30
-  DecAttSp: 0.2
+  IncHp: 1000
+  IncDam: 10
+  DecAttSp: 0.1
   Projectile: {fileID: 3034869627125675292, guid: b6e1bae27d44b014d866477d956bfc6e,
     type: 3}
   ShootPos: {fileID: 8117295667743041498}

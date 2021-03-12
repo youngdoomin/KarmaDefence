@@ -207,7 +207,7 @@ MonoBehaviour:
   hpBarPrefab: {fileID: 350518011063597351, guid: 66ebd127edcb5bb45a1d31937afd9952,
     type: 3}
   hpBarOffset: {x: 0, y: 2.2, z: 0}
-  incGold: 2c0100005e01000090010000c2010000f4010000
+  incGold: 64000000780000008c000000a0000000b4000000
 --- !u!1001 &7903341232446956912
 PrefabInstance:
   m_ObjectHideFlags: 0
