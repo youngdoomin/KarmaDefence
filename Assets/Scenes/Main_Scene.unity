@@ -6610,6 +6610,12 @@ MonoBehaviour:
   reinforceCt: 0
   saveHQCt: 0
   saveUnitCt: 0
+  rgs:
+  - {fileID: 7025114293949288281}
+  - {fileID: 7025114292768781592}
+  - {fileID: 7025114293051745857}
+  - {fileID: 7025114294270652881}
+  - {fileID: 7025114293712324357}
   quest:
     Quests: []
   lastScene: 0

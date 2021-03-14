@@ -26,6 +26,7 @@ public class SceneMgr : MonoBehaviour
     private void OnLevelWasLoaded(int level)
     {
         i = SceneManager.GetActiveScene().buildIndex;
+        this.GetComponent<OnClick>().ClosePopUP();
         if (level == 2)
         {
             if (PlayerPrefs.GetInt("Next") == 1)
@@ -38,10 +39,10 @@ public class SceneMgr : MonoBehaviour
             }
             else if (PlayerPrefs.GetInt("Level 1_Star") == 0)
             {
-                GameManager.instance.ToggleTime();
                 tutoPopUpObj.SetActive(true);
+                Time.timeScale = 0;
             }
-            if (PlayerPrefs.GetInt("level") == 5)
+            else if (PlayerPrefs.GetInt("level") == 5)
             {
                 HideObj(1);
             }
@@ -57,7 +58,6 @@ public class SceneMgr : MonoBehaviour
         }
         else
         {
-            this.GetComponent<OnClick>().ClosePopUP();
             BackAll();
 
         }

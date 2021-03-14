@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     [ReadOnly] public int spawnCt, killCt, killbySkillCt, killbySwordCt, killbyBowCt, bossHitbySkillCt, reinforceCt, saveHQCt, saveUnitCt;
 
-    Reinforce_Grid[] rgs;
+    public Reinforce_Grid[] rgs;
 
     [System.Serializable]
     public class StageQuest
@@ -64,16 +64,13 @@ public class GameManager : MonoBehaviour
         // ToggleTime();
         if (level == 2)
         {
-            Debug.Log("here");
-            
             ui = winUi;
             stageInfo = winObj;
         }
         else
         {
-            quest = stQuest[PlayerPrefs.GetInt("level") - 1];
+            // quest = stQuest[PlayerPrefs.GetInt("level") - 1];
             currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
-            rgs = (Reinforce_Grid[])GameObject.FindObjectsOfType(typeof(Reinforce_Grid));
             ui = questInfoUi;
             stageInfo = questPopUpObj;
         }
@@ -87,7 +84,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
-        rgs = (Reinforce_Grid[])GameObject.FindObjectsOfType(typeof(Reinforce_Grid));
         ui = questInfoUi;
         stageInfo = questPopUpObj;
     }
@@ -254,8 +250,10 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("saveStarCt", starCt);
         currStar.GetComponent<Text>().text = PlayerPrefs.GetInt("saveStarCt").ToString();
+        Debug.Log("cancelUpgrade");
         foreach (Reinforce_Grid rg in rgs)
         {
+            Debug.Log(PlayerPrefs.GetInt(rg.gameObject.name));
             rg.currTier = PlayerPrefs.GetInt(rg.gameObject.name);
             rg.Refresh();
         }
