@@ -12027,11 +12027,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300baae78cedc4e47b59bf9dbc195952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upPer: 010000000200000003000000
+  upPer: 1400000028000000
   type: 4
   type_UI: 0
   upObj: {fileID: 0}
-  price: 010000000200000003000000
+  price: 0100000002000000
   starTxt: {fileID: 0}
   currTier: 0
 --- !u!114 &7025114292768781595
@@ -12566,11 +12566,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300baae78cedc4e47b59bf9dbc195952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upPer: 010000000200000003000000
+  upPer: 0200000004000000
   type: 6
   type_UI: 0
   upObj: {fileID: 0}
-  price: 010000000200000003000000
+  price: 0100000002000000
   starTxt: {fileID: 0}
   currTier: 0
 --- !u!222 &7025114293051745860
@@ -13616,11 +13616,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300baae78cedc4e47b59bf9dbc195952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upPer: 010000000200000003000000
+  upPer: 0a00000014000000
   type: 8
   type_UI: 0
   upObj: {fileID: 0}
-  price: 010000000200000003000000
+  price: 0100000002000000
   starTxt: {fileID: 0}
   currTier: 0
 --- !u!222 &7025114293712324360
@@ -13909,11 +13909,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300baae78cedc4e47b59bf9dbc195952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upPer: 010000000200000003000000
+  upPer: 0a00000014000000
   type: 5
   type_UI: 0
   upObj: {fileID: 0}
-  price: 010000000200000003000000
+  price: 0100000002000000
   starTxt: {fileID: 0}
   currTier: 0
 --- !u!222 &7025114293949288284
@@ -14199,11 +14199,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300baae78cedc4e47b59bf9dbc195952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upPer: 010000000200000003000000
+  upPer: 0a00000014000000
   type: 7
   type_UI: 0
   upObj: {fileID: 0}
-  price: 010000000200000003000000
+  price: 0100000002000000
   starTxt: {fileID: 0}
   currTier: 0
 --- !u!222 &7025114294270652884
