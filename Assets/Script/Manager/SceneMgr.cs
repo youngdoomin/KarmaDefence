@@ -32,7 +32,7 @@ public class SceneMgr : MonoBehaviour
             if (PlayerPrefs.GetInt("Next") == 1)
             {
                 GameManager.instance.Result();
-                this.GetComponent<OnClick>().OpenPopUp(4);
+                this.GetComponent<OnClick>().OpenPopUp(3);
                 HideObj(0);
                 PlayerPrefs.SetInt("Next", 0);
                 Debug.Log("next");
